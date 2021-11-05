@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Airways</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../fontAwesome/css/all.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+    <style>
+        .top {
+            height: 70px;
+            border-bottom: 3px rgba(0, 0, 0, 0.1) solid;
+        }
+
+        .logo {
+            margin: 10px 0;
+        }
+
+        .logo,
+        .user div {
+            float: left;
+        }
+
+        .user {
+            margin-top: 20px;
+            font-size: larger;
+            float: right;
+
+        }
+
+        .user div {
+            margin-left: 5px;
+        }
+
+        #tel {
+            margin-right: 15px;
+        }
+
+        a:hover {
+            color: brown;
+        }
+
+
+
+        .top i {
+            color: #0c52a4;
+        }
+
+        /* second menu */
+
+
+
+        .secondmid {
+            height: 40px;
+            line-height: 40px;
+
+        }
+
+        .secondmid div {
+            margin-right: 10px;
+            font-size: larger;
+            float: right;
+            /* border-bottom: 3px rgba(0, 0, 0, 0.1) solid; */
+        }
+
+        .SpecialOffer {
+            height: 100%;
+            width: 108px;
+        }
+
+        .SpecialOffer:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+
+        }
+
+        .secondBox {
+            height: 50px;
+            width: 200px;
+            background-color: #e5e5e5;
+            box-shadow: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 280px;
+            border-radius: 4px;
+           display: none;
+        }
+
+        .secondBox div {
+            float: left;
+            margin: 0 5px;
+        }
+
+        .secondBox a {
+            font-size: 20px;
+        }
+
+        .SpecialOffer:hover .secondBox {
+            display: block;
+        }
+
+        /* main body */
+        .main {
+            height: 1173px;
+            width: 100%;
+            background-image: url(../static/background.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            overflow: hidden;
+        }
+
+        .mainPart {
+            height: 586.5px;
+            background-color: white;
+            margin-top: 140px;
+        }
+
+        button {
+
+            width: 140px;
+            height: 120px;
+            color: white;
+            font-size: larger;
+            background-color: #0c52a4;
+            margin: 10px 10px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+
+        }
+
+        button:hover {
+            background-color: white;
+            /* Green */
+            border: #0c52a4 5px solid;
+            color: black;
+        }
+
+        /* button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        button span:after {
+            content: '»';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        button:hover span {
+            padding-right: 25px;
+        }
+
+        button:hover span:after {
+            opacity: 1;
+            right: 0;
+        } */
+
+        .left {
+            padding-top: 15px;
+            padding-left: 20px;
+        }
+
+        input {
+            width: 300px;
+            height: 60px;
+            font-size: 25px;
+            outline-color: #0c52a4;
+        }
+
+        #FlightChild {
+            width: 920px;
+            height: 500px;
+            background-color: rgba(1, 58, 58, 0.3);
+            position: absolute;
+            left: 400px;
+            top: 300px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+            font-family: roboto-medium, roboto-regular;
+        }
+        .level1,
+        .level2,
+        .level3,
+        .level4 {
+            margin-top: 20px;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+        }
+        #from,
+        #outbound {
+            float: left;
+        }
+        #from::before {
+            content: 'From : ';
+            font-size: 30px;
+            margin-left: 57px;
+        }
+        #to,
+        #return {
+            float: right;
+            margin-right: 40px;
+
+
+        }
+
+        #to::before {
+            content: 'To :  ';
+            font-size: 30px;
+        }
+
+        #outbound::before {
+            content: 'Outbound: ';
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+        #return::before {
+            content: 'Return:  ';
+            font-size: 30px;
+        }
+
+        .level2 input {}
+
+        .level3 select {
+            width: 40px;
+            height: 40px;
+            margin-right: 30px;
+            margin-left: 10px;
+        }
+
+        #passengers {
+            margin: auto 10px;
+            font-size: 20px;
+        }
+
+        .level4 div {
+            float: left;
+            padding-left: 20px;
+        }
+
+        #Returnt{
+            margin-left: -20px;
+            
+        }
+
+        #singles button,#Returnt button{
+            width: 100px;
+            height: 40px;
+            background-color: #0c52a4;
+        }
+
+        #class{
+            font-size: 20px;
+        }
+        #class select{
+           height: 30px;
+        }
+       #search{
+           margin-left: 30px;
+       }
+       #search input{
+           color: #e5e5e5;
+           background-color: #B73E3E;
+           border-radius: 12px;
+           cursor: pointer;
+       }
+
+       #search:hover input{
+        background-color:#e5e5e5;
+        border: #B73E3E 3px solid;
+        color: black;
+       }
+    
+   #return{
+       display: none;
+   }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="top">
+        <div class="mid w">
+            <div class="logo"><a href="./index.html"><img src="../static/logo.png" alt="logo"></a></div>
+            <div class="user">
+                <div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
+                <div></div>
+                <div class="service"> <i class="fa fa-user"> </i><a href="javascript:;"></i> LOG IN</a> </div>
+                <div>/</div>
+                <div class="service"> <a href="javascript:;"> REGISTER</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="secondmid w">
+        <div><a href="javascript:;">Help and Contacts</a></div>
+        <div class="SpecialOffer"><a id="qw" href="javascript:;">Special Offers</a>
+            <div id="demo" class="secondBox">
+                <div class="Voucher"><a href="javascript:;">Voucher</a> </div>
+                <div class="speicals"><a href="javascript:;">Flight speicals</a></div>
+            </div>
+        </div>
+        <div><a href="javascript:;">Manage</a></div>
+        <div><a href="javascript:;">About Us</a></div>
+    </div>
+
+
+    <!-- main body -->
+    <div class="main">
+        <div class="mainPart w">
+            <div class="left">
+                <div><button id="Flight">Flight </button>
+                    <div id="FlightChild">
+                        <!-- service database -->
+                        <form action="">
+                            <div class="level1">
+                                <div id="from"><input type="text" name="from"></div>
+                                <div id="to"><input type="text" name="to"></div>
+                            </div>
+                            <div class="level2">
+                                <div id="outbound"><input type="date" name="outbound"></div>
+                                <div id="return"><input id="check" type="date" name="return"></div>
+                            </div>
+                            <div class="level3">
+                                <div id="passengers">
+                                    Adult(16+ years)<select name="Adult" id="Adult">
+                                        <option name="1">1</option>
+                                        <option name="2">2</option>
+                                        <option name="3">3</option>
+                                    </select>
+                                    Children(2 - 11 years)<select name="Children" id="	Children">
+                                        <option name="1">0</option>
+                                        <option name="2">1</option>
+                                        <option name="3">2</option>
+                                    </select>
+                                    Infants(under 2 years)<select name="Infants" id="Infants">
+                                        <option name="1">0</option>
+                                        <option name="2">1</option>
+                                    </select>
+                                    Disabled<select name="DisabledServicePersonnel" id="DisabledServicePersonnel">
+                                        <option name="1">0</option>
+                                        <option name="2">1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="level4">
+                                <div id="singles"><button  type="button">Single</button></div>
+                                <div id="Returnt"><button type="button">Return</button></div>
+                                <div id="class">
+                                    Travel Class
+                                    <select name="Class" id="Class">
+                                        <option name="Economy">Economy</option>
+                                        <option name="Premium Economy">Premium Economy</option>
+                                        <option name="Business">Business</option>
+                                        <option name="First">First</option>
+                                    </select>
+                                </div>
+                                <div id="search"><input type="submit" value="Go"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div><button id="service">Service</button></div>
+                <div><button id="Experiences">Experiences</button></div>
+                <div><button id="Manage">Manage</button></div>
+            </div>
+            <div class="right"></div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var click = document.getElementById('singles');
+        click.onclick = function () {
+            document.querySelector('#return').style.display = 'none';
+        }
+
+        var click = document.getElementById('Returnt');
+        click.onclick = function () {
+            document.querySelector('#return').style.display = 'block';
+        }
+    
+        var click = document.getElementById('Flight');
+        click.onclick = function () {
+            document.querySelector('#FlightChild').style.display = 'block';
+        }
+        var click = document.getElementById('service');
+        click.onclick = function () {
+            document.querySelector('#FlightChild').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
