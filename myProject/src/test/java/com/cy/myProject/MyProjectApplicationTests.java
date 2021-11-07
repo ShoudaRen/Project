@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 @SpringBootTest
 class MyProjectApplicationTests {
-	@Autowired
+	@Autowired //Automatic configuration
   private DataSource dataSource;
 	@Test
 	void contextLoads() {
@@ -20,5 +20,7 @@ class MyProjectApplicationTests {
 	void  getConnection() throws SQLException {
 		System.out.println(dataSource.getConnection());
 	}
+
+
 
 }

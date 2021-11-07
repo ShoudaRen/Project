@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--用于指定当前映射文件和哪个接口进行映射，需要指定接口的文件路径，需要标注包的完整路径接口-->
+<mapper namespace="com.cy.myProject.Mapper.UserMapper">
+<!--    自定义映射规则 用resultMap标签完成映射规则-->
+<!--    resultMapd的 id属性：给这个映射分配唯一的id，对应resulmap=“id属性的值”的取值-->
+<!--    type属性：对数据库的查询的结果与java对象的哪一个实体类进行映射-->
+    <resultMap id="UserEntityMap" type="com.cy.myProject.entity.User">
+<!--        将表的资源和类的属性不一致的字段进行匹配指定，名称一致的字段可以省略不写-->
+<!--        一个result是一个映射 column: 表的列  property: user类的属性-->
+        <id column="uid" property="uid"></id>
+<!--        在定义映射规则是主键不能省略-->
+        <result column="is_delete" property="isDelete"></result>
+        <result column="created_user" property="createdUser"></result>
+        <result column="created_time" property="createdTime"></result>
+        <result column="modified_user" property="modifiedUser"></result>
+
+    </resultMap>
+
+
+<!--   id,表示映射的接口中方法的名称，直接在标签的内容部来编写SQL语句-->
+<!--    useGeneratedKeys：表示开启某个字段的值递增（一般都是主键）-->
+<!--    keyProperty：告诉是具体是哪个属性-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="uid">
+        INSERT INTO t_user (uid,
+                                Reference,
+                                username,
+                                password,
+                                salt,
+                                phone,
+                                email,
+                                gender,
+                                avatar,
+                                is_delete,
+                                created_user,
+                                created_time,
+                                modified_user,modified_time
+        )VALUES(
+--                  来自于前端user对象的值
+            #{uid},
+            #{Reference},
+            #{username},
+            #{password},
+            #{salt},
+            #{phone},
+            #{email},
+            #{gender},
+            #{avatar},
+            #{isDelete},
+            #{createdUser},
+            #{createdTime},
+            #{modifiedUser},
+            #{modifiedTime})
+    </insert>
+<!--    查询   select 语句在执行的时候，查询的结果是一个对象，或多个对象-->
+<!--    UserEntityMap 和上面映射id一样-->
+    <select id="findByUsername" resultMap="UserEntityMap">
+        SELECT * FROM t_user WHERE username = #{username}
+    </select>
+</mapper>
