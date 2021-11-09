@@ -23,9 +23,9 @@ public class UserServiceTests {
         //选中所要的line在 菜单code下选择Surrding with then ty catch
         try {
             User user = new User();
-            user.setUsername("tim");
+            user.setUsername("tim2");
             user.setPassword("123");
-            userService.reg(user);
+            userService.reg(user); //在这里进行，密码加密
             System.out.println(1);
         } catch (ServiceException e) {
             //extract object name

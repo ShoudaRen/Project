@@ -62,7 +62,7 @@
             position: absolute;
             top: 9px;
             left: 4px;
-            padding-inline-end: 10px 0;
+            padding-inline-end: 10px;
             font-size: 16px;
             color:#fff;
             pointer-events: none;
@@ -117,19 +117,46 @@
     <div class="box">
         
         <h2>Register</h2>
-            <form action="">
+            <form id="fromReg" action="">
                 <div class="inputBox"><input type="text" name="Username" required="">
-                    <label for="">Username</label>
+                    <label>Username</label>
                 </div>
                 <div class="inputBox"><input type="password" name="password" required="">
-                    <label for="">Password</label>
+                    <label >Password</label>
                 </div>
-                <input type="submit" name="Register" value="Register">
+                <input id="Reg" type="submit" name="Register" value="Register">
                 <a href="../templates/LogIn.html"><button id="Account" type="button">Have an Account</button></a>
                 <a href="../templates/index.html"><button id="home" type="button">Home</button></a>
 
             </form>
     </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+//   1.监听注册按钮是否被点击
+//注册的id ,click()函数用来检测是否被点击，如果被点击可以执行一个方法即fucntion方法。
+  $("#Reg").click(function () {
+      // 2.发送AJAX的异步请求来完成童虎的注册功能
+      $.ajax({
+          // url前面可以省略端口号
+          url:"/users/reg",
+          type:"POST",
+          data:$("#fromReg").serialize(),
+          dataType:"JSON",
+          success:function (json){
+              if(json.state==200){
+                   alert("Success");
+              }else alert("Failed");
+          },
+          error:function (xhr){
+              //弹出窗口
+              alert("oops! An unknown error"+xhr.status)
+          }
+      });
+  });
+
+
+</script>
 
 </body>
 
