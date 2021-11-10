@@ -14,10 +14,7 @@
 
     <style>
         body {
-            background-image: url(../static/moon.jpg);
             background-repeat: no-repeat;
-            background-clip: content-box;
-            background-size: cover;
             font-family: sans-serif;
         }
 
@@ -79,7 +76,7 @@
 
         }
 
-        .box input[type="submit"] {
+        #Reg{
             background: transparent;
             border: none;
             outline: none;
@@ -110,28 +107,33 @@
             border-radius: 5px ;
 
         }
+        #aa{
+            width: 100%;
+        }
+
     </style>
 </head>
 
 <body>
+<img id="aa" src="../static/moon.jpg">
     <div class="box">
         
         <h2>Register</h2>
-            <form id="fromReg" action="">
-                <div class="inputBox"><input type="text" name="Username" required="">
-                    <label>Username</label>
+            <form id="fromReg">
+                <div class="inputBox"><input id="Username" type="text" name="Username" required="">
+                    <label for="Username">Username</label>
                 </div>
-                <div class="inputBox"><input type="password" name="password" required="">
-                    <label >Password</label>
+                <div class="inputBox"><input id="Password" type="password" name="password" required="">
+                    <label for="Password" >Password</label>
                 </div>
-                <input id="Reg" type="submit" name="Register" value="Register">
+                <input id="Reg" type="button" name="Register" value="Register">
                 <a href="../templates/LogIn.html"><button id="Account" type="button">Have an Account</button></a>
                 <a href="../templates/index.html"><button id="home" type="button">Home</button></a>
 
             </form>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 //   1.监听注册按钮是否被点击
 //注册的id ,click()函数用来检测是否被点击，如果被点击可以执行一个方法即fucntion方法。
@@ -143,10 +145,11 @@
           type:"POST",
           data:$("#fromReg").serialize(),
           dataType:"JSON",
-          success:function (json){
+          success : function(json){
               if(json.state==200){
                    alert("Success");
-              }else alert("Failed");
+                  location.href="LogIn.html";
+              }else { alert("The account already exists!");}
           },
           error:function (xhr){
               //弹出窗口

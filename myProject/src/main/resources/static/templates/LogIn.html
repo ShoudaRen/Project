@@ -14,10 +14,8 @@
 
     <style>
         body {
-            background-image: url(../static/moon.jpg);
             background-repeat: no-repeat;
             background-clip: content-box;
-            background-size: cover;
             font-family: sans-serif;
         }
 
@@ -61,7 +59,7 @@
             position: absolute;
             top: 9px;
             left: 4px;
-            padding-inline-end: 10px 0;
+            padding-inline-end: 10px;
             font-size: 16px;
             color:#fff;
             pointer-events: none;
@@ -75,7 +73,7 @@
             color: #03a9f4;
             font-size: 12px;
         }
-        .box input[type="submit"] {
+        #LogIn {
             background: transparent;
             border: none;
             outline: none;
@@ -107,24 +105,59 @@
             border-radius: 5px ;
             margin-left: 70px;
         }
+        #aa{
+            width: 100%;
+        }
     </style>
 </head>
 <body>
+    <img id="aa" src="../static/moon.jpg">
     <div class="box">
         
         <h2>Login</h2>
-            <form action="">
-                <div class="inputBox"><input type="text" name="Username" required="">
-                    <label for="">Username</label>
+            <form id="from-login" action="">
+                <div class="inputBox"><input id="Username" type="text" name="username" required="">
+                    <label for="Username" >Username</label>
                 </div>
-                <div class="inputBox"><input type="password" name="password" required="">
-                    <label for="">Password</label>
+                <div class="inputBox"><input id="Password" type="text" name="password" required="">
+                    <label for="Password">Password</label>
                 </div>
-                <input type="submit" name="submit" value="Log In">
+                <input id="LogIn" type="button" name="submit" value="Log In">
                 <a href="../templates/register.html"><button id="register" type="button">Register</button></a>
                 <a href="../templates/index.html"><button id="Account" type="button">Home</button></a>
 
             </form>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript">
+            let un=$("#Username").val();
+
+    $("#LogIn").click(function () {
+        $.ajax({
+            url:"/users/login",
+            type:"POST",
+            data:$("#from-login").serialize(),
+            dataType:"json",
+            //服务器接收
+            success:function (json) {
+                if (json.state==200){
+                    alert("succeed");
+                    //跳转到主页
+                    //相对路径确定跳转的页面 location.href==CSS里的src
+                    location.href="index.html";
+                }else{ alert("Failed");}
+            },
+            error:function (xhr) {
+                alert("oops! An unknown error"+xhr.message);
+            }//无，
+        });
+    });
+
+    </script>
+
     </div>
 
 </body>

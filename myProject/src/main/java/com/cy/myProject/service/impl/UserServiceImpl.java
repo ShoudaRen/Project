@@ -4,7 +4,9 @@ import com.cy.myProject.Mapper.UserMapper;
 import com.cy.myProject.entity.User;
 import com.cy.myProject.service.IUserService;
 import com.cy.myProject.service.ex.InsertException;
+import com.cy.myProject.service.ex.UserNotFoundException;
 import com.cy.myProject.service.ex.UsernameDuplicatedException;
+import com.cy.myProject.service.ex.PasswordNotMatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -50,8 +52,37 @@ public class UserServiceImpl implements IUserService {
             }
          }
     }
+// 实现父接口中的方法
+    public User login(String username, String password){
+        //先查询用户数据是否存在
+        User result=userMapper.findByUsername(username);
+        if (result==null){
+            throw new UserNotFoundException("User not exists ");
+        }
+        //判断 is_delete字段是否为1
+        if (result.getIsDelete()==1){
+            throw new UserNotFoundException("User data not exists");
+        }
+       //检测密码是否匹配
+        String salt= result.getSalt();
+        String newMd5Password = getMD5Password(password,salt);
+        //get password in database
+        String oldPassword= result.getPassword();
+        //get salt in database
+            if (!oldPassword.equals(newMd5Password)){
+                throw new PasswordNotMatchException("password wrong");
+            }
 
-//    定义一个加密方法
+       //如果之前都没报错，执行这个
+       User user= userMapper.findByUsername(username);
+        //下面的方法提升了系统的性能，减少数据的调用
+        user.setUid(result.getUid());
+        user.setUsername(result.getUsername());
+        user.setAvatar(result.getAvatar());
+        return user;
+    }
+
+    //    定义一个加密方法
     private String getMD5Password(String password, String salt){
         // DigestUtils 加密算法(需要进行3次加密)
         for (int i = 0; i < 3; i++) {

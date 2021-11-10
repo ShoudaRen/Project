@@ -23,7 +23,7 @@ public class UserServiceTests {
         //选中所要的line在 菜单code下选择Surrding with then ty catch
         try {
             User user = new User();
-            user.setUsername("tim2");
+            user.setUsername("yuiio");
             user.setPassword("123");
             userService.reg(user); //在这里进行，密码加密
             System.out.println(1);
@@ -40,6 +40,13 @@ public class UserServiceTests {
 //        方法的参数列表不能指定任何类型否则报错
 //      方法的访问修饰符必须是public
 //
+
+   }
+   @Test
+   public void login(){
+       User user= userService.login("qaz","123");
+       String a = user.getUsername();
+       System.out.println(a);
 
    }
 
