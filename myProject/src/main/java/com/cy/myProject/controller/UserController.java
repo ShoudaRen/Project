@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 //@Controller
 @RestController //@RestController是==@@Controller+ @ResponseBody
 @RequestMapping("users")
@@ -30,9 +32,20 @@ public class UserController extends BaseController{
 
     }
     @RequestMapping("login")//路径
-    public JsonResult<User> login(String username,String password){
+    public JsonResult<User> login(String username, String password , HttpSession session){
 
         User data=userService.login(username,password);
+//        向session对象中完成数据的绑定（session全局的）
+session.setAttribute("uid", data.getUid());
+session.setAttribute("username", data.getUsername());
+//加上reference
+
+//获取seesion中绑定的数据
+        System.out.println(getUidFromSession(session));
+        System.out.println(getUsernameFromSession(session));
+
+
+
         //如果 userService.login(username,password);有异常会被
         // baseController里的@ExceptionHandler(ServiceException.class)捕获
         // 进而在handleException（）里进行处理， 没有异常直接返回JsonResult<User>(ok)给前端

@@ -25,7 +25,6 @@
 <!--    keyProperty：告诉是具体是哪个属性-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="uid">
         INSERT INTO t_user (uid,
-                                Reference,
                                 username,
                                 password,
                                 salt,
@@ -40,7 +39,6 @@
         )VALUES(
 --                  来自于前端user对象的值
             #{uid},
-            #{Reference},
             #{username},
             #{password},
             #{salt},

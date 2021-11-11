@@ -5,6 +5,8 @@ import com.cy.myProject.service.ex.*;
 import com.cy.myProject.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.servlet.http.HttpSession;
+
 //表示控制层类的基类
 public class BaseController {
     //操作成功的状态码
@@ -32,8 +34,26 @@ public class BaseController {
         return result;
     }
 
-    public final Integer getUidFromSession(){
-        
+    /**
+     * get session uid
+     * @param session session object
+     * @return the user's uid
+     */
+//   从哪个session获取UID
+    public final Integer getUidFromSession(HttpSession session){
+          return  Integer.valueOf(session.getAttribute("uid").toString());
     }
 
+    /**
+     * get user's name
+     * @param session  object
+     * @return  return name
+     * session return object
+     */
+      protected final String getUsernameFromSession(HttpSession session){
+         return session.getAttribute("username").toString();
+      }
+
+
+      //reference 查看订单
 }
