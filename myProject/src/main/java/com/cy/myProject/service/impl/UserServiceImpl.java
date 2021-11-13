@@ -1,16 +1,16 @@
 package com.cy.myProject.service.impl;
-//使用异常的情况执行实现
+/**
+ * 只处理前端需要的数据的类
+ * 具体实现类
+ * 使用异常的情况执行实现
+ */
 import com.cy.myProject.Mapper.UserMapper;
 import com.cy.myProject.entity.User;
 import com.cy.myProject.service.IUserService;
-import com.cy.myProject.service.ex.InsertException;
-import com.cy.myProject.service.ex.UserNotFoundException;
-import com.cy.myProject.service.ex.UsernameDuplicatedException;
-import com.cy.myProject.service.ex.PasswordNotMatchException;
+import com.cy.myProject.service.ex.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-
 import java.util.Date;
 import java.util.UUID;
 
@@ -81,6 +81,70 @@ public class UserServiceImpl implements IUserService {
         user.setAvatar(result.getAvatar());
         return user;
     }
+
+    @Override
+    public void changePassword(Integer uid, String username, String oldPassword, String newPassword) {
+        User result =userMapper.findByUid(uid);
+        if (result==null||result.getIsDelete()==1){
+            throw new UserNotFoundException("user data does not exist");
+        }
+      String oldMd5Password=  getMD5Password(oldPassword,result.getSalt());
+        if (!result.getPassword().equals(oldMd5Password)){
+            throw new PasswordNotMatchException("password wrong");
+        }
+//        将新的密码设置到数据库中，将新的密码进行加密再去更新
+        String newMd5Password=getMD5Password(newPassword,result.getSalt());
+  //更新数据库
+     Integer rows= userMapper.updatePasswordByUid(uid,newMd5Password,username,new Date());
+     if (rows!=1){
+         throw new updateException("update Exception");
+     }
+    }
+
+    /**
+     * 页面显示信息功能支持
+     * @param uid
+     * @return
+     */
+    @Override
+    public User getByuid(Integer uid) {
+       User result= userMapper.findByUid(uid);
+       if (result==null||result.getIsDelete()==1){
+           throw new UserNotFoundException("the user does not exist");
+       }
+//       因为只要四个数据所以来个过度可以提高性能，控制层使用服务层的这个方法获得user对象并把它放在
+//       json中传给前端，前端检测到检测到打开这个页面然后加载json数据，然后用Jquery设置到页面
+        User user = new User();
+       user.setUsername(result.getUsername());
+       user.setPhone(result.getPhone());
+       user.setEmail(result.getEmail());
+       user.setGender(result.getGender());
+        return user;
+    }
+
+    @Override
+    public void changeInfo(Integer uid, String username, User user) {
+//       检测数据存在不
+        User result= userMapper.findByUid(uid);
+        if (result==null||result.getIsDelete()==1){
+            throw new UserNotFoundException("the user does not exist");
+        }
+        user.setUid(uid);
+        user.setModifiedUser(username);
+        user.setModifiedTime(new Date());
+        //在表里更新数据
+        Integer rows=userMapper.updateInfoByUid(user);
+        if (rows!=1){
+            throw new updateException("Unknown Exception");
+        }
+    }
+
+
+
+
+
+
+
 
     //    定义一个加密方法
     private String getMD5Password(String password, String salt){

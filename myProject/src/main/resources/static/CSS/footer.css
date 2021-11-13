@@ -1,0 +1,43 @@
+
+.superBottom{
+ width: 100%;
+ height: 200px;
+ background-color: #0E1B2E;
+ position: absolute;
+ top: 600px;
+}
+.bottomF div{
+float: left;
+font-size: 25px;
+color:antiquewhite;
+margin: 0px 5px;
+}
+.bottomF{
+padding-left: 100px;
+margin-top: 30px;
+}
+.bottomF a{
+color: antiquewhite;
+}
+.bottomF a:hover{
+color: #B73E3E;
+}
+.copyright{
+margin-top: 10px;
+margin-left:450px ;
+float: left;
+color: darkgrey;
+}
+.bottomImg{
+ float: left;
+ margin-top: 50px;
+ margin-left: -250px;
+}
+
+
+.mark{
+background:transparent;
+margin: 0;
+padding: 0;
+
+}

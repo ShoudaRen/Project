@@ -6,6 +6,7 @@ import com.cy.myProject.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpSession;
+import java.sql.BatchUpdateException;
 
 //表示控制层类的基类
 public class BaseController {
@@ -30,6 +31,10 @@ public class BaseController {
         else if(e instanceof InsertException) {
             result.setState(5000);
             result.setMessage("oops! An unknown error");
+        }
+        else if(e instanceof updateException) {
+            result.setState(5004);
+            result.setMessage("Update Data Exception");
         }
         return result;
     }

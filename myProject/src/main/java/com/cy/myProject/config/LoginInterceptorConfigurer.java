@@ -28,7 +28,7 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/static/**");
         patterns.add("/fontAwesome/**");
         patterns.add("/js/**");
-        patterns.add("/index.html");
+        patterns.add("/templates/index.html");
         patterns.add("/templates/LogIn.html");
         patterns.add("/templates/register.html");
         //url 放行

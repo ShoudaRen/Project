@@ -572,7 +572,7 @@
                 <div class="speicals"><a href="javascript:;">Flight speicals</a></div>
             </div>
         </div>
-        <div><a href="javascript:;">Manage</a></div>
+        <div id="changeManage"><a href="javascript:;">Manage</a></div>
         <div><a href="javascript:;">About Us</a></div>
     </div>
     <!-- main body -->
@@ -675,8 +675,9 @@
                                 <div id="titleBook">MY BOOKING</div>
                                 <div id="reference"><input type="text" name="reference"></div>
                                 <div id="LastName"><input type="text" name="passengerName"></div>
-                                <div id="FindMy"><input type="submit" value="Find my booking"></div>
-                                <div id="Chenckin"><input type="submit" value="Online Check-in"></div>
+<!--                                      后添加-->
+                                <div id="FindMy"><a href= "#" ><input type="button" value="Find my booking"></a></div>
+                                <div id="Chenckin"><a href= "./userdata.html"><input type="button" value="Change My Information"></a></div>
                             </form>
                         </div>
                         <div class="ManageRight"><img src="../static/building.jpg" alt="island"></div>
@@ -793,7 +794,10 @@
             document.querySelector('.ExperiencesChild').style.display = 'none';
         }
 
+
     </script>
+    <script src="../js/ManageChange.js"></script>
+
 </body>
 
 </html>

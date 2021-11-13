@@ -37,7 +37,7 @@
                                 created_time,
                                 modified_user,modified_time
         )VALUES(
---                  来自于前端user对象的值
+--                  来自于前端user对象的值（这些字段在是数据库） 前端id， 下面的语法代表从前端选取的字段
             #{uid},
             #{username},
             #{password},
@@ -57,4 +57,29 @@
     <select id="findByUsername" resultMap="UserEntityMap">
         SELECT * FROM t_user WHERE username = #{username}
     </select>
+
+<!--    所有方法里变量都要用上-->
+    <update id="updatePasswordByUid">
+        UPDATE  t_user SET password = #{password},
+                           modified_user = #{modifiedUser},
+                           modified_time = #{modifiedTime}
+                           where uid = #{uid}
+
+    </update>
+
+    <select id="findByUid" resultMap="UserEntityMap">
+        SELECT * FROM t_user WHERE uid = #{uid}
+    </select>
+
+<!--    if表示条件标签，test属性接受返回值为boolean类型的条件iftest
+                              的条件为true则执行if内的语句, 记得包，包括进去-->
+    <update id="updateInfoByUid">
+        UPDATE  t_user SET <if test="phone!=null">phone= #{phone},</if>
+                           <if test="email!=null"> email= #{email},</if>
+                           <if test="gender!=null"> gender= #{gender},</if>
+                           modified_user = #{modifiedUser},
+                           modified_time = #{modifiedTime}
+        where uid = #{uid}
+    </update>
+
 </mapper>

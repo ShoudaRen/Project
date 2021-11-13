@@ -1,4 +1,11 @@
 package com.cy.myProject.controller;
+/**
+ * 1：
+ * 表单对象的同名字段会自动注入映射对象中，因此注重表单里名字的写法很重要！！,
+ * 在连接给定的参数列表中，前端只要保证给的参数的名字和对象中属性的名字一致，系统就会自动地注入到对象中
+ * 2：
+ * 方法参数满足服务器所需的参数，别的不需要
+ */
 
 import com.cy.myProject.entity.User;
 import com.cy.myProject.service.IUserService;
@@ -39,17 +46,15 @@ public class UserController extends BaseController{
 session.setAttribute("uid", data.getUid());
 session.setAttribute("username", data.getUsername());
 //加上reference
-
 //获取seesion中绑定的数据
         System.out.println(getUidFromSession(session));
         System.out.println(getUsernameFromSession(session));
-
-
-
         //如果 userService.login(username,password);有异常会被
         // baseController里的@ExceptionHandler(ServiceException.class)捕获
         // 进而在handleException（）里进行处理， 没有异常直接返回JsonResult<User>(ok)给前端
-        //        把data放进去传给前端
+        /**
+         *  把data放进去传给前端 因为需要返回用户数据所以，需要data 类型为user
+         */
         return new JsonResult<User>(ok,data);// JsonResult<User>的构造器
            //下一步
            //        在前端进行测试u
@@ -61,9 +66,46 @@ session.setAttribute("username", data.getUsername());
         // "password":"6ECAC5594D441FEAD04B28678216E03D",
         // "salt":"64148DBB-1A4C-4243-930E-5DA40644EA6B","isDelete":0}}
     }
+    @RequestMapping("change_password")//路径
+    /**String oldPassword, String newPassword, 参数名要和web form input 里的name保持一致
+     * HttpSession 需要这个来传递user信息来更新前端数据
+     */
+    public JsonResult<Void> changePassword (String oldPassword,
+                                            String newPassword,HttpSession session){
+        Integer uid = getUidFromSession(session);
+        String username=getUsernameFromSession(session);
+        userService.changePassword(uid,username,
+                oldPassword,newPassword);
+        //因为不需要返回任何东西 所以 直接写ok
+           return new  JsonResult<>(ok);
+    }
+
+//  return user to front end
+    @RequestMapping("get_by_uid")
+    public JsonResult<User> getByUid(HttpSession session){
+     User data =userService.getByuid(getUidFromSession(session));
+     return new JsonResult<User>(ok,data) ;
+
+    }
+
+    @RequestMapping("change_info")
+    public JsonResult<Void> updateInfo (User user,HttpSession session){
+
+        Integer uid = getUidFromSession(session);
+        String username=getUsernameFromSession(session);
+        userService.changeInfo(uid,username,user);
+        return new  JsonResult<>(ok);
+    }
 
 
 
+
+
+
+
+
+
+    //没有base需要这样写
 //    public JsonResult<Void> reg(User user) {
 //        //创建响应结果对象
 //        JsonResult<Void> result = new JsonResult<>();

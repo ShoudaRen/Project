@@ -50,6 +50,25 @@ public class UserServiceTests {
 
    }
 
+    @Test
+    public  void updatePassword(){
+        userService.changePassword(4, "qaz","123","456");
+    }
+
+    @Test
+    public  void getById(){
+        System.out.println(userService.getByuid(3).getUsername());
+    }
+    @Test
+    public  void changeUserInfo(){
+        User user = new User();
+        user.setUid(3);
+        user.setGender(0);
+        user.setEmail("34234@dd");
+        user.setPhone("2313131");
+        userService.changeInfo(3,"gg",user);
+    }
+
    }
 
 

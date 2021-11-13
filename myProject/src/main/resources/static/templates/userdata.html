@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--edge浏览器H5兼容设置-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--360浏览器H5兼容设置-->
+		<meta name="renderer" content="webkit" />
+		<title>Profile My Info</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--导入核心文件-->
+		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<!-- 字体图标 -->
+				<!-- modified 11/11/2021 -->
+				<link rel="stylesheet" href="../fontAwesome/css/all.css">
+				<link rel="stylesheet" href="../CSS/base.css">
+				<link rel="stylesheet" href="../CSS/head.css">
+				<link rel="stylesheet" href="../CSS/footer.css">
+				<link rel="icon" href="../static/ICON.png" type="image/x-icon">
+				<style>
+					.qw{
+						margin: 10px 0px;
+					}
+					#btn-change-info{
+						background-color:brown;
+					}
+
+				</style>
+	
+	
+			</head>
+
+	<body>
+		<!--头部-->
+		<!--头部-->
+		<div class="top">
+			<div class="mid w">
+				<div class="logo"><a href="./index.html"><img src="../static/logo.png" alt="logo"></a></div>
+				<div class="user">
+					<div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
+					<div></div>
+					<div class="service"> <i class="fa fa-user"> </i><a href="../templates/LogIn.html"></i> LOG IN</a> </div>
+					<div>/</div>
+					<div class="service"> <a href="../templates/register.html"> REGISTER</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="secondmid w">
+			<div><a href="javascript:;">Help and Contacts</a></div>
+			<div class="SpecialOffer"><a id="qw" href="javascript:;">Special Offers</a>
+				<div id="demo" class="secondBox">
+					<div class="Voucher"><a href="javascript:;">Voucher</a> </div>
+					<div class="speicals"><a href="javascript:;">Flight speicals</a></div>
+				</div>
+			</div>
+			<div><a href="userdata.html">Manage</a></div>
+			<div><a href="javascript:;">About Us</a></div>
+		</div>
+
+	
+		<!--头部结束-->
+		<!--导航结束-->
+		<div class="container">
+			<div class="col-md-2">
+				<!--左侧导航开始-->
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!--主选项：我的订单-->
+							<p class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="./orders.html">My Booking</a>
+							</p>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!--主选项：资料修改-->
+							<p class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Profile Modification</a>
+							</p>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="qw"><a href="password.html">Change Password</a></div>
+								<div class="qw"><a href="userdata.html"><b>My information</b></a></div>
+								<div class="qw"><a href="upload.html">Upload Images</a></div>
+								<div class="qw"><a href="address.html">My Service</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--左侧导航结束-->
+			</div>
+			<div class="col-md-10	">
+				<div class="panel panel-default">
+					<ul class="nav nav-tabs">
+						<li><a href="password.html">Change Password</a></li>
+						<li class="active"><a href="#">My information</a></li>
+						<li><a href="upload.html">Upload Images</a></li>
+						<li><a href="address.html">My Service</a></li>
+					</ul>
+					<div class="panel-body">
+						<!--form begin-->
+						<form id="form-change-info" class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-md-2 control-label">Username：</label>
+								<div class="col-md-8">
+									<input id="username" type="text" class="form-control" value="Sam" readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">Phone：</label>
+								<div class="col-md-8">
+									<input id="phone" name="phone" type="text" class="form-control" placeholder="please enter your phone number" value="13311311313">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">E-mail：</label>
+								<div class="col-md-8">
+									<input id="email" name="email" type="text" class="form-control" placeholder="please enter your email" value="sunwk@qq.com">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">Sex：</label>
+								<div class="col-md-8">
+									<label class="radio-inline">
+										<input id="gender-male"  type="radio" name="gender" value="1">man
+									</label>
+									<label class="radio-inline">
+										<input id="gender-female" type="radio" name="gender" value="0">women
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<input id="btn-change-info" type="button" class="btn btn-primary" value="submit" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--页脚开始-->
+		<div class="superBottom">
+			<div class="bottomMiddle w">
+				<div class="bottomF">
+					<div><a href="javascript:;">Help and contacts</a></div>
+					<div class="mark">|</div>
+					<div><a href="javascript:;">About Us</a></div>
+					<div class="mark">|</div>
+					<div><a href="javascript:;">Manage</a></div>
+					<div class="mark">|</div>
+					<div><a href="javascript:;">Special Offers</a></div>
+					<div class="mark">|</div>
+					<div><a href="javascript:;">Privacy policy</a></div>
+					<div class="mark">|</div>
+					<div><a href="javascript:;">Website security</a></div>
+				</div>
+				<!-- <div class="bottomS"></div> -->
+				<div class="copyright">© Super Airways - all rights reserved</div>
+				<div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
+			</div>
+		</div>
+<!--		footer end-->
+
+<!--		first-->
+		<script type="text/javascript">
+			/***
+			 * 一旦检测到当前页面被加载，就会出发ready方法
+			 * $(document).ready(function(){code...});
+			 */
+			$(document).ready(function(){
+				$.ajax({
+					url:"/users/get_by_uid",
+					type:"GET",
+					data:$("#form-change-info").serialize(),
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							// val（）表示给一个元素赋值，eg: #phone是个文本框，所以放进去了
+							$("#username").val(json.data.username);
+							$("#phone").val(json.data.phone);
+							$("#email").val(json.data.email);
+							// 因为gender是按钮readio，如果json.data.gender==0,选中$("#gender-female")
+							// 否则选中$("#gender-male")框
+							let radio=json.data.gender==0?
+									$("#gender-female"):$("#gender-male");
+							$("#gender").val(json.data.phone);
+							// 在HTML添加checked属性 prop表示给某个元素添加属性及属性的值
+							radio.prop("checked","checked");
+						}else { alert("data does not exist");}
+					},
+					error:function (xhr){
+						alert("oops! An unknown error"+" "+xhr.message)
+					}
+				});
+			});
+
+		</script>
+<!--second-->
+		<script type="text/javascript">
+
+			$("#btn-change-info").click(function () {
+				$.ajax({
+					url:"/users/change_info",
+					type:"POST",
+					data:$("#form-change-info").serialize(),
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							alert("Change Succeed!");
+						}else { alert("Change Failed");}
+					},
+					error:function (xhr){
+						alert("oops! An unknown error"+" "+xhr.message)
+					}
+				});
+			});
+
+
+		</script>
+	</body>
+
+</html>
