@@ -2,6 +2,7 @@ package com.cy.myProject.Mapper;
 // user model interface
 
 import com.cy.myProject.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 //数据库对应的信息
@@ -38,5 +39,20 @@ public interface UserMapper {
      * @return
      */
     Integer updateInfoByUid(User user);
+
+    /**
+     * @Param("SQL映射文件中#{}占位符中的变量名")： 当SQL语句的占位符和映射的接口方法参数名不一致时，
+     * 需要将某个参数强行注入到某个占位符变量上时，可以以使用@Param这个注解来标注映射的关系
+     * modify user's image according user's uid
+     * @param uid
+     * @param avatar
+     * @param modifiedUser
+     * @param modifiedTime
+     * @return
+     */
+    Integer updateAvatarByuid(@Param("uid") Integer uid,
+                              @Param("avatar")String avatar,
+                              @Param("modifiedUser")String modifiedUser,
+                              @Param("modifiedTime") Date modifiedTime);
 }
 

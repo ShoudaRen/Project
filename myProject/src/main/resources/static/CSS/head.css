@@ -5,22 +5,29 @@
 
 .logo {
     margin: 10px 0;
-}
-
-.logo,
-.user div {
     float: left;
+
 }
 
 .user {
-    margin-top: 20px;
-    font-size: larger;
+    margin-top: 5px;
     float: right;
-
+    font-size: 20px;
 }
-
 .user div {
-    margin-left: 5px;
+    margin-left: 2px;
+    float: left;
+}
+.service input{
+    background: transparent;
+    border: none;
+    height: 30px;
+    width: 100px ;
+    font-size: 20px;
+}
+input:hover{
+    color: #a94442;
+    cursor: pointer;
 }
 
 #tel {

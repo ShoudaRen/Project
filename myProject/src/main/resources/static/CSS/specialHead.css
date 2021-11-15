@@ -1,0 +1,27 @@
+.logo {
+    margin: 10px 0;
+
+}
+.user {
+    margin-top: 5px;
+    float: right;
+    font-size: 20px;
+}
+.logo {
+    float: left;
+}
+.user div {
+    margin-left: 2px;
+    float: left;
+}
+.service input{
+    background: transparent;
+    border: none;
+    height: 30px;
+    width: 100px ;
+    font-size: 20px;
+}
+input:hover{
+    color: #a94442;
+    cursor: pointer;
+}

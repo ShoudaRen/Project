@@ -140,6 +140,19 @@ public class UserServiceImpl implements IUserService {
     }
 
 
+    @Override
+    public void changeAvatar(Integer uid, String avatar, String username) {
+        User result= userMapper.findByUid(uid);
+        if (result==null||result.getIsDelete()==1){
+            throw new UserNotFoundException("the user does not exist");
+        }
+        Integer rows=  userMapper.updateAvatarByuid(uid,avatar,username,new Date());
+        if (rows!=1){
+            throw new updateException("Unknown Exception");
+        }
+    }
+
+
 
 
 

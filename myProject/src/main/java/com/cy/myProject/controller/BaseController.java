@@ -1,6 +1,7 @@
 package com.cy.myProject.controller;
 
 
+import com.cy.myProject.controller.ex.*;
 import com.cy.myProject.service.ex.*;
 import com.cy.myProject.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,7 +16,7 @@ public class BaseController {
     // 请求处理方法： 这个方法的返回值就是需要传递到前端的数据
     // 凡是ServiceException.class抛出的异常都会被拦截到@ExceptionHandler
     //业务层抛异常是给控制层用的，控制层不是在抛异常，而是吧错误信息相应给前端，好去做业务的判断
-    @ExceptionHandler(ServiceException.class)//用于统一处理抛出的异常
+    @ExceptionHandler({ServiceException.class,FileUploadException.class})//用于统一处理抛出的异常
     public JsonResult<Void> handleException(Throwable e) {
         JsonResult<Void> result = new JsonResult<Void>(e);
         if (e instanceof UsernameDuplicatedException) {
@@ -35,6 +36,17 @@ public class BaseController {
         else if(e instanceof updateException) {
             result.setState(5004);
             result.setMessage("Update Data Exception");
+        }
+        else if (e instanceof FileEmptyException) {
+            result.setState(6000);
+        } else if (e instanceof FileSizeException) {
+            result.setState(6001);
+        } else if (e instanceof FileTypeException) {
+            result.setState(6002);
+        } else if (e instanceof FileStateException) {
+            result.setState(6003);
+        } else if (e instanceof FileUploadIOException) {
+            result.setState(6004);
         }
         return result;
     }

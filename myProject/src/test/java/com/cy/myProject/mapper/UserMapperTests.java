@@ -67,4 +67,13 @@ public class UserMapperTests {
     }
 
 
+    @Test
+    public void updateAvatar(){
+        User user = new User();
+        user.setUid(3);
+        userMapper.updateAvatarByuid(3,"te/image",user.getUsername(),new Date());
+
+    }
+
+
 }

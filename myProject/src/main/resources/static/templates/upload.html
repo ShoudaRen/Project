@@ -6,13 +6,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<!--360浏览器H5兼容设置-->
 		<meta name="renderer" content="webkit" />
-		<title>电脑商城</title>
+		<title>upload image</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--导入核心文件-->
 		<script src="../bootstrap3/js/holder.js"></script>
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<script src="../bootstrap3/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/UsershowState.js" ></script>
 		<!-- 字体图标 -->
 			<!-- modified 11/11/2021 -->
 			<link rel="stylesheet" href="../fontAwesome/css/all.css">
@@ -27,24 +29,25 @@
 				#up{
 					background-color:brown;
 				}
-		
-				
 			</style>
-
-
 	</head>
 
 	<body>
 		<!--头部-->
 		<div class="top">
 			<div class="mid w">
-				<div class="logo"><a href="./index.html"><img src="../static/logo.png" alt="logo"></a></div>
+				<div class="logo"><a href="indexEnter.html"><img src="../static/logo.png" alt="logo"></a></div>
 				<div class="user">
 					<div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
 					<div></div>
-					<div class="service"> <i class="fa fa-user"> </i><a href="../templates/LogIn.html"></i> LOG IN</a> </div>
-					<div>/</div>
-					<div class="service"> <a href="../templates/register.html"> REGISTER</a></div>
+<!--					test-->
+					<form id="LogSignup">
+						<div class="service"> <i class="fa fa-user"> </i>
+							<a href="userdata.html"> <input id="userShow" type="button" name="userShow" value="renshouda" readonly="readonly"></a> </div>
+						<div>|</div>
+						<div class="service"> <input id="userOut" type="button" name="userOut" value="SIGN OUT" readonly="readonly"></div>
+					</form>
+<!--					test end-->
 				</div>
 			</div>
 		</div>
@@ -86,6 +89,7 @@
 								<div class="qw"><a href="password.html">Change Password</a></div>
 								<div class="qw"><a href="userdata.html">My information</a></div>
 								<div class="qw"><a href="upload.html"><b>Upload Images</b></a></div>
+
 							</div>
 						</div>
 					</div>
@@ -101,7 +105,7 @@
 					</ul>
 					<div class="panel-body">
 						<!--上传头像表单开始-->
-						<form class="form-horizontal" role="form">
+						<form id="form-change-avatar" class="form-horizontal" role="form">
 							<div class="form-group">
 								<label class="col-md-2 control-label">Choose Image:</label>
 								<div class="col-md-5">
@@ -114,7 +118,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input id="up" type="submit" class="btn btn-primary" value="submit" />
+									<input id="up" type="button" class="btn btn-primary" value="submit" />
 								</div>
 							</div>
 						</form>
@@ -122,7 +126,7 @@
 				</div>
 			</div>
 		</div>
-		<!--页脚开始-->
+		<!--footer-->
 		<div class="superBottom">
 			<div class="bottomMiddle w">
 				<div class="bottomF">
@@ -147,7 +151,69 @@
 	
 		</div>
 
-		<!--页脚结束-->
+		<!--footer end-->
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				let avatar = $.cookie("avatar");
+				//给这个#img-avatar input 里的src重新设定值为avatar
+				$("#img-avatar").attr("src",avatar);
+			})
+			$("#up").click(function () {
+				$.ajax({
+					url:"/users/change_avatar",
+					type:"POST",
+					data: new FormData($("#form-change-avatar")[0]),
+					processData:false, //处理数据的形式，false =关闭处理数据
+					contentType:false,//表示提交数据的形式，关闭默认提交数据的形式
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							alert("Change Succeed!");
+							//将服务器端返回的头像地址设置img标签的src属性上
+							//attr （属性，属性值），给某个实行设置某个值
+							$("#img-avatar").attr("src",json.data);
+							$.cookie("avatar",json.data,{expires:7});
+						}else { alert("Change Failed");}
+					},
+					error:function (xhr){
+						alert("oops! An unknown error"+" "+xhr.message)
+					}
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.ajax({
+					url:"/users/get_by_uid",
+					type:"GET",
+					data:$("#LogSignup").serialize(),
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							$("#userShow").val(json.data.username);
+						}else { alert("data does not exist");}
+					},
+					error:function (xhr){
+						alert("oops! An unknown error"+" "+xhr.message)
+					}
+				});
+			});
+		</script>
+
+<!--		user log out-->
+		<script type="text/javascript">
+			$("#userOut").click(function () {
+				let result =confirm("Do you want to sign out ?");
+				if (result){
+					location.href="/users/session_clear";
+					location.href="index.html";
+				}
+
+			});
+
+		</script>
 	</body>
 
 </html>

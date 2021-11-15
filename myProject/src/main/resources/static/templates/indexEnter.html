@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Airways</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../fontAwesome/css/all.css">
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/specialHead.css">
+</head>
+
+<style>
+    .top {
+        height: 70px;
+        border-bottom: 3px rgba(0, 0, 0, 0.1) solid;
+    }
+
+
+    #tel {
+        margin-right: 15px;
+    }
+
+    a:hover {
+        color: brown;
+    }
+
+
+
+    .top i {
+        color: #0c52a4;
+    }
+
+    /* second menu */
+
+
+
+    .secondmid {
+        height: 40px;
+        line-height: 40px;
+
+    }
+
+    .secondmid div {
+        margin-right: 10px;
+        font-size: larger;
+        float: right;
+        /* border-bottom: 3px rgba(0, 0, 0, 0.1) solid; */
+    }
+
+    .SpecialOffer {
+        height: 100%;
+        width: 108px;
+        position: relative;
+    }
+
+    .SpecialOffer:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+
+    }
+
+    .secondBox {
+        height: 50px;
+        width: 200px;
+        background-color: #e5e5e5;
+        box-shadow: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        left: -40px;
+        border-radius: 4px;
+        display: none;
+        z-index: 999;
+    }
+
+    .secondBox div {
+        float: left;
+        margin: 0 5px;
+    }
+
+    .secondBox a {
+        font-size: 20px;
+    }
+
+    .SpecialOffer:hover .secondBox {
+        display: block;
+    }
+
+    /* main body */
+    .main {
+        height: 1173px;
+        width: 100%;
+        background-image: url(../static/background.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        overflow: hidden;
+        position: absolute;
+
+
+    }
+
+    .mainPart {
+        height: 586.5px;
+        background-color: white;
+        margin-top: 140px;
+        position: relative;
+    }
+
+    button {
+
+        width: 140px;
+        height: 120px;
+        color: white;
+        font-size: larger;
+        background-color: #0c52a4;
+        margin: 10px 10px;
+        cursor: pointer;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-transition-duration: 0.4s;
+        /* Safari */
+        transition-duration: 0.4s;
+
+    }
+
+    button:hover {
+        background-color: white;
+        /* Green */
+        border: #0c52a4 5px solid;
+        color: black;
+    }
+
+
+    .left {
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+
+    input {
+        width: 300px;
+        height: 60px;
+        font-size: 25px;
+        outline-color: #0c52a4;
+        border: 1px solid #d3d3d3;
+    }
+
+    #FlightChild {
+        width: 920px;
+        height: 500px;
+        background-color: rgba(1, 58, 58, 0.3);
+        position: absolute;
+        left: 230px;
+        top: 40px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+        font-family: roboto-medium, roboto-regular;
+
+    }
+
+    .serviceChild,
+    .ExperiencesChild,
+    .manageChild {
+        width: 920px;
+        height: 500px;
+        background-color: rgba(1, 58, 58, 0.3);
+        position: absolute;
+        left: 230px;
+        top: 40px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+        font-family: roboto-medium, roboto-regular;
+        display: none;
+
+    }
+
+
+
+    .level1,
+    .level2,
+    .level3,
+    .level4 {
+        margin-top: 20px;
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+    }
+
+    #from,
+    #outbound {
+        float: left;
+    }
+
+    #from::before {
+        content: 'From : ';
+        font-size: 30px;
+        margin-left: 57px;
+    }
+
+    #to,
+    #return {
+        float: right;
+        margin-right: 10px;
+
+
+    }
+
+    #to::before {
+        content: 'To :  ';
+        font-size: 30px;
+    }
+
+    #outbound::before {
+        content: 'Outbound: ';
+        font-size: 30px;
+        margin-left: 10px;
+    }
+
+    #return::before {
+        content: 'Return:  ';
+        font-size: 30px;
+    }
+
+    .level2 input {}
+
+    .level3 select {
+        width: 40px;
+        height: 40px;
+        margin-right: 2px;
+        margin-left: 10px;
+    }
+
+    #passengers {
+        margin: auto 10px;
+        font-size: 20px;
+    }
+
+    .level4 div {
+        float: left;
+        padding-left: 20px;
+    }
+
+    #Returnt {
+        margin-left: -20px;
+
+    }
+
+    #singles button,
+    #Returnt button {
+        width: 100px;
+        height: 40px;
+        background-color: #0c52a4;
+    }
+
+    #class {
+        font-size: 20px;
+    }
+
+    #class select {
+        height: 30px;
+    }
+
+    #search {
+        margin-left: 30px;
+    }
+
+    #search input {
+        color: #e5e5e5;
+        background-color: #B73E3E;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    #search:hover input {
+        background-color: #e5e5e5;
+        border: #B73E3E 3px solid;
+        color: black;
+    }
+
+    #return {
+        display: none;
+    }
+
+    .servicebox a {
+        display: block;
+        width: 120px;
+        height: 140px;
+        background-color: #B73E3E;
+        margin: 10px 10px;
+        border-radius: 12px;
+        text-align: center;
+        color: antiquewhite;
+    }
+
+    .SchildLeft {
+        position: absolute;
+        left: 10px;
+    }
+
+
+    .SchildLeft,
+    .SchildRight {
+        width: 460px;
+        height: 100%;
+        margin-top: 120px;
+    }
+
+    .SchildLeft,
+    .SchildLeft div,
+    .SchildRight div {
+        float: left;
+    }
+
+    .SchildRight {
+        float: right;
+        position: relative;
+        right: -10px;
+    }
+
+    #SpecialPerson,
+    #SpecialService {
+        width: 250px;
+        height: 50px;
+        border-radius: 12px;
+        background-color: #0c52a4;
+        color: #e5e5e5;
+        text-align: center;
+        font-size: 30px;
+        margin: auto;
+        position: absolute;
+
+    }
+
+    #SpecialPerson {
+        left: 550px;
+        top: 50px;
+    }
+
+    #SpecialService {
+        top: 50px;
+        left: 90px;
+    }
+
+    #line {
+        width: 0px;
+        height: 499px;
+        border: #0c52a4 1px solid;
+        position: absolute;
+        left: 450px;
+    }
+
+    /* Experiences */
+
+    .ExperiencesChild a {
+        display: block;
+        width: 190px;
+        height: 190px;
+        background-color: #B73E3E;
+        margin: 30px 30px;
+        border-radius: 12px;
+        text-align: center;
+        color: antiquewhite;
+
+    }
+
+    .ExperiencesChild div {
+        float: left;
+
+    }
+
+    #exMiddle {
+        margin-left: 75px;
+    }
+
+    .ManageRight {
+        width: 550px;
+        height: 355px;
+        background-color: black;
+        float: right;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 70px;
+        margin-right: 20px;
+    }
+
+    .ManageRight img {
+        width: 100%;
+    }
+
+    .Manageleft {
+        float: left;
+
+    }
+
+    .Manageleft div {
+        margin: 10px 0px;
+    }
+
+    /* reference and name */
+    #reference input {
+        margin-top: 10px;
+        border: none;
+        width: 160px;
+        height: 40px;
+    }
+
+    #LastName input {
+        width: 120px;
+        height: 40px;
+    }
+
+    #reference::before {
+        line-height: 40px;
+        content: 'Booking Reference: ';
+
+    }
+
+    #LastName::before {
+        content: 'Last Name of Passenger: ';
+    }
+
+    .Manageleft {
+        margin-top: 60px;
+        margin-left: 15px;
+    }
+
+    #FindMy {
+        margin-top: 40px;
+
+    }
+
+    #FindMy,
+    #Chenckin {
+        padding-left: 5px;
+        cursor: pointer;
+    }
+    #FindMy:hover input,
+    #Chenckin:hover input{
+        cursor: pointer;
+        background-color: #B73E3E;
+        color: #d3d3d3;
+    }
+    .NextP {
+        margin-top: -360px;
+        height: 400px;
+        width: 100%;
+        background-color: white;
+        position: absolute;
+        top: 1270px;
+
+    }
+    .NextPMiddle{
+        height: 400px;
+    }
+
+    .news, .Information{
+        color:#0c52a4;
+        background-color:rgba(0, 0, 0, 0.19);
+        font-size: 40px;
+        width: 600px;
+        height: 100%;
+        float: left;
+        border-radius: 12px;
+        margin-top: 10px;
+    }
+    .Information a,.news a{
+        margin: 5px 5px;
+        display: block;
+        color:black;
+
+    }
+    .Information a:hover,.news a:hover{
+        color: #B73E3E;
+    }
+    .Information a,.news a{
+
+        margin-left: 30px;
+    }
+    .Information div,.news div{
+        text-align: center;
+    }
+
+    .Information{
+        float: right;
+    }
+    .news{
+        float: left;
+    }
+    .more{
+        float: right;
+        margin-right: 12px;
+    }
+    i{
+        margin-right: 10px;
+    }
+
+    .superBottom{
+        width: 100%;
+        height: 200px;
+        background-color: #0E1B2E;
+        position: absolute;
+        top: 1350px;
+    }
+    .bottomF div{
+        float: left;
+        font-size: 25px;
+        color:antiquewhite;
+        margin: 0px 5px;
+    }
+    .bottomF{
+        padding-left: 100px;
+        margin-top: 30px;
+    }
+    .bottomF a{
+        color: antiquewhite;
+    }
+    .bottomF a:hover{
+        color: #B73E3E;
+    }
+    .copyright{
+        margin-top: 10px;
+        margin-left:450px ;
+        float: left;
+        color: darkgrey;
+    }
+    .bottomImg {
+        float: left;
+        margin-top: 50px;
+        margin-left: -250px;
+    }
+</style>
+
+<body>
+<div class="top">
+    <div class="mid w">
+        <div class="logo"><a href="indexEnter.html"><img src="../static/logo.png" alt="logo"></a></div>
+        <div class="user">
+            <div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
+            <form id="LogSignup">
+                <div class="service"> <i class="fa fa-user"> </i>
+                    <a href="userdata.html"> <input id="userShow" type="button" name="userShow" value="renshouda" readonly="readonly"></a> </div>
+                <div>|</div>
+                <div class="service">  <input id="userOut" type="button" name="userOut" value="SIGN OUT" readonly="readonly"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="secondmid w">
+    <div><a href="javascript:;">Help and Contacts</a></div>
+    <div class="SpecialOffer"><a id="qw" href="javascript:;">Special Offers</a>
+        <div id="demo" class="secondBox">
+            <div class="Voucher"><a href="javascript:;">Voucher</a> </div>
+            <div class="speicals"><a href="javascript:;">Flight speicals</a></div>
+        </div>
+    </div>
+    <div id="changeManage"><a href="javascript:;">Manage</a></div>
+    <div><a href="javascript:;">About Us</a></div>
+</div>
+<!-- main body -->
+<div class="main">
+    <div class="mainPart w">
+        <div class="left">
+            <div><button id="Flight">Flight </button>
+                <div id="FlightChild">
+                    <!-- service database -->
+                    <form action="">
+                        <div class="level1">
+                            <div id="from"><input type="text" name="from"></div>
+                            <div id="to"><input type="text" name="to"></div>
+                        </div>
+                        <div class="level2">
+                            <div id="outbound"><input type="date" name="outbound"></div>
+                            <div id="return"><input id="check" type="date" name="return"></div>
+                        </div>
+                        <div class="level3">
+                            <div id="passengers">
+                                Adult(16+ years)<select name="Adult" id="Adult">
+                                <option name="1">1</option>
+                                <option name="2">2</option>
+                                <option name="3">3</option>
+                            </select>
+                                Children(2 - 11 years)<select name="Children" id="	Children">
+                                <option name="1">0</option>
+                                <option name="2">1</option>
+                                <option name="3">2</option>
+                            </select>
+                                Infants(under 2 years)<select name="Infants" id="Infants">
+                                <option name="1">0</option>
+                                <option name="2">1</option>
+                            </select>
+                                Disabled<select name="DisabledServicePersonnel" id="DisabledServicePersonnel">
+                                <option name="1">0</option>
+                                <option name="2">1</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="level4">
+                            <div id="singles"><button type="button">Single</button></div>
+                            <div id="Returnt"><button type="button">Return</button></div>
+                            <div id="class">
+                                Travel Class
+                                <select name="Class" id="DClass">
+                                    <option name="Economy">Economy</option>
+                                    <option name="Premium Economy">Premium Economy</option>
+                                    <option name="Business">Business</option>
+                                    <option name="First">First</option>
+                                </select>
+                            </div>
+                            <div id="search"><input type="submit" value="Go"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div><button id="service">Services</button>
+                <div class="serviceChild">
+                    <div class="SchildLeft">
+                        <div class="servicebox"><a href="">Meals</a></div>
+                        <div class="servicebox"><a href="">Transit Lounge</a></div>
+                        <div class="servicebox"><a href="">Upgrade Class</a></div>
+                        <div class="servicebox"><a href="">Transit Hotel</a></div>
+                        <div class="servicebox"><a href="">Prepaid Seat</a></div>
+                        <div class="servicebox"><a href="">Chauffeured Transfer</a></div>
+                    </div>
+                    <div id="line"></div>
+                    <div id="SpecialPerson">Special Services</div>
+                    <div id="SpecialService">Extra Services</div>
+                    <div class="SchildRight">
+                        <div class="servicebox"><a href="">Infant Bassinet</a></div>
+                        <div class="servicebox"><a href="">Wheelchair Boarding</a></div>
+                        <div class="servicebox"><a href="">Pets</a></div>
+                        <div class="servicebox"><a href="">Ground Wheelchair</a></div>
+                        <div class="servicebox"><a href="">Visual Impairment</a></div>
+                        <div class="servicebox"><a href="">Hearing Impairment</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div><button id="Experiences">Experiences</button>
+                <div class="ExperiencesChild">
+                    <div id="exMiddle">
+                        <div class="exbox"><a href="">Cabin Service</a></div>
+                        <div class="exbox"><a href="">Health Care Devices</a></div>
+                        <div class="exbox"><a href="">Entertainment</a></div>
+                        <div class="exbox"><a href="">Onboard Meals</a></div>
+                        <div class="exbox"><a href="">Duty free</a></div>
+                        <div class="exbox"><a href="">Onboard Internet</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div><button id="Manage">Manage</button>
+                <div class="manageChild">
+                    <div class="Manageleft">
+                        <form action="">
+                            <div id="titleBook">MY BOOKING</div>
+                            <div id="reference"><input type="text" name="reference"></div>
+                            <div id="LastName"><input type="text" name="passengerName"></div>
+                            <!--                                      后添加-->
+                            <div id="FindMy"><a href= "#" ><input type="button" value="Find my booking"></a></div>
+                            <div id="Chenckin"><a href= "./userdata.html"><input type="button" value="Change My Information"></a></div>
+                        </form>
+                    </div>
+                    <div class="ManageRight"><img src="../static/building.jpg" alt="island"></div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- next part -->
+<div class="NextP">
+    <div class="NextPMiddle w">
+        <div class="news">
+            <div>News</div>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>Notice Regarding Adjustm..</a>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>2dadsadad</a>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>3asdasdas</a>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>Beijing Airlines and Air China s</a>
+            <div class="more"><a href="">>> More</a> </div>
+        </div>
+
+        <div class="Information">
+            <div>Service Bulletin</div>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>Notice of Suspending Air China</a>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>2dasdasda</a>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>3dasdasd</a>
+            <a href="javascript:;"><i class="fas fa-chevron-right"></i>Covid-19...</a>
+            <div class="more"><a href="">>> More</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- bottom -->
+
+<div class="superBottom">
+    <div class="bottomMiddle w">
+        <div class="bottomF">
+            <div><a href="javascript:;">Help and contacts</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">About Us</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Manage</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Special Offers</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Privacy policy</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Website security</a></div>
+        </div>
+        <!-- <div class="bottomS"></div> -->
+        <div class="copyright">© Super Airways - all rights reserved</div>
+        <div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    var click = document.getElementById('singles');
+    click.onclick = function () {
+        document.querySelector('#return').style.display = 'none';
+    }
+
+    var click = document.getElementById('Returnt');
+    click.onclick = function () {
+        document.querySelector('#return').style.display = 'block';
+    }
+
+    // exchange menu
+    var click = document.getElementById('Flight');
+    click.onclick = function () {
+        document.querySelector('#FlightChild').style.display = 'block';
+        document.querySelector('.serviceChild').style.display = 'none';
+        document.querySelector('.ExperiencesChild').style.display = 'none';
+        document.querySelector('.manageChild').style.display = 'none';
+
+    }
+    var click = document.getElementById('service');
+    click.onclick = function () {
+        document.querySelector('.serviceChild').style.display = 'block';
+        document.querySelector('#FlightChild').style.display = 'none';
+        document.querySelector('.ExperiencesChild').style.display = 'none';
+        document.querySelector('.manageChild').style.display = 'none';
+
+    }
+
+    var click = document.getElementById('Experiences');
+    click.onclick = function () {
+        document.querySelector('.ExperiencesChild').style.display = 'block';
+        document.querySelector('.serviceChild').style.display = 'none';
+        document.querySelector('#FlightChild').style.display = 'none';
+        document.querySelector('.manageChild').style.display = 'none';
+    }
+
+    var click = document.getElementById('Manage');
+    click.onclick = function () {
+        document.querySelector('.manageChild').style.display = 'block';
+        document.querySelector('.serviceChild').style.display = 'none';
+        document.querySelector('#FlightChild').style.display = 'none';
+        document.querySelector('.ExperiencesChild').style.display = 'none';
+    }
+
+
+</script>
+
+<!--		user log out-->
+<script type="text/javascript">
+
+    $("#userOut").click(function () {
+        let result =confirm("Do you want to sign out ?");
+        if (result){
+            location.href="/users/session_clear";
+            location.href="index.html";
+        }
+
+    });
+
+</script>
+<script src="../js/ManageChange.js"></script>
+<script src="../js/UsershowState.js" ></script>
+
+
+
+</body>
+
+</html>

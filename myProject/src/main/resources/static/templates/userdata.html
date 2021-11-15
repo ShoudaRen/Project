@@ -14,6 +14,7 @@
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<script src="../js/UsershowState.js" ></script>
 		<!-- 字体图标 -->
 				<!-- modified 11/11/2021 -->
 				<link rel="stylesheet" href="../fontAwesome/css/all.css">
@@ -28,24 +29,21 @@
 					#btn-change-info{
 						background-color:brown;
 					}
-
 				</style>
-	
-	
 			</head>
-
 	<body>
-		<!--头部-->
-		<!--头部-->
 		<div class="top">
 			<div class="mid w">
-				<div class="logo"><a href="./index.html"><img src="../static/logo.png" alt="logo"></a></div>
+				<div class="logo"><a href="indexEnter.html"><img src="../static/logo.png" alt="logo"></a></div>
 				<div class="user">
 					<div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
 					<div></div>
-					<div class="service"> <i class="fa fa-user"> </i><a href="../templates/LogIn.html"></i> LOG IN</a> </div>
-					<div>/</div>
-					<div class="service"> <a href="../templates/register.html"> REGISTER</a></div>
+					<form id="LogSignup">
+						<div class="service"> <i class="fa fa-user"> </i>
+							<a href="userdata.html"> <input id="userShow" type="button" name="userShow" value="renshouda" readonly="readonly"></a> </div>
+						<div>|</div>
+						<div class="service"> <input id="userOut" type="button" name="userOut" value="SIGN OUT" readonly="readonly"></div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -188,7 +186,6 @@
 							// 否则选中$("#gender-male")框
 							let radio=json.data.gender==0?
 									$("#gender-female"):$("#gender-male");
-							$("#gender").val(json.data.phone);
 							// 在HTML添加checked属性 prop表示给某个元素添加属性及属性的值
 							radio.prop("checked","checked");
 						}else { alert("data does not exist");}
@@ -219,9 +216,25 @@
 					}
 				});
 			});
-
-
 		</script>
+
+
+
+		<script type="text/javascript">
+			$("#userOut").click(function () {
+				let result =confirm("Do you want to sign out ?");
+				if (result){
+					location.href="/users/session_clear";
+					location.href="index.html";
+				}
+
+			});
+		</script>
+
+
+
+
+
 	</body>
 
 </html>

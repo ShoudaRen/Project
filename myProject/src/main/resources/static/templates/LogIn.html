@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../CSS/User.css">
     <link rel="stylesheet" href="../CSS/base.css">
     <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+    <script src="../bootstrap3/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 
     <style>
         body {
@@ -147,7 +148,8 @@
                     alert("succeed");
                     //跳转到主页
                     //相对路径确定跳转的页面 location.href==CSS里的src
-                    location.href="index.html";
+                    location.href="indexEnter.html";
+                    $.cookie("avatar",json.data.avatar,{expires:7})
                 }else{ alert("Failed");}
             },
             error:function (xhr) {

@@ -1,13 +1,17 @@
 package com.cy.myProject.controller;
 /**
  * 1：
+ * 方法参数名要和表单的name保持一致
  * 表单对象的同名字段会自动注入映射对象中，因此注重表单里名字的写法很重要！！,
  * 在连接给定的参数列表中，前端只要保证给的参数的名字和对象中属性的名字一致，系统就会自动地注入到对象中
  * 2：
  * 方法参数满足服务器所需的参数，别的不需要
  */
 
+import com.cy.myProject.config.LoginInterceptorConfigurer;
+import com.cy.myProject.controller.ex.*;
 import com.cy.myProject.entity.User;
+import com.cy.myProject.interceptor.LoginInterceptor;
 import com.cy.myProject.service.IUserService;
 import com.cy.myProject.service.ex.InsertException;
 import com.cy.myProject.service.ex.UsernameDuplicatedException;
@@ -15,10 +19,23 @@ import com.cy.myProject.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.UUID;
 
 //@Controller
 @RestController //@RestController是==@@Controller+ @ResponseBody
@@ -40,7 +57,6 @@ public class UserController extends BaseController{
     }
     @RequestMapping("login")//路径
     public JsonResult<User> login(String username, String password , HttpSession session){
-
         User data=userService.login(username,password);
 //        向session对象中完成数据的绑定（session全局的）
 session.setAttribute("uid", data.getUid());
@@ -97,6 +113,80 @@ session.setAttribute("username", data.getUsername());
         return new  JsonResult<>(ok);
     }
 
+    /**
+     *
+     * @param avatar
+     * @param session
+     * @param file   MultipartFile自动把文件转化成数据包，可以接受任何类型的文件
+     * @return
+     */
+    //  the max size of an image
+    public static final int AVATAR_MAX_SIZE=10*1024*1024;
+   //the type of a file update
+   public static final List<String> AVATAR_TYPE= new ArrayList<>();
+   static{
+       AVATAR_TYPE.add("image/jpeg");
+       AVATAR_TYPE.add("image/jpg");
+       AVATAR_TYPE.add("image/png");
+       AVATAR_TYPE.add("image/bmp");
+       AVATAR_TYPE.add("image/gif");
+   }
+    @RequestMapping("change_avatar")
+    public JsonResult<String> changeAvatar ( HttpSession session,
+                                            @RequestParam("file") MultipartFile file){
+
+        if (file.isEmpty()){
+            throw new FileEmptyException("the file is empty");
+        }
+        if (file.getSize()>AVATAR_MAX_SIZE){
+            throw new FileSizeException("File size is out 10MB");
+        }
+        String contentType = file.getContentType();
+        //如果集合包含了某个元素则返回true
+        if (!AVATAR_TYPE.contains(contentType)){
+            throw new FileTypeException("the type does not be supported");
+        }
+        //在项目中获得文件储存的路径。。。然后把用户上传的图片放进去
+       String parent= session.getServletContext().getRealPath("upload");
+//   File 对象 指向这个路径，File是否存在
+        File dir =new File(parent);
+        if (!dir.exists()){
+            dir.mkdir(); //创建当前目录
+        }
+            //获取到这个文件名称，UUID工具来生成一过热新的字符串作为文件名
+            String OriginalFilename =file.getOriginalFilename();
+            System.out.println(OriginalFilename);
+            int index = OriginalFilename.lastIndexOf(".");
+            String suffix = OriginalFilename.substring(index);
+            String filename=UUID.randomUUID().toString().toUpperCase()+suffix;
+        //创建一个空文件
+        File dest = new File(dir,filename);
+        //将参数file中的数据写入这个空文件中
+        try {
+            file.transferTo(dest);
+        } catch (FileStateException e) {
+            throw new FileStateException("file state exception");}
+        catch (IOException e) {
+           throw new FileUploadIOException("file read exception");
+        }
+        Integer uid = getUidFromSession(session);
+        String username=getUsernameFromSession(session);
+        String avatar ="/upload/"+filename;
+
+        userService.changeAvatar(uid,avatar,username);
+        return new  JsonResult<>(ok,avatar);
+    }
+
+
+
+    @RequestMapping("session_clear")
+    public void sessionClear ( HttpServletRequest request){
+        request.getSession().invalidate();
+        LoginInterceptorConfigurer loginInterceptorConfigurer = new LoginInterceptorConfigurer();
+        InterceptorRegistry registry = new InterceptorRegistry();
+        loginInterceptorConfigurer.addInterceptors(registry);
+
+    }
 
 
 
