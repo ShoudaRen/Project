@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<!--edge浏览器H5兼容设置-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<!--360浏览器H5兼容设置-->
-		<meta name="renderer" content="webkit"/>
-		<title>Profile My Password</title>
+		<meta name="renderer" content="webkit" />
+		<title>Passenger Management</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--导入核心文件-->
 		<script src="../bootstrap3/js/holder.js"></script>
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
-		<script src="../js/UsershowState.js" ></script>
+		<!-- <script src="../js/UsershowState.js" ></script> -->
 		<!-- 字体图标 -->
-		<!-- modified 11/11/2021 -->
 		<link rel="stylesheet" href="../fontAwesome/css/all.css">
 	    <link rel="stylesheet" href="../CSS/base.css">
 		<link rel="stylesheet" href="../CSS/head.css">
 		<link rel="stylesheet" href="../CSS/footer.css">
         <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+
+		<style>
+			.qw{
+				margin: 10px 0px;
+			}
+			#addP{
+				background-color:brown;
+			}
+			.superBottom{
+				top:80%;
+			}
+		</style>
 	</head>
-	<style>
-		.qw{
-			margin: 10px 0px;
-		}
-		#btn-change-password{
-			background-color:brown;
-		}
-		.superBottom{
-			top:80%;
-		}
-	</style>
 
 	<body>
-		<!--头部-->
 		<div class="top">
 			<div class="mid w">
 				<div class="logo"><a href="indexEnter.html"><img src="../static/logo.png" alt="logo"></a></div>
@@ -62,11 +62,7 @@
 			<div><a href="userdata.html">Manage</a></div>
 			<div><a href="javascript:;">About Us</a></div>
 		</div>
-
-
-
-		<!--头部结束-->
-		<!--导航结束-->
+		<!-- <head> -->
 		<div class="container">
 			<div class="col-md-2">
 				<!--左侧导航开始-->
@@ -75,10 +71,9 @@
 						<div class="panel-heading">
 							<!--主选项：我的订单-->
 							<p class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href=".//orders.html">My Booking</a>
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">My Booking</a>
 							</p>
 						</div>
-
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -89,10 +84,10 @@
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<div class="qw"><a href="password.html"><b>Change Password</b></a></div>
+								<div class="qw"><a href="password.html">Change Password</a></div>
 								<div class="qw"><a href="userdata.html">My information</a></div>
 								<div class="qw"><a href="upload.html">Upload Images</a></div>
-								<div class="qw"><a href="passenager.html">Passenger Management</a></div>
+								<div class="qw"><a href="passenager.html"><b>Passenger</b></a></div>
 							</div>
 						</div>
 					</div>
@@ -102,48 +97,62 @@
 			<div class="col-md-10">
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#">Change Password</a></li>
+						<li><a href="password.html">Change Password</a></li>
 						<li><a href="userdata.html">My information</a></li>
 						<li><a href="upload.html">Upload Images</a></li>
-						<li><a href="passenager.html">Passenger Management</a></li>
+						<li class="active"><a href="#">Passenger Management</a></li>
 					</ul>
 					<div class="panel-body">
-						<!--修改密码表单开始-->
-						<form id="form-change-password" class="form-horizontal" role="form">
-							<div class="form-group">
-								<label class="col-md-2 control-label">Old Password：</label>
-								<div class="col-md-8">
-									<input name="oldPassword" type="text" class="form-control" placeholder="please enter old password">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-2 control-label">New Password：</label>
-								<div class="col-md-8">
-									<input name="newPassword" type="text" class="form-control" placeholder="please enter new password">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-2 control-label">Confirm new password：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" placeholder="please confirm new password">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10">
-									<input id="btn-change-password" type="button" class="btn btn-primary" value="submit" />
-								</div>
-							</div>
-						</form>
+						<!--地址显示-->
+						<table class="table table-striped">
+							<caption>Passengers</caption>
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Second Name</th>
+									<th>Passport</th>
+									<th>Passport expire Day</th>
+									<th colspan="4"></th>
+								</tr>
+							</thead>
+							<tbody id="passenger-list">
+								<tr>
+									<td>shouda</td>
+									<td>ren</td>
+									<td>Ev345</td>
+									<td>11/23/2021</td>
+									<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>
+									<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>
+									<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>
+								</tr>
+								<tr>
+									<td>shouda</td>
+									<td>ren</td>
+									<td>Ev345</td>
+									<td>11/23/2021</td>
+									<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>
+									<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>
+									<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>
+								</tr>
+								<tr>
+									<td>shouda</td>
+									<td>ren</td>
+									<td>Ev345</td>
+									<td>11/23/2021</td>
+									<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>
+									<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>
+									<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<a id="addP" href="addPassenager.html" class="btn btn-sm btn-primary"><span class="fa fa-plus"></span>Add New Passengers</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	
 
-
-
-
-
-		<!--页脚开始-->
+<!-- foot -->
 		<div class="superBottom">
 			<div class="bottomMiddle w">
 				<div class="bottomF">
@@ -167,45 +176,44 @@
 	
 	
 		</div>
-		<!--页脚结束-->
 
-		<script type="text/javascript">
-
-			$("#btn-change-password").click(function () {
-				$.ajax({
-					// url前面可以省略端口号
-					url:"/users/change_password",
-					type:"POST",
-					data:$("#form-change-password").serialize(),
-					dataType:"JSON",
-					success : function(json){
-						if(json.state==200){
-							alert("Change Succeed!");
-						}else { alert("Change Failed");}
-					},
-					error:function (xhr){
-						//弹出窗口
-						alert("oops! An unknown error"+" "+xhr.message)
-					}
-				});
-			});
-		</script>
-
-		<!--		user log out-->
-		<script type="text/javascript">
-			$("#userOut").click(function () {
-				let result =confirm("Do you want to sign out ?");
-				if (result){
-					location.href="/users/session_clear";
-					location.href="index.html";
+	<script type="text/javascript" >
+		$(document).ready(function () {
+			showPassengerList();
+		});
+		function showPassengerList(){
+			$.ajax({
+				url:"/passengers/",
+				type:"POST",
+				dataType:"JSON",
+				success : function(json){
+					if(json.state==200){
+						let list = json.data;
+						console.log(list);
+						for (let i = 0; i < list.length; i++) {
+							let tr = "<tr>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>shouda</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>ren</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>Ev345</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>11/23/2021</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>\n" +
+									"\t\t\t\t\t\t\t\t</tr>";
+							tr = tr.replace(/shouda/g,list[i].firstname);
+							tr = tr.replace(/ren/g,list[i].lastname);
+							tr = tr.replace("Ev345",list[i].passport);
+							tr = tr.replace("11/23/2021",list[i].passportExpire);
+							$("#passenger-list").append(tr);
+						}
+						// the first one is default
+						$(".add-def:eq(0)").hide();
+					}else { alert("Load failed");}
 				}
 
 			});
-
-		</script>
-
-
-
+		}
+	</script>
 	</body>
 
 </html>

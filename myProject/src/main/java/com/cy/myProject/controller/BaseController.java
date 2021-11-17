@@ -23,11 +23,15 @@ public class BaseController {
             result.setState(4000);
             result.setMessage("The user name already exists");
         } else if(e instanceof UserNotFoundException) {
-            result.setState(5001);
+            result.setState(4001);
             result.setMessage("User dose not exist");
         }else if(e instanceof PasswordNotMatchException) {
-            result.setState(5002);
+            result.setState(4002);
             result.setMessage("Password is wrong");
+        }
+        else if(e instanceof InsertCountLimitedException) {
+            result.setState(4003);
+            result.setMessage("passengers out of limitation");
         }
         else if(e instanceof InsertException) {
             result.setState(5000);

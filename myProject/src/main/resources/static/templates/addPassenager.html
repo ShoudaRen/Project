@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<!--edge浏览器H5兼容设置-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<!--360浏览器H5兼容设置-->
-		<meta name="renderer" content="webkit"/>
-		<title>Profile My Password</title>
+		<meta name="renderer" content="webkit" />
+		<title>Add passenager</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--导入核心文件-->
 		<script src="../bootstrap3/js/holder.js"></script>
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
-		<script src="../js/UsershowState.js" ></script>
+		<!-- <script src="../js/UsershowState.js" ></script> -->
 		<!-- 字体图标 -->
-		<!-- modified 11/11/2021 -->
 		<link rel="stylesheet" href="../fontAwesome/css/all.css">
 	    <link rel="stylesheet" href="../CSS/base.css">
 		<link rel="stylesheet" href="../CSS/head.css">
 		<link rel="stylesheet" href="../CSS/footer.css">
         <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+
+		<style>
+			.qw{
+				margin: 10px 0px;
+			}
+
+		</style>
 	</head>
-	<style>
-		.qw{
-			margin: 10px 0px;
-		}
-		#btn-change-password{
-			background-color:brown;
-		}
-		.superBottom{
-			top:80%;
-		}
-	</style>
 
 	<body>
 		<!--头部-->
@@ -62,10 +57,8 @@
 			<div><a href="userdata.html">Manage</a></div>
 			<div><a href="javascript:;">About Us</a></div>
 		</div>
+	
 
-
-
-		<!--头部结束-->
 		<!--导航结束-->
 		<div class="container">
 			<div class="col-md-2">
@@ -75,10 +68,9 @@
 						<div class="panel-heading">
 							<!--主选项：我的订单-->
 							<p class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href=".//orders.html">My Booking</a>
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">My Booking</a>
 							</p>
 						</div>
-
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -89,10 +81,10 @@
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<div class="qw"><a href="password.html"><b>Change Password</b></a></div>
+								<div class="qw"><a href="password.html">Change Password</a></div>
 								<div class="qw"><a href="userdata.html">My information</a></div>
 								<div class="qw"><a href="upload.html">Upload Images</a></div>
-								<div class="qw"><a href="passenager.html">Passenger Management</a></div>
+								<div class="qw"><a href="passenager.html"><b>Passenger</b></a></div>
 							</div>
 						</div>
 					</div>
@@ -102,48 +94,76 @@
 			<div class="col-md-10">
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#">Change Password</a></li>
+						<li><a href="password.html">Change Password</a></li>
 						<li><a href="userdata.html">My information</a></li>
 						<li><a href="upload.html">Upload Images</a></li>
-						<li><a href="passenager.html">Passenger Management</a></li>
+						<li class="active"><a href="#">Passenger Management</a></li>
 					</ul>
 					<div class="panel-body">
-						<!--修改密码表单开始-->
-						<form id="form-change-password" class="form-horizontal" role="form">
+						<form id="form-add-new-passenger" class="form-horizontal" role="form">
 							<div class="form-group">
-								<label class="col-md-2 control-label">Old Password：</label>
+								<label class="col-md-2 control-label"><span class="txtred">*</span>Last Name</label>
 								<div class="col-md-8">
-									<input name="oldPassword" type="text" class="form-control" placeholder="please enter old password">
+									<input name="lastname" type="text" class="form-control" placeholder="please enter you last name">
+								</div>
+							</div>
+							<div class="address_content" data-toggle="distpicker">
+								<div class="form-group">
+
+
+
+									
+									<label class="col-md-2 control-label"><span class="txtred">*</span>Passport</label>
+									<div class="col-md-3">
+										<div >
+											<input name="passport" type="text" class="form-control" >
+										</div>
+										<!-- <select id="province-list" name="provinceCode" class="form-control" data-province="---- 选择省 ----"></select> -->
+									</div>
+									<label class="col-md-2 control-label"><span class="txtred">*</span>Passport Expire</label>
+									<div class="col-md-3">
+										<input name="passportExpire" type="text" class="form-control" placeholder="dd/mm/yy">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-md-2 control-label"><span class="txtred">*</span>Email：</label>
+									<div class="col-md-3">
+										<input name="email" type="text" class="form-control" >
+										<!-- <select id="area-list" name="areaCode" class="form-control" data-district="---- 选择区 ----"></select> -->
+									</div>
+									<label class="col-md-2 control-label">First Name：</label>
+									<div class="col-md-3">
+										<input name="firstname" type="text" class="form-control">
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-2 control-label">New Password：</label>
-								<div class="col-md-8">
-									<input name="newPassword" type="text" class="form-control" placeholder="please enter new password">
-								</div>
+					
 							</div>
 							<div class="form-group">
-								<label class="col-md-2 control-label">Confirm new password：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" placeholder="please confirm new password">
+								<label class="col-md-2 control-label"><span class="txtred">*</span>Mobile Phone：</label>
+								<div class="col-md-3">
+									<input name="mobilePhone" type="text" class="form-control" placeholder="+44(0)7777777777">
 								</div>
+						
 							</div>
 							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10">
-									<input id="btn-change-password" type="button" class="btn btn-primary" value="submit" />
+								<label class="col-md-2 control-label"><a href="passenager.html">Return</a>&nbsp;&nbsp;&nbsp;</label>
+								<div class="col-sm-10">
+									<input id="btn-add-new-passenger" type="button" class="col-md-1 btn btn-primary" value="Save" />
+									<input type="reset" class="col-md-offset-1 col-md-1 btn btn-primary" value="Reset" />
 								</div>
 							</div>
 						</form>
+
+
+
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-		<!--页脚开始-->
+		<!--footer-->
 		<div class="superBottom">
 			<div class="bottomMiddle w">
 				<div class="bottomF">
@@ -164,48 +184,28 @@
 				<div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
 			   
 			</div>
-	
-	
 		</div>
-		<!--页脚结束-->
+		<!--footer-->
 
-		<script type="text/javascript">
+			<script type="text/javascript">
 
-			$("#btn-change-password").click(function () {
-				$.ajax({
-					// url前面可以省略端口号
-					url:"/users/change_password",
-					type:"POST",
-					data:$("#form-change-password").serialize(),
-					dataType:"JSON",
-					success : function(json){
-						if(json.state==200){
-							alert("Change Succeed!");
-						}else { alert("Change Failed");}
-					},
-					error:function (xhr){
-						//弹出窗口
-						alert("oops! An unknown error"+" "+xhr.message)
-					}
+				$("#btn-add-new-passenger").click(function () {
+					$.ajax({
+						url:"/passengers/insert_passenger",
+						type:"POST",
+						data:$("#form-add-new-passenger").serialize(),
+						dataType:"JSON",
+						success : function(json){
+							if(json.state==200){
+								alert("save Succeed!");
+							}else { alert("save Failed");}
+						},
+						error:function (xhr){
+							alert("oops! An unknown error"+" "+xhr.message)
+						}
+					});
 				});
-			});
-		</script>
-
-		<!--		user log out-->
-		<script type="text/javascript">
-			$("#userOut").click(function () {
-				let result =confirm("Do you want to sign out ?");
-				if (result){
-					location.href="/users/session_clear";
-					location.href="index.html";
-				}
-
-			});
-
-		</script>
-
-
-
+			</script>
 	</body>
 
 </html>

@@ -444,12 +444,13 @@
 
         }
 
-        #FindMy,
+        #FindMy,#ChangePW,#AddPassenger,
         #Chenckin {
             padding-left: 5px;
             cursor: pointer;
         }
-        #FindMy:hover input,
+
+        #FindMy:hover input,#ChangePW:hover input,#AddPassenger:hover input,
         #Chenckin:hover input{
             cursor: pointer;
             background-color: #B73E3E;
@@ -543,6 +544,12 @@
          margin-top: 50px;
          margin-left: -250px;
      }
+   /*16/11 */
+     .city-list{
+         height:60px;
+         width: 300px;
+     }
+     /*end*/
     </style>
 </head>
 <body>
@@ -575,32 +582,34 @@
                 <div><button id="Flight">Flight </button>
                     <div id="FlightChild">
                         <!-- service database -->
-                        <form action="">
+                        <form id="main_part" action="">
                             <div class="level1">
-                                <div id="from"><input type="text" name="from"></div>
-                                <div id="to"><input type="text" name="to"></div>
+<!--                                //16/11修改&ndash;&gt;-->
+                                <div id="from">	<select id="fromLocation" class="city-list" name="fromLocation"></select></div>
+                                <div id="to">	<select id="toLocation" class="city-list" name="toLocation"></select></div>
                             </div>
                             <div class="level2">
-                                <div id="outbound"><input type="date" name="outbound"></div>
-                                <div id="return"><input id="check" type="date" name="return"></div>
+                                <div id="outbound"><input class="flightDay" type="date" name="flightDay"></div>
+                                <div id="return"><input class="flightDay" id="check" type="date" name="flightDay"></div>
+
                             </div>
                             <div class="level3">
                                 <div id="passengers">
-                                    Adult(16+ years)<select name="Adult" id="Adult">
+                                    Adult(16+ years)<select name="adultNum" id="adultNum">
                                         <option name="1">1</option>
                                         <option name="2">2</option>
                                         <option name="3">3</option>
                                     </select>
-                                    Children(2 - 11 years)<select name="Children" id="	Children">
+                                    Children(2 - 11 years)<select name="childrenNum" id="childrenNum">
                                         <option name="1">0</option>
                                         <option name="2">1</option>
                                         <option name="3">2</option>
                                     </select>
-                                    Infants(under 2 years)<select name="Infants" id="Infants">
+                                    Infants(under 2 years)<select name="infantsNum" id="infantsNum">
                                         <option name="1">0</option>
                                         <option name="2">1</option>
                                     </select>
-                                    Disabled<select name="DisabledServicePersonnel" id="DisabledServicePersonnel">
+                                    Disabled<select name="disableNum" id="disableNum">
                                         <option name="1">0</option>
                                         <option name="2">1</option>
                                     </select>
@@ -611,12 +620,13 @@
                                 <div id="Returnt"><button type="button">Return</button></div>
                                 <div id="class">
                                     Travel Class
-                                    <select name="Class" id="DClass">
+                                    <select name="classType" id="DClass">
                                         <option name="Economy">Economy</option>
                                         <option name="Premium Economy">Premium Economy</option>
                                         <option name="Business">Business</option>
                                         <option name="First">First</option>
                                     </select>
+                                    <!--                                修改结束-->
                                 </div>
                                 <div id="search"><input type="submit" value="Go"></div>
                             </div>
@@ -668,8 +678,11 @@
 <!--                                <div id="reference"><input type="text" name="reference"></div>-->
 <!--                                <div id="LastName"><input type="text" name="passengerName"></div>-->
 <!--                                      后添加-->
+
                                 <div id="FindMy"><a href= "#" ><input type="button" value="Find my booking"></a></div>
                                 <div id="Chenckin"><a href= "./userdata.html"><input type="button" value="Change My Information"></a></div>
+                            <div id="ChangePW"><a href= "passenager.html"><input type="button" value="Change Password"></a></div>
+                            <div id="AddPassenger"><a href= "addPassenager.html"><input type="button" value="Add Passengers"></a></div>
                         </div>
                         <div class="ManageRight"><img src="../static/building.jpg" alt="island"></div>
 

@@ -181,10 +181,12 @@ session.setAttribute("username", data.getUsername());
 
     @RequestMapping("session_clear")
     public void sessionClear ( HttpServletRequest request){
+
         request.getSession().invalidate();
-        LoginInterceptorConfigurer loginInterceptorConfigurer = new LoginInterceptorConfigurer();
-        InterceptorRegistry registry = new InterceptorRegistry();
-        loginInterceptorConfigurer.addInterceptors(registry);
+
+//        LoginInterceptorConfigurer loginInterceptorConfigurer = new LoginInterceptorConfigurer();
+//        InterceptorRegistry registry = new InterceptorRegistry();
+//        loginInterceptorConfigurer.addInterceptors(registry);
 
     }
 

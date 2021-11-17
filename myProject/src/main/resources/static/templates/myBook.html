@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--edge浏览器H5兼容设置-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--360浏览器H5兼容设置-->
+		<meta name="renderer" content="webkit" />
+		<title>Booking System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--导入核心文件-->
+		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<!-- 字体图标 -->
+		<link rel="stylesheet" href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/top.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css" />
+
+
+		<style>
+			.orders-table{
+				width: 1000px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		
+		<!--头部结束-->
+		<!--导航结束-->
+		<div class="container">
+			<div class="col-md-2">
+				<!--左侧导航开始-->
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!--主选项：我的订单-->
+							<p class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">我的订单</a>
+							</p>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div><a href="orders.html"><b>My Flight</b></a></div>
+								<div><a href="orders.html">My Collection</a></div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!--主选项：资料修改-->
+							<p class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">资料修改</a>
+							</p>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div><a href="password.html"><b>修改密码</b></a></div>
+								<div><a href="userdata.html">个人资料</a></div>
+								<div><a href="upload.html">上传头像</a></div>
+								<div><a href="address.html">收货管理</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--左侧导航结束-->
+			<div class="col-md-10">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<p class="panel-title">
+							Reference：1101000001，Order time：2018-12-1 17:50:30 ，收货人：八戒
+						</p>
+					</div>
+					<div class="panel-body">
+						<table class="orders-table" width="100%">
+							<thead>
+								<tr>
+									
+									<th width="4%">Airline</th>
+									<th width="4%">Flight Number</th>
+									<th width="1%">Day</th>
+									<th width="4%">Departure Time</th>
+									<th width="4%">Arrival Time</th>
+									<th width="2%">Duration</th>
+									<th width="2%">Price</th>
+									<th width="2%">Class</th>
+									<th width="8%"></th>
+									
+								</tr>
+							</thead>
+							<tbody class="orders-body">
+								<tr>	
+									<td>British Airway</td>
+									<td>GP2312</td>
+									<td>10/12/2021</td>
+									<td>9:11Am</td>
+									<td>10.4PM</td>
+									<td><span>2</span>hours </td>
+									<td>£<span>000</span></td>
+									<td></td>
+									<td>
+										<div><a href="#">Ticket changes</a></div>
+										<div><a href="orderInfo.html">My Service</a></div>
+									</td>
+								</tr>
+								<tr>
+									<tr>	
+										<td>British Airway</td>
+									<td>GP2312</td>
+									<td>10/12/2021</td>
+									<td>9:11Am</td>
+									<td>10.4PM</td>
+									<td><span>2</span>hours </td>
+									<td>£<span>000</span></td>
+									<td></td>
+									<td>
+										<div><a href="#">Ticket changes</a></div>
+										<div><a href="orderInfo.html">My Service</a></div>
+									</td>
+									</tr>
+								</tr>
+								<tr>
+									<tr>	
+										<td>British Airway</td>
+										<td>GP2312</td>
+										<td>10/12/2021</td>
+										<td>9:11Am</td>
+										<td>10.4PM</td>
+										<td><span>2</span>hours </td>
+										<td>£<span>000</span></td>
+										<td></td>
+										<td>
+											<div><a href="#">Ticket changes</a></div>
+											<div><a href="orderInfo.html">My Service</a></div>
+										</td>
+									</tr>
+								</tr>
+								<tr>
+									<tr>	
+										<td>British Airway</td>
+										<td>GP2312</td>
+										<td>10/12/2021</td>
+										<td>9:11Am</td>
+										<td>10.4PM</td>
+										<td><span>2</span>hours </td>
+										<td>£<span>000</span></td>
+										<td></td>
+										<td>
+											<div><a href="#">Ticket changes</a></div>
+											<div><a href="orderInfo.html">My Service</a></div>
+										</td>
+									</tr>
+								</tr>
+
+							</tbody>
+						</table>
+						<div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<p class="panel-title">
+							Reference：1101000001，Order time：2018-12-1 17:50:30 ，收货人：八戒
+						</p>
+					</div>
+					<div class="panel-body">
+						<table class="orders-table" width="100%">
+							<thead>
+								<tr>
+										
+									<th width="4%">Airline</th>
+									<th width="4%">Flight Number</th>
+									<th width="1%">Day</th>
+									<th width="4%">Departure Time</th>
+									<th width="4%">Arrival Time</th>
+									<th width="2%">Duration</th>
+									<th width="2%">Price</th>
+									<th width="2%">Class</th>
+									<th width="8%"></th>
+								</tr>
+							</thead>
+							<tbody class="orders-body">
+								<tr>	
+									<td>British Airway</td>
+										<td>GP2312</td>
+										<td>10/12/2021</td>
+										<td>9:11Am</td>
+										<td>10.4PM</td>
+										<td><span>2</span>hours </td>
+										<td>£<span>000</span></td>
+										<td></td>
+										<td>
+											<div><a href="#">Ticket changes</a></div>
+											<div><a href="orderInfo.html">My Service</a></div>
+										</td>
+								</tr>
+							</tbody>
+						</table>
+						<div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--页脚开始-->
+		
+		<!--页脚结束-->
+	</body>
+
+</html>
