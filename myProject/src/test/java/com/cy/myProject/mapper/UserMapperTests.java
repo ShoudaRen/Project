@@ -75,5 +75,10 @@ public class UserMapperTests {
 
     }
 
+    @Test
+    public void testsignout(){
+        userMapper.updatesignOutByuid("renshouda");
+    }
+
 
 }

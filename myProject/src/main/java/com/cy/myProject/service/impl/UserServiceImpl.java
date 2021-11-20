@@ -79,6 +79,7 @@ public class UserServiceImpl implements IUserService {
         user.setUid(result.getUid());
         user.setUsername(result.getUsername());
         user.setAvatar(result.getAvatar());
+        userMapper.updatesignOutByuid(username);
         return user;
     }
 
@@ -119,6 +120,7 @@ public class UserServiceImpl implements IUserService {
        user.setPhone(result.getPhone());
        user.setEmail(result.getEmail());
        user.setGender(result.getGender());
+       user.setSignstatus(result.getSignstatus());
         return user;
     }
 

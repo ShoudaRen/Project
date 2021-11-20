@@ -44,7 +44,7 @@ public class UserServiceTests {
    }
    @Test
    public void login(){
-       User user= userService.login("qaz","123");
+       User user= userService.login("yuiio","123");
        String a = user.getUsername();
        System.out.println(a);
 

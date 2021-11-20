@@ -36,7 +36,7 @@
                                 is_delete,
                                 created_user,
                                 created_time,
-                                modified_user,modified_time
+                                modified_user,modified_time,signstatus
         )VALUES(
 --                  来自于前端user对象的值（这些字段在是数据库） 前端id， 下面的语法代表从前端选取的字段
             #{uid},
@@ -51,7 +51,8 @@
             #{createdUser},
             #{createdTime},
             #{modifiedUser},
-            #{modifiedTime})
+            #{modifiedTime},
+            #{signstatus})
     </insert>
 <!--    查询   select 语句在执行的时候，查询的结果是一个对象，或多个对象-->
 <!--    UserEntityMap 和上面映射id一样-->
@@ -63,7 +64,7 @@
     <update id="updatePasswordByUid">
         UPDATE  t_user SET password = #{password},
                            modified_user = #{modifiedUser},
-                           modified_time = #{modifiedTime}
+                           modified_time = #{modifiedTime},
                            where uid = #{uid}
 
     </update>
@@ -91,7 +92,10 @@
                            modified_user = #{modifiedUser},
                            modified_time = #{modifiedTime}
         where uid = #{uid}
-
     </update>
 
+
+     <update id="updatesignOutByuid">
+         update   t_user SET signstatus = "Sign Out" where  username = #{username}
+     </update>
 </mapper>

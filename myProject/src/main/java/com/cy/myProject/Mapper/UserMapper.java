@@ -54,5 +54,7 @@ public interface UserMapper {
                               @Param("avatar")String avatar,
                               @Param("modifiedUser")String modifiedUser,
                               @Param("modifiedTime") Date modifiedTime);
+
+    void updatesignOutByuid(String username);
 }
 

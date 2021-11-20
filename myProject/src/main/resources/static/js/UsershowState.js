@@ -1,5 +1,4 @@
-
-    $(document).ready(function(){
+$(document).ready(function(){
     $.ajax({
         url:"/users/get_by_uid",
         type:"GET",
@@ -7,20 +6,27 @@
         dataType:"JSON",
         success : function(json){
             if(json.state==200){
+                console.log(json.data);
                 $("#userShow").val(json.data.username);
+                $("#userOutgg").val(json.data.signstatus);
             }else { alert("data does not exist");}
-        },
-        error:function (xhr){
-            alert("oops! An unknown error"+" "+xhr.message)
         }
     });
 });
 
 
-    $("#userOut").click(function () {
-        let result =confirm("Do you want to sign out ?");
-        if (result){
-            location.href="/users/session_clear";
-        }
+$("#userOut").click(function () {
+    let result =confirm("Do you want to sign out ?");
+    if (result){
+        location.href="/users/session_clear";
+    }
 
-    });
+});
+
+    // $("#userOut").click(function () {
+    //     let result =confirm("Do you want to sign out ?");
+    //     if (result){
+    //         location.href="/users/session_clear";
+    //     }
+    //
+    // });

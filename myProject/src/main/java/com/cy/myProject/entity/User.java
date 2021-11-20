@@ -14,6 +14,7 @@ public class User extends BaseEntity implements Serializable {
     private Integer gender ;
     private String avatar ;
     private Integer isDelete ;
+    private String signstatus;
 
     public Integer getUid() {
         return uid;
@@ -95,18 +96,26 @@ public class User extends BaseEntity implements Serializable {
         this.isDelete = isDelete;
     }
 
+    public String getSignstatus() {
+        return signstatus;
+    }
+
+    public void setSignstatus(String signstatus) {
+        this.signstatus = signstatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         if (!super.equals(o)) return false;
         User user = (User) o;
-        return Objects.equals(getUid(), user.getUid()) && Objects.equals(getReference(), user.getReference()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getSalt(), user.getSalt()) && Objects.equals(getPhone(), user.getPhone()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getGender(), user.getGender()) && Objects.equals(getAvatar(), user.getAvatar()) && Objects.equals(getIsDelete(), user.getIsDelete());
+        return Objects.equals(getUid(), user.getUid()) && Objects.equals(getReference(), user.getReference()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getSalt(), user.getSalt()) && Objects.equals(getPhone(), user.getPhone()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getGender(), user.getGender()) && Objects.equals(getAvatar(), user.getAvatar()) && Objects.equals(getIsDelete(), user.getIsDelete()) && Objects.equals(getSignstatus(), user.getSignstatus());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getUid(), getReference(), getUsername(), getPassword(), getSalt(), getPhone(), getEmail(), getGender(), getAvatar(), getIsDelete());
+        return Objects.hash(super.hashCode(), getUid(), getReference(), getUsername(), getPassword(), getSalt(), getPhone(), getEmail(), getGender(), getAvatar(), getIsDelete(), getSignstatus());
     }
 
     @Override
@@ -121,7 +130,8 @@ public class User extends BaseEntity implements Serializable {
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
                 ", avatar='" + avatar + '\'' +
-                ", is_delete=" + isDelete +
+                ", isDelete=" + isDelete +
+                ", signstatus='" + signstatus + '\'' +
                 '}';
     }
 }

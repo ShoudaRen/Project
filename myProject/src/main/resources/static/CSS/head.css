@@ -61,16 +61,8 @@ a:hover {
     /* border-bottom: 3px rgba(0, 0, 0, 0.1) solid; */
 }
 
-.SpecialOffer {
-    height: 100%;
-    width: 108px;
-    position: relative;
-}
 
-.SpecialOffer:hover {
-    background-color: rgba(0, 0, 0, 0.1);
 
-}
 
 .secondBox {
     height: 50px;

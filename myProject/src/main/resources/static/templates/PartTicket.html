@@ -59,25 +59,25 @@
 
 <div class="top">
     <div class="mid w">
-        <div class="logo"><a href="./index.html"><img src="../static/logo.png" alt="logo"></a></div>
+        <div class="logo"><a href="index.html"><img src="../static/logo.png" alt="logo"></a></div>
         <div class="user">
             <div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
-            <div class="service"> <i class="fa fa-user"> </i><a href="../templates/LogIn.html"></i> LOG IN</a> </div>
-            <div>/</div>
-            <div class="service"> <a href="../templates/register.html"> SIGN UP</a></div>
+            <div></div>
+            <form id="LogSignup">
+                <div class="service"> <i class="fa fa-user"> </i>
+                    <a onclick="checkname()"> <input id="userShow" type="button" name="userShow" value="Log In" readonly="readonly"></a> </div>
+                <div>|</div>
+                <div class="service"><a onclick="checksignout()"><input id="userOutgg" type="button" name="userOut" value="SIGN UP" readonly="readonly"></a> </div>
+            </form>
         </div>
     </div>
 </div>
 <div class="secondmid w">
     <div><a href="javascript:;">Help and Contacts</a></div>
-    <div class="SpecialOffer"><a id="qw" href="javascript:;">Special Offers</a>
-        <div id="demo" class="secondBox">
-            <div class="Voucher"><a href="javascript:;">Voucher</a> </div>
-            <div class="speicals"><a href="javascript:;">Flight speicals</a></div>
-        </div>
+    <div class="SpecialOffer"><a id="qw" href="SpecialOffers.html">Special Offers</a>
     </div>
-    <div id="changeManage"><a href="javascript:;">Manage</a></div>
-    <div><a href="javascript:;">About Us</a></div>
+    <div><a href="userdata.html">Manage</a></div>
+    <div><a href="allticket.html">All flights</a></div>
 </div>
 
 <!--头部结束-->
@@ -194,7 +194,7 @@
         });
     }
 </script>
-
+<script src="../js/test.js"></script>
 </body>
 
 </html>
