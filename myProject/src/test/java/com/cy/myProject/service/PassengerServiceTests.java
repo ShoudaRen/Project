@@ -26,6 +26,17 @@ public class PassengerServiceTests {
         passenger1.setLastname("alice");passenger1.setPassport("FG123");
         iPassengerService.insertPassenger(passenger1,6,"test");
     }
+
+    @Test
+    public void testPassengerDefault(){
+        iPassengerService.setDefaultPassenger(10, 4, "cc");
+
+    }
+
+    @Test
+    public void testdelete(){
+        iPassengerService.delete(9, 4, "shouda");
+    }
    }
 
 

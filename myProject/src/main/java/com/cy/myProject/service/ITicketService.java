@@ -1,20 +1,18 @@
 package com.cy.myProject.service;
 
 
-import com.cy.myProject.entity.TicketSearch;
+import com.cy.myProject.entity.Flight;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface ITicketService {
 
-    List<TicketSearch> getAllticket();
+    List<Flight> getAllticket();
 
 
-    List<TicketSearch> getPartticket(String flightDay,
-                                     String fromLocation, String toLocation,
-                                     Integer AdultNum,
-                                     Integer childrenNum, Integer infantsNum,
-                                     Integer disableNum, String classType);
+    List<Flight> getPartticket(Date flightDay, String fromLocation, String toLocation );
 
+    Flight getTicketByFlightId(Integer FlightId);
 }
 

@@ -6,7 +6,7 @@
 <mapper namespace="com.cy.myProject.Mapper.TickMapper">
 
 
-    <resultMap id="TicketEntityMap" type="com.cy.myProject.entity.TicketSearch">
+    <resultMap id="TicketEntityMap" type="com.cy.myProject.entity.Flight">
 
         <id column="flightId" property="flightId"></id>
         <result column="created_user" property="createdUser"></result>
@@ -29,15 +29,15 @@
         select * from t_flight where flightDay=#{flightDay}
                                         and fromLocation=#{fromLocation}
                                         and toLocation=#{toLocation}
-                                        and AdultNum =#{AdultNum}
-                                        and childrenNum= #{childrenNum}
-                                        and infantsNum= #{infantsNum}
-                                        and disableNum = #{disableNum}
-                                        and classType = #{classType}
     </select>
 
     <select id="findAllTicket"  resultMap="TicketEntityMap"  >
         SELECT * FROM t_flight
+    </select>
+
+
+    <select id="bookAFlightbyflightId" resultMap="TicketEntityMap">
+        SELECT * FROM t_flight where flightId=#{flightId}
     </select>
 
 

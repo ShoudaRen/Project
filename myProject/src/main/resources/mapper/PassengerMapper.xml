@@ -56,8 +56,31 @@
 
     <select id="findpassengerByUid" resultMap="passengerMap" >
         select * from t_passenger where uid=#{uid}
-       order by  is_default DESC,  created_time DESC
+       order by is_default DESC,  created_time DESC
     </select>
 
-    
+    <update id="updateNonDefault">
+        update t_passenger set is_default=0 where uid=#{uid}
+    </update>
+
+    <update id="updateDefaultPassengerByPid">
+        update t_passenger
+        set is_default=1, modified_user=#{modifiedUser},modified_time=#{modifiedTime}
+        where  passengerId =#{passengerId}
+    </update>
+
+<!--    查询-->
+    <select id="findPassengerExistByPid"  resultMap="passengerMap">
+        select * from t_passenger where passengerId =#{passengerId}
+    </select>
+
+    <delete id="deleteByPid">
+        delete from t_passenger where passengerId =#{passengerId}
+    </delete>
+
+    <select id="findlastModified"  resultMap="passengerMap">
+        select * from t_passenger
+where uid=#{uid}
+order by  modified_time DESC limit 0,1
+    </select>
 </mapper>

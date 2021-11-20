@@ -1,22 +1,21 @@
 package com.cy.myProject.Mapper;
 
 
-import com.cy.myProject.entity.TicketSearch;
+import com.cy.myProject.entity.Flight;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface TickMapper {
 
-       List<TicketSearch> findTick (String flightDay,
-                                String fromLocation, String toLocation,
-                                Integer AdultNum,
-                                Integer childrenNum, Integer infantsNum,
-                                Integer disableNum, String classType);
+       List<Flight> findTick (String fromLocation, String toLocation, Date flightDay);
 
 //       void updateFlightNum(Integer flightId, Integer AdultNum,
 //                                  Integer childrenNum,
 //                                  Integer infantsNum,
 //                                  Integer disableNum);
 
-       List<TicketSearch> findAllTicket ();
+       List<Flight> findAllTicket ();
+
+       Flight bookAFlightbyflightId(Integer flightId);
 }

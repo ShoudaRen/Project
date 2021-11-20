@@ -12,4 +12,14 @@ public interface IPassengerService {
       //根据ID来获得全部passenger
       List<Passenger> getAllPassengerbyUid(Integer uid);
 
+      /**
+       *
+       * @param passengerId which one need revise
+       * @param uid  all default
+       * @param username  modified person
+       */
+  void setDefaultPassenger(Integer passengerId, Integer uid, String username);
+
+  void delete(Integer passengerId,Integer uid, String username);
 }
+

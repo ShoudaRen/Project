@@ -1,0 +1,91 @@
+.top {
+    height: 70px;
+    border-bottom: 3px rgba(0, 0, 0, 0.1) solid;
+}
+
+.logo {
+    margin: 10px 0;
+}
+
+.logo,
+.user div {
+    float: left;
+}
+
+.user {
+    margin-top: 20px;
+    font-size: larger;
+    float: right;
+
+}
+
+.user div {
+    margin-left: 5px;
+}
+
+#tel {
+    margin-right: 15px;
+}
+
+a:hover {
+    color: brown;
+}
+
+
+
+.top i {
+    color: #0c52a4;
+}
+
+/* second menu */
+
+
+
+.secondmid {
+    height: 40px;
+    line-height: 40px;
+
+}
+
+.secondmid div {
+    margin-right: 10px;
+    font-size: larger;
+    float: right;
+    /* border-bottom: 3px rgba(0, 0, 0, 0.1) solid; */
+}
+
+.SpecialOffer {
+    height: 100%;
+    width: 108px;
+    position: relative;
+}
+
+.SpecialOffer:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.secondBox {
+    height: 50px;
+    width: 200px;
+    background-color: #e5e5e5;
+    box-shadow: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: -40px;
+    border-radius: 4px;
+    display: none;
+    z-index: 999;
+}
+
+.secondBox div {
+    float: left;
+    margin: 0 5px;
+}
+
+.secondBox a {
+    font-size: 20px;
+}
+
+.SpecialOffer:hover .secondBox {
+    display: block;
+}

@@ -1,18 +1,13 @@
 package com.cy.myProject.service.impl;
 
 import com.cy.myProject.Mapper.TickMapper;
-import com.cy.myProject.Mapper.passengerMapper;
-import com.cy.myProject.entity.Passenger;
-import com.cy.myProject.entity.TicketSearch;
-import com.cy.myProject.service.IPassengerService;
+import com.cy.myProject.entity.Flight;
 import com.cy.myProject.service.ITicketService;
-import com.cy.myProject.service.ex.InsertCountLimitedException;
-import com.cy.myProject.service.ex.updateException;
+import com.cy.myProject.service.ex.ticketNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -22,14 +17,27 @@ public class TicketServiceImpl implements ITicketService {
 
 
     @Override
-    public List<TicketSearch> getAllticket() {
-        List<TicketSearch> ticket= tickMapper.findAllTicket();
+    public List<Flight> getAllticket() {
+        List<Flight> ticket= tickMapper.findAllTicket();
+        Flight a = new Flight();
         return ticket;
     }
 
     @Override
-    public List<TicketSearch> getPartticket(String flightDay, String fromLocation, String toLocation, Integer AdultNum, Integer childrenNum, Integer infantsNum, Integer disableNum, String classType) {
-        List<TicketSearch> ticket=   tickMapper.findTick( flightDay,fromLocation,toLocation, AdultNum,childrenNum,infantsNum,disableNum,classType);
+    public List<Flight> getPartticket(Date flightDay, String fromLocation, String toLocation) {
+        List<Flight> ticket=tickMapper.findTick(fromLocation,toLocation,flightDay);
         return ticket;
     }
+
+    @Override
+    public Flight getTicketByFlightId(Integer FlightId) {
+        Flight flight = tickMapper.bookAFlightbyflightId(FlightId);
+        if (flight==null ){
+            throw new ticketNotFoundException("the ticket does not exist");
+        }
+
+        return flight;
+    }
+
+
 }

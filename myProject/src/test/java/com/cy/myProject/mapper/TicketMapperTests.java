@@ -3,15 +3,16 @@ package com.cy.myProject.mapper;
 
 
 import com.cy.myProject.Mapper.TickMapper;
-import com.cy.myProject.Mapper.passengerMapper;
-import com.cy.myProject.entity.Passenger;
-import com.cy.myProject.entity.TicketSearch;
+import com.cy.myProject.entity.Flight;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,16 +25,29 @@ public class TicketMapperTests {
     private TickMapper tickMapper;
 
     @Test
-    public void findpartticket(){
+    public void findpartticket() throws ParseException {
 
-      List<TicketSearch> a =  tickMapper.findTick("11/22/12","LONDON","PARIS",10,10,10,10,"economy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date javaDate = sdf.parse("2021-11-06");
+
+        java.sql.Date date = new java.sql.Date(javaDate.getTime());
+
+      List<Flight> a =  tickMapper.findTick("Beijing","Shanghai",date);
         System.out.println(a);
 
     }
 
     @Test
     public void findAllticket(){
-        List<TicketSearch> b=  tickMapper.findAllTicket();
+        List<Flight> b=  tickMapper.findAllTicket();
         System.out.println(b);
+    }
+
+
+    @Test
+    public void findTicketbYfLID(){
+        Flight flight =  tickMapper.bookAFlightbyflightId(3);
+        System.out.println(flight);
     }
 }

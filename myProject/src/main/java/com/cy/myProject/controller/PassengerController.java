@@ -6,6 +6,7 @@ import com.cy.myProject.service.IPassengerService;
 
 import com.cy.myProject.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +34,23 @@ public class PassengerController extends BaseController{
         System.out.println(data.toString());
         return new JsonResult<>(ok,data);
     }
-}
+
+    //RestFul风格的请求
+    @RequestMapping("{passengerId}/set_default")
+    public  JsonResult<Void> setDefault(@PathVariable("passengerId") Integer passengerId,
+                                        HttpSession session){
+        iPassengerService.setDefaultPassenger(passengerId,getUidFromSession(session),getUsernameFromSession(session));
+
+        return  new JsonResult<>(ok);
+    }
+
+
+    //RestFul风格的请求
+    @RequestMapping("{passengerId}/delete")
+    public  JsonResult<Void> delete(@PathVariable("passengerId") Integer passengerId,
+                                        HttpSession session){
+       iPassengerService.delete(passengerId,getUidFromSession(session),getUsernameFromSession(session));
+
+        return  new JsonResult<>(ok);
+    }
+    }

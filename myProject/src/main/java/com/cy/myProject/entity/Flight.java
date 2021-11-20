@@ -1,12 +1,13 @@
 package com.cy.myProject.entity;
 
+import java.sql.Date;
 import java.util.Objects;
 
-public class TicketSearch extends BaseEntity{
+public class Flight extends BaseEntity{
     private Integer flightId;
     private String  company;
     private String  flightName;
-    private String  flightDay;
+    private java.sql.Date flightDay;
     private String  takeOffTime;
     private String  fallingOffTime;
     private Integer duration;
@@ -24,7 +25,7 @@ public class TicketSearch extends BaseEntity{
     private Integer ChildPrice;
     private Integer infantPrice;
     private Integer disablePrice;
-    private Integer entertainment;
+    private String entertainment;
     private  Integer isDelete;
 
     public Integer getFlightId() {
@@ -51,11 +52,11 @@ public class TicketSearch extends BaseEntity{
         this.flightName = flightName;
     }
 
-    public String getFlightDay() {
+    public Date getFlightDay() {
         return flightDay;
     }
 
-    public void setFlightDay(String flightDay) {
+    public void setFlightDay(Date flightDay) {
         this.flightDay = flightDay;
     }
 
@@ -195,11 +196,11 @@ public class TicketSearch extends BaseEntity{
         this.disablePrice = disablePrice;
     }
 
-    public Integer getEntertainment() {
+    public String getEntertainment() {
         return entertainment;
     }
 
-    public void setEntertainment(Integer entertainment) {
+    public void setEntertainment(String entertainment) {
         this.entertainment = entertainment;
     }
 
@@ -211,18 +212,18 @@ public class TicketSearch extends BaseEntity{
         this.isDelete = isDelete;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof TicketSearch)) return false;
-        TicketSearch that = (TicketSearch) o;
+        if (!(o instanceof Flight)) return false;
+        if (!super.equals(o)) return false;
+        Flight that = (Flight) o;
         return Objects.equals(getFlightId(), that.getFlightId()) && Objects.equals(getCompany(), that.getCompany()) && Objects.equals(getFlightName(), that.getFlightName()) && Objects.equals(getFlightDay(), that.getFlightDay()) && Objects.equals(getTakeOffTime(), that.getTakeOffTime()) && Objects.equals(getFallingOffTime(), that.getFallingOffTime()) && Objects.equals(getDuration(), that.getDuration()) && Objects.equals(getFromLocation(), that.getFromLocation()) && Objects.equals(getToLocation(), that.getToLocation()) && Objects.equals(getStayCity(), that.getStayCity()) && Objects.equals(getClassType(), that.getClassType()) && Objects.equals(getAdultNum(), that.getAdultNum()) && Objects.equals(getChildrenNum(), that.getChildrenNum()) && Objects.equals(getInfantsNum(), that.getInfantsNum()) && Objects.equals(getDisableNum(), that.getDisableNum()) && Objects.equals(getEcoPrice(), that.getEcoPrice()) && Objects.equals(getBusinessPrice(), that.getBusinessPrice()) && Objects.equals(getFirstPrice(), that.getFirstPrice()) && Objects.equals(getChildPrice(), that.getChildPrice()) && Objects.equals(getInfantPrice(), that.getInfantPrice()) && Objects.equals(getDisablePrice(), that.getDisablePrice()) && Objects.equals(getEntertainment(), that.getEntertainment()) && Objects.equals(getIsDelete(), that.getIsDelete());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFlightId(), getCompany(), getFlightName(), getFlightDay(), getTakeOffTime(), getFallingOffTime(), getDuration(), getFromLocation(), getToLocation(), getStayCity(), getClassType(), getAdultNum(), getChildrenNum(), getInfantsNum(), getDisableNum(), getEcoPrice(), getBusinessPrice(), getFirstPrice(), getChildPrice(), getInfantPrice(), getDisablePrice(), getEntertainment(), getIsDelete());
+        return Objects.hash(super.hashCode(), getFlightId(), getCompany(), getFlightName(), getFlightDay(), getTakeOffTime(), getFallingOffTime(), getDuration(), getFromLocation(), getToLocation(), getStayCity(), getClassType(), getAdultNum(), getChildrenNum(), getInfantsNum(), getDisableNum(), getEcoPrice(), getBusinessPrice(), getFirstPrice(), getChildPrice(), getInfantPrice(), getDisablePrice(), getEntertainment(), getIsDelete());
     }
 
     @Override
@@ -231,7 +232,7 @@ public class TicketSearch extends BaseEntity{
                 "flightId=" + flightId +
                 ", company='" + company + '\'' +
                 ", flightName='" + flightName + '\'' +
-                ", flightDay='" + flightDay + '\'' +
+                ", flightDay=" + flightDay +
                 ", takeOffTime='" + takeOffTime + '\'' +
                 ", fallingOffTime='" + fallingOffTime + '\'' +
                 ", duration=" + duration +
@@ -249,7 +250,7 @@ public class TicketSearch extends BaseEntity{
                 ", ChildPrice=" + ChildPrice +
                 ", infantPrice=" + infantPrice +
                 ", disablePrice=" + disablePrice +
-                ", entertainment=" + entertainment +
+                ", entertainment='" + entertainment + '\'' +
                 ", isDelete=" + isDelete +
                 '}';
     }

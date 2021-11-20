@@ -3,8 +3,7 @@ package com.cy.myProject.service.impl;
 import com.cy.myProject.Mapper.passengerMapper;
 import com.cy.myProject.entity.Passenger;
 import com.cy.myProject.service.IPassengerService;
-import com.cy.myProject.service.ex.InsertCountLimitedException;
-import com.cy.myProject.service.ex.updateException;
+import com.cy.myProject.service.ex.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -45,5 +44,56 @@ public class PassengerServiceImpl implements IPassengerService {
     public List<Passenger> getAllPassengerbyUid(Integer uid) {
       List<Passenger>  passengers= passengerMapper.findpassengerByUid(uid);
         return  passengers;
+    }
+
+
+    @Override
+    public void setDefaultPassenger(Integer passengerId, Integer uid, String username) {
+        Passenger passenger=passengerMapper.findPassengerExistByPid(passengerId);
+     if (passenger==null){
+         throw  new PassengerNotFoundException("no passenger exist");
+     }
+     if (passenger.getUid()!=uid){
+         throw  new AccessDeniedException("illegal access");
+     }
+     Integer rows = passengerMapper.updateNonDefault(uid);
+     if (rows<1){
+         throw  new updateException("update wrong");
+     }
+       rows =passengerMapper.updateDefaultPassengerByPid(passengerId,username,new Date());
+        if (rows!=1){
+            throw  new updateException("update wrong");
+        }
+    }
+
+    @Override
+    public void delete(Integer passengerId, Integer uid, String username) {
+       Passenger passenger= passengerMapper.findPassengerExistByPid(passengerId);
+        if (passenger==null){
+            throw  new PassengerNotFoundException("no passenger exist");
+        }
+        if (passenger.getUid()!=uid){
+            throw  new AccessDeniedException("illegal access");
+        }
+
+       Integer rows= passengerMapper.deleteByPid(passengerId);
+        if (rows!=1){
+            throw  new DeleteException("Delete exception");
+        }
+
+
+        Integer count =passengerMapper.countByUid(uid);
+        if (count==0){
+            return;
+        }
+        if (passenger.getIsDefault()==0){
+            return;
+
+        }
+        Passenger deflautPassenger= passengerMapper.findlastModified(uid);
+        rows= passengerMapper.updateDefaultPassengerByPid(deflautPassenger.getPassengerId(),username,new Date());
+        if (rows!=1){
+            throw new updateException("update exception");
+        }
     }
 }

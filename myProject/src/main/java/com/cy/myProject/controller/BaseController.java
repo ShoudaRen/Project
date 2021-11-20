@@ -33,9 +33,21 @@ public class BaseController {
             result.setState(4003);
             result.setMessage("passengers out of limitation");
         }
+        else if(e instanceof PassengerNotFoundException) {
+            result.setState(4004);
+            result.setMessage("passengers does not find");
+        }
+        else if(e instanceof AccessDeniedException) {
+            result.setState(4006);
+            result.setMessage("illegal Access");
+        }
         else if(e instanceof InsertException) {
             result.setState(5000);
-            result.setMessage("oops! An unknown error");
+            result.setMessage("oops! insert exception");
+        }
+        else if(e instanceof DeleteException) {
+            result.setState(5002);
+            result.setMessage("oops!delete exception");
         }
         else if(e instanceof updateException) {
             result.setState(5004);

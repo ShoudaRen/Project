@@ -116,33 +116,6 @@
 								</tr>
 							</thead>
 							<tbody id="passenger-list">
-								<tr>
-									<td>shouda</td>
-									<td>ren</td>
-									<td>Ev345</td>
-									<td>11/23/2021</td>
-									<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>
-									<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>
-									<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>
-								</tr>
-								<tr>
-									<td>shouda</td>
-									<td>ren</td>
-									<td>Ev345</td>
-									<td>11/23/2021</td>
-									<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>
-									<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>
-									<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>
-								</tr>
-								<tr>
-									<td>shouda</td>
-									<td>ren</td>
-									<td>Ev345</td>
-									<td>11/23/2021</td>
-									<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>
-									<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>
-									<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>
-								</tr>
 							</tbody>
 						</table>
 						<a id="addP" href="addPassenager.html" class="btn btn-sm btn-primary"><span class="fa fa-plus"></span>Add New Passengers</a>
@@ -197,13 +170,15 @@
 									"\t\t\t\t\t\t\t\t\t<td>Ev345</td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td>11/23/2021</td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs add-def btn-default'>Set Default</a></td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td><a onclick='deletePassenger(#{passengerId}) ' class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td><a onclick='setDefault(#{passengerId})' class='btn btn-xs add-def btn-default'>Set Default</a></td>\n" +
 									"\t\t\t\t\t\t\t\t</tr>";
 							tr = tr.replace(/shouda/g,list[i].firstname);
 							tr = tr.replace(/ren/g,list[i].lastname);
 							tr = tr.replace("Ev345",list[i].passport);
 							tr = tr.replace("11/23/2021",list[i].passportExpire);
+							//把pid存进tr里
+							tr = tr.replace("#{passengerId}",list[i].passengerId);
 							$("#passenger-list").append(tr);
 						}
 						// the first one is default
@@ -213,7 +188,56 @@
 
 			});
 		}
+
+       //set default
+	  function setDefault(passengerId){
+		  $.ajax({
+			  // url前面可以省略端口号
+			  url:"/passengers/"+passengerId+"/set_default" ,
+			  type:"POST",
+			  //数据通过restful风格提交 因此不需要数据
+			  dataType:"JSON",
+			  success : function(json){
+				  if(json.state==200){
+					  alert("Set Succeed!");
+					  //refresh page
+					  location.href="passenager.html";
+				  }else { alert("Set Failed");}
+			  },
+			  error:function (xhr){
+				  //弹出窗口
+				  alert("oops! An unknown error"+" "+xhr.message)
+			  }
+		  });
+	  }
+	  //delete
+		function deletePassenger(passengerId){
+			$.ajax({
+				// url前面可以省略端口号
+				url:"/passengers/"+passengerId+"/delete" ,
+				type:"POST",
+				//数据通过restful风格提交 因此不需要数据
+				dataType:"JSON",
+				success : function(json){
+					if(json.state==200){
+						alert("Delete Succeed!");
+						//refresh page
+						location.href="passenager.html";
+					}else { alert("Delete Failed");}
+				},
+				error:function (xhr){
+					//弹出窗口
+					alert("oops! An unknown error"+" "+xhr.message)
+				}
+			});
+		}
 	</script>
+
+
+
+
+
+
 	</body>
 
 </html>

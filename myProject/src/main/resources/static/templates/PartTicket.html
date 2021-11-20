@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit" />
+    <title>Search Ticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script src="../bootstrap3/js/holder.js"></script>
+    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="../fontAwesome/css/all.css">
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/standardhead.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+
+
+    <style>
+        .orders-table{
+            width: 1000px;
+        }
+
+        .panel, .panel-default{
+            margin-top: 70px;
+            width: 1200px;
+        }
+
+
+        .orders-table{
+            width: 1300px;
+        }
+
+        .superBottom{
+            position: absolute;
+            top: 100%;
+        }
+        .confirm_but a{
+            display: block;
+            width: 50px;
+            height: 25px;
+            color:white;
+            background-color: brown;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 12%;
+        }
+
+    </style>
+</head>
+
+
+
+
+<body>
+
+<div class="top">
+    <div class="mid w">
+        <div class="logo"><a href="./index.html"><img src="../static/logo.png" alt="logo"></a></div>
+        <div class="user">
+            <div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
+            <div class="service"> <i class="fa fa-user"> </i><a href="../templates/LogIn.html"></i> LOG IN</a> </div>
+            <div>/</div>
+            <div class="service"> <a href="../templates/register.html"> SIGN UP</a></div>
+        </div>
+    </div>
+</div>
+<div class="secondmid w">
+    <div><a href="javascript:;">Help and Contacts</a></div>
+    <div class="SpecialOffer"><a id="qw" href="javascript:;">Special Offers</a>
+        <div id="demo" class="secondBox">
+            <div class="Voucher"><a href="javascript:;">Voucher</a> </div>
+            <div class="speicals"><a href="javascript:;">Flight speicals</a></div>
+        </div>
+    </div>
+    <div id="changeManage"><a href="javascript:;">Manage</a></div>
+    <div><a href="javascript:;">About Us</a></div>
+</div>
+
+<!--头部结束-->
+<!--导航结束-->
+<div class="w">
+    <!--左侧导航结束-->
+    <div class="col-md-10 ">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="orders-table" width="100%">
+                    <thead>
+                    <tr>
+                        <th width="3%">Airline</th>
+                        <th width="3%">Flight Number</th>
+                        <th width="1.5%">Day</th>
+                        <th width="3%">Departure Time</th>
+                        <th width="3%">Arrival Time</th>
+                        <th width="2%">Economy</th>
+                        <th width="2%">Business</th>
+                        <th width="2%">First</th>
+                        <th width="6%"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="flight-body">
+<!--                    <tr>-->
+<!--                        <td>British Airway</td>-->
+<!--                        <td>GP2312</td>-->
+<!--                        <td>10/12/2021</td>-->
+<!--                        <td>9:11Am</td>-->
+<!--                        <td>10.4PM</td>-->
+<!--                        <td>£<span>000</span></td>-->
+<!--                        <td>£<span>000</span></td>-->
+<!--                        <td>£<span>000</span></td>-->
+<!--                        <td>-->
+<!--                            <div><div class='confirm_but'><a href='orderInfo.html'> Book</a></div>-->
+<!--                                <a href='#'>Details</a></div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+
+                    </tbody>
+                </table>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--页脚开始-->
+<div class="superBottom">
+    <div class="bottomMiddle w">
+        <div class="bottomF">
+            <div><a href="javascript:;">Help and contacts</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">About Us</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Manage</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Special Offers</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Privacy policy</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Website security</a></div>
+        </div>
+        <div class="copyright">© Super Airways - all rights reserved</div>
+        <div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
+
+    </div>
+
+
+</div>
+<!--footer end-->
+<script type="text/javascript" >
+    $(document).ready(function () {
+        showTicketList();
+    });
+    function showTicketList(){
+        $.ajax({
+            url:"/tickets/search_ticketPage",
+            type:"POST",
+            dataType:"JSON",
+            success : function(json){
+                if(json.state==200){
+                    let list = json.data;
+                    for (let i = 0; i < list.length; i++) {
+                        let tr = " <tr>\n" +
+                            "                        <td>BritishAirway</td>\n" +
+                            "                        <td>GP2312</td>\n" +
+                            "                        <td>day</td>\n" +
+                            "                        <td>time1</td>\n" +
+                            "                        <td>time2</td>\n" +
+                            "                        <td>£<span>000</span></td>\n" +
+                            "                        <td>£<span>000</span></td>\n" +
+                            "                        <td>£<span>000</span></td>\n" +
+                            "                        <td>\n" +
+                            "                            <div><div class='confirm_but'><a href='orderInfo.html'> Book</a></div>\n" +
+                            "                                <a href='#'>Details</a></div>\n" +
+                            "                        </td>\n" +
+                            "                    </tr>";
+
+                        tr = tr.replace(/BritishAirway/g,list[i].company);
+                        tr = tr.replace(/GP2312/g,list[i].flightName);
+                        tr = tr.replace(/day/g,list[i].flightDay);
+                        tr = tr.replace(/time1/g,list[i].takeOffTime);
+                        tr = tr.replace(/time2/g,list[i].fallingOffTime);
+                        tr = tr.replace(/eco/g,list[i].ecoPrice);
+                        tr = tr.replace(/busin/g,list[i].businessPrice);
+                        tr = tr.replace(/first/g,list[i].firstPrice);
+
+                        $("#flight-body").append(tr);
+                    }
+                }else { alert("Load failed");}
+            }
+
+        });
+    }
+</script>
+
+</body>
+
+</html>
