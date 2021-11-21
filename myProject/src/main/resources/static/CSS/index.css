@@ -1,97 +1,4 @@
 
-.top {
-    height: 70px;
-    border-bottom: 3px rgba(0, 0, 0, 0.1) solid;
-}
-
-.logo {
-    margin: 10px 0;
-}
-
-.logo,
-.user div {
-    float: left;
-}
-
-.user {
-    margin-top: 20px;
-    font-size: larger;
-    float: right;
-
-}
-
-.user div {
-    margin-left: 5px;
-}
-
-#tel {
-    margin-right: 15px;
-}
-
-a:hover {
-    color: brown;
-}
-
-
-
-.top i {
-    color: #0c52a4;
-}
-
-/* second menu */
-
-
-
-.secondmid {
-    height: 40px;
-    line-height: 40px;
-
-}
-
-.secondmid div {
-    margin-right: 10px;
-    font-size: larger;
-    float: right;
-    /* border-bottom: 3px rgba(0, 0, 0, 0.1) solid; */
-}
-
-.SpecialOffer {
-    height: 100%;
-    width: 108px;
-    position: relative;
-}
-
-.SpecialOffer:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-
-}
-
-.secondBox {
-    height: 50px;
-    width: 200px;
-    background-color: #e5e5e5;
-    box-shadow: rgba(0, 0, 0, 0.4);
-    position: absolute;
-    left: -40px;
-    border-radius: 4px;
-    display: none;
-    z-index: 999;
-}
-
-.secondBox div {
-    float: left;
-    margin: 0 5px;
-}
-
-.secondBox a {
-    font-size: 20px;
-}
-
-.SpecialOffer:hover .secondBox {
-    display: block;
-}
-
-/* main body */
 .main {
     height: 1173px;
     width: 100%;
@@ -100,19 +7,14 @@ a:hover {
     background-size: 100% auto;
     overflow: hidden;
     position: absolute;
-
-
 }
-
 .mainPart {
     height: 586.5px;
     background-color: white;
     margin-top: 140px;
     position: relative;
 }
-
 button {
-
     width: 140px;
     height: 120px;
     color: white;
@@ -125,7 +27,6 @@ button {
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
-
 }
 
 button:hover {
@@ -134,8 +35,6 @@ button:hover {
     border: #0c52a4 5px solid;
     color: black;
 }
-
-
 .left {
     padding-top: 15px;
     padding-left: 20px;
@@ -152,7 +51,6 @@ input {
 #FlightChild {
     width: 920px;
     height: 500px;
-    background-color: rgba(1, 58, 58, 0.3);
     position: absolute;
     left: 230px;
     top: 40px;
@@ -166,7 +64,6 @@ input {
 .manageChild {
     width: 920px;
     height: 500px;
-    background-color: rgba(1, 58, 58, 0.3);
     position: absolute;
     left: 230px;
     top: 40px;
@@ -175,6 +72,22 @@ input {
     display: none;
 
 }
+#FlightChild,.manageChild, .ExperiencesChild{
+    background-image: url("../static/BGex.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.serviceChild{
+    background-image: url("../static/BGService.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+
+
+
 
 
 
@@ -287,7 +200,7 @@ input {
     display: block;
     width: 120px;
     height: 140px;
-    background-color: #B73E3E;
+    /*background-color: #B73E3E;*/
     margin: 10px 10px;
     border-radius: 12px;
     text-align: center;
@@ -343,13 +256,6 @@ input {
     left: 90px;
 }
 
-#line {
-    width: 0px;
-    height: 499px;
-    border: #0c52a4 1px solid;
-    position: absolute;
-    left: 450px;
-}
 
 /* Experiences */
 
@@ -357,7 +263,6 @@ input {
     display: block;
     width: 190px;
     height: 190px;
-    background-color: #B73E3E;
     margin: 30px 30px;
     border-radius: 12px;
     text-align: center;
@@ -431,12 +336,13 @@ input {
 
 }
 
-#FindMy,
+#FindMy,#ChangePW,#AddPassenger,
 #Chenckin {
     padding-left: 5px;
     cursor: pointer;
 }
-#FindMy:hover input,
+
+#FindMy:hover input,#ChangePW:hover input,#AddPassenger:hover input,
 #Chenckin:hover input{
     cursor: pointer;
     background-color: #B73E3E;
@@ -529,4 +435,111 @@ i{
     float: left;
     margin-top: 50px;
     margin-left: -250px;
+}
+/*16/11 */
+.city-list{
+    height:60px;
+    width: 300px;
+}
+
+/*end*/
+#Meals{
+
+    background-image: url("../static/Meals.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Transitlounge{
+    background-image: url("../static/lounge.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+}
+/*#upgradeClass{*/
+/*    !*background-image: url("../static/");*!*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center;*/
+/*}*/
+#transitHotel{
+    background-image: url("../static/tansitHotel.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#PrepaidSeat{
+    background-image: url("../static/PrepaidSeat.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#AirPortPickup{
+    background-image: url("../static/pickUp.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Extraluggage{
+    background-image: url("../static/Extraluggage.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#InfantBassinet{
+    background-image: url("../static/InfantBassinet.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+}
+#WheelchairBoarding{
+    background-image: url("../static/WheelchairBoarding.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Pets{
+    background-image: url("../static/Pets.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#GroundWheelchair{
+    background-image: url("../static/GroundWheelchair.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#VisualImpairment{
+    background-image: url("../static/VisualImpairment.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#HearingImpairment{
+    background-image: url("../static/HearingImpairment.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#CabinService{
+    background-image: url("../static/CabinService.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#HealthCare{
+    background-image: url("../static/HealthCare.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Entertainment{
+    background-image: url("../static/Entertainment.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Dutyfree{
+    background-image: url("../static/Dutyfree.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#OnboardMeals{
+    background-image: url("../static/OnboardMeals.png");
+    background-repeat: no-repeat;
+    background-position: center;}
+#OnboardInternet{
+    background-image: url("../static/OnboardInternet.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }

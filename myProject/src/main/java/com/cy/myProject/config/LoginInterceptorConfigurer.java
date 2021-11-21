@@ -33,7 +33,6 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/templates/register.html");
         patterns.add("/templates/allticket.html");
         patterns.add("/templates/PartTicket.html");
-        patterns.add("/templates/userdata.html");
         //url 放行
         patterns.add("/users/reg");
         patterns.add("/users/login");

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../CSS/base.css">
     <link rel="icon" href="../static/ICON.png" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/head.css">
+    <link rel="stylesheet" href="../CSS/index.css">
     <style>
 
 
@@ -75,7 +76,6 @@
         #FlightChild {
             width: 920px;
             height: 500px;
-            background-color: rgba(1, 58, 58, 0.3);
             position: absolute;
             left: 230px;
             top: 40px;
@@ -89,7 +89,6 @@
         .manageChild {
             width: 920px;
             height: 500px;
-            background-color: rgba(1, 58, 58, 0.3);
             position: absolute;
             left: 230px;
             top: 40px;
@@ -98,6 +97,24 @@
             display: none;
 
         }
+        #FlightChild,.manageChild, .ExperiencesChild{
+            background-image: url("../static/BGex.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .serviceChild{
+            background-image: url("../static/BGService.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+
+
+
+
+
+
 
         .level1,
         .level2,
@@ -208,7 +225,7 @@
             display: block;
             width: 120px;
             height: 140px;
-            background-color: #B73E3E;
+            /*background-color: #B73E3E;*/
             margin: 10px 10px;
             border-radius: 12px;
             text-align: center;
@@ -264,13 +281,6 @@
             left: 90px;
         }
 
-        #line {
-            width: 0px;
-            height: 499px;
-            border: #0c52a4 1px solid;
-            position: absolute;
-            left: 450px;
-        }
 
         /* Experiences */
 
@@ -278,7 +288,6 @@
             display: block;
             width: 190px;
             height: 190px;
-            background-color: #B73E3E;
             margin: 30px 30px;
             border-radius: 12px;
             text-align: center;
@@ -457,7 +466,119 @@
          height:60px;
          width: 300px;
      }
+
      /*end*/
+      #Meals{
+
+          background-image: url("../static/Meals.png");
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+      #Transitlounge{
+          background-image: url("../static/lounge.png");
+          background-repeat: no-repeat;
+          background-position: center;
+
+
+      }
+     /*#upgradeClass{*/
+     /*    !*background-image: url("../static/");*!*/
+     /*    background-repeat: no-repeat;*/
+     /*    background-position: center;*/
+     /*}*/
+      #transitHotel{
+          background-image: url("../static/tansitHotel.png");
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+      #PrepaidSeat{
+          background-image: url("../static/PrepaidSeat.png");
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+        #AirPortPickup{
+            background-image: url("../static/pickUp.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #Extraluggage{
+            background-image: url("../static/Extraluggage.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #InfantBassinet{
+            background-image: url("../static/InfantBassinet.png");
+            background-repeat: no-repeat;
+            background-position: center;
+
+
+        }
+        #WheelchairBoarding{
+            background-image: url("../static/WheelchairBoarding.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #Pets{
+            background-image: url("../static/Pets.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #GroundWheelchair{
+            background-image: url("../static/GroundWheelchair.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #VisualImpairment{
+            background-image: url("../static/VisualImpairment.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #HearingImpairment{
+            background-image: url("../static/HearingImpairment.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #CabinService{
+            background-image: url("../static/CabinService.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #HealthCare{
+            background-image: url("../static/HealthCare.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #Entertainment{
+            background-image: url("../static/Entertainment.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #Dutyfree{
+            background-image: url("../static/Dutyfree.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #OnboardMeals{
+            background-image: url("../static/OnboardMeals.png");
+            background-repeat: no-repeat;
+            background-position: center;}
+        #OnboardInternet{
+            background-image: url("../static/OnboardInternet.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -545,23 +666,22 @@
                 <div><button id="service">Services</button>
                     <div class="serviceChild">
                         <div class="SchildLeft">
-                            <div class="servicebox"><a href="">Meals</a></div>
-                            <div class="servicebox"><a href="">Transit Lounge</a></div>
-                            <div class="servicebox"><a href="">Upgrade Class</a></div>
-                            <div class="servicebox"><a href="">Transit Hotel</a></div>
-                            <div class="servicebox"><a href="">Prepaid Seat</a></div>
-                            <div class="servicebox"><a href="">Chauffeured Transfer</a></div>
+                            <div id="Meals" class="servicebox"><a href="">Meals</a></div>
+                            <div id="Transitlounge" class="servicebox"><a href="">Transit Lounge</a></div>
+                            <div id="Extraluggage" class="servicebox"><a href="">Extra luggage</a></div>
+                            <div id="transitHotel" class="servicebox"><a href="">Transit Hotel</a></div>
+                            <div id="PrepaidSeat" class="servicebox"><a href="">Prepaid Seat</a></div>
+                            <div id="AirPortPickup" class="servicebox"><a href="">Airport Pickup</a></div>
                         </div>
-                        <div id="line"></div>
                         <div id="SpecialPerson">Special Services</div>
                         <div id="SpecialService">Extra Services</div>
                         <div class="SchildRight">
-                            <div class="servicebox"><a href="">Infant Bassinet</a></div>
-                            <div class="servicebox"><a href="">Wheelchair Boarding</a></div>
-                            <div class="servicebox"><a href="">Pets</a></div>
-                            <div class="servicebox"><a href="">Ground Wheelchair</a></div>
-                            <div class="servicebox"><a href="">Visual Impairment</a></div>
-                            <div class="servicebox"><a href="">Hearing Impairment</a></div>
+                            <div id="InfantBassinet" class="servicebox"><a href="">Infant Bassinet</a></div>
+                            <div id="WheelchairBoarding" class="servicebox"><a href="">Wheelchair Boarding</a></div>
+                            <div id="Pets" class="servicebox"><a href="">Pets</a></div>
+                            <div id="GroundWheelchair" class="servicebox"><a href="">Ground Wheelchair</a></div>
+                            <div id="VisualImpairment" class="servicebox"><a href="">Visual Impairment</a></div>
+                            <div id="HearingImpairment" class="servicebox"><a href="">Hearing Impairment</a></div>
                         </div>
                     </div>
                 </div>
@@ -569,12 +689,12 @@
                 <div><button id="Experiences">Experiences</button>
                     <div class="ExperiencesChild">
                         <div id="exMiddle">
-                            <div class="exbox"><a href="">Cabin Service</a></div>
-                            <div class="exbox"><a href="">Health Care Devices</a></div>
-                            <div class="exbox"><a href="">Entertainment</a></div>
-                            <div class="exbox"><a href="">Onboard Meals</a></div>
-                            <div class="exbox"><a href="">Duty free</a></div>
-                            <div class="exbox"><a href="">Onboard Internet</a></div>
+                            <div id="CabinService" class="exbox"><a href="">Cabin Service</a></div>
+                            <div  id="HealthCare"  class="exbox"><a href="">Health Care Devices</a></div>
+                            <div  id="Entertainment" class="exbox"><a href="">Entertainment</a></div>
+                            <div  id="OnboardMeals" class="exbox"><a href="">Onboard Meals</a></div>
+                            <div  id="Dutyfree" class="exbox"><a href="">Duty free</a></div>
+                            <div  id="OnboardInternet" class="exbox"><a href="">Onboard Internet</a></div>
                         </div>
 
                     </div>
@@ -728,10 +848,9 @@
             document.querySelector('.ExperiencesChild').style.display = 'none';
         }
 
-
     </script>
     <script src="../js/ManageChange.js"></script>
-    <script src="../js/test.js"></script>
+    <script src="../js/User.js"></script>
     <script src="../js/UsershowState.js"></script>
 
 </body>

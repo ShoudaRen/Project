@@ -14,7 +14,7 @@
     <!-- 字体图标 -->
     <link rel="stylesheet" href="../fontAwesome/css/all.css">
     <link rel="stylesheet" href="../CSS/base.css">
-    <link rel="stylesheet" href="../CSS/standardhead.css">
+    <link rel="stylesheet" href="../CSS/head.css">
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="icon" href="../static/ICON.png" type="image/x-icon">
 
@@ -26,27 +26,30 @@
 
         .panel, .panel-default{
             margin-top: 70px;
-            width: 1200px;
+            width: 1300px;
+            margin-left: -50px;
         }
 
 
         .orders-table{
-            width: 1300px;
+            width: 1250px;
+
         }
 
         .superBottom{
             position: absolute;
             top: 100%;
         }
-        .confirm_but a{
-            display: block;
-            width: 50px;
-            height: 25px;
+        .confirm_but button {
+
             color:white;
             background-color: brown;
             text-align: center;
             line-height: 25px;
             border-radius: 12%;
+        }
+        #flight-body td,thead th{
+ text-align: center;
         }
 
     </style>
@@ -90,32 +93,27 @@
                 <table class="orders-table" width="100%">
                     <thead>
                     <tr>
-                        <th width="3%">Airline</th>
-                        <th width="3%">Flight Number</th>
+                        <th width="2%">Airline</th>
+                        <th width="2%">Flight Number</th>
                         <th width="1.5%">Day</th>
                         <th width="3%">Departure Time</th>
                         <th width="3%">Arrival Time</th>
                         <th width="2%">Economy</th>
                         <th width="2%">Business</th>
                         <th width="2%">First</th>
-                        <th width="6%"></th>
                     </tr>
                     </thead>
                     <tbody id="flight-body">
-<!--                    <tr>-->
-<!--                        <td>British Airway</td>-->
-<!--                        <td>GP2312</td>-->
-<!--                        <td>10/12/2021</td>-->
-<!--                        <td>9:11Am</td>-->
-<!--                        <td>10.4PM</td>-->
-<!--                        <td>£<span>000</span></td>-->
-<!--                        <td>£<span>000</span></td>-->
-<!--                        <td>£<span>000</span></td>-->
-<!--                        <td>-->
-<!--                            <div><div class='confirm_but'><a href='orderInfo.html'> Book</a></div>-->
-<!--                                <a href='#'>Details</a></div>-->
-<!--                        </td>-->
-<!--                    </tr>-->
+                    <tr>
+                        <td>British Airway</td>
+                        <td>GP2312</td>
+                        <td>10/12/2021</td>
+                        <td>9:11Am</td>
+                        <td>10.4PM</td>
+                        <td>£<span>eco</span><div class='confirm_but'> <button onclick='economyClik(#{flightId})' >Book and Details</button> </div></td>
+                        <td>£<span>busin</span> <div class='confirm_but'><button onclick='economyClik(#{flightId})' >Book and Details</button> </div></td>
+                        <td>£<span>first</span><div  class='confirm_but'><button onclick='economyClik(#{flightId})' >Book and Details</button> </div></td>
+                    </tr>
 
                     </tbody>
                 </table>
@@ -162,19 +160,15 @@
                 if(json.state==200){
                     let list = json.data;
                     for (let i = 0; i < list.length; i++) {
-                        let tr = " <tr>\n" +
+                        let tr = "  <tr>\n" +
                             "                        <td>BritishAirway</td>\n" +
                             "                        <td>GP2312</td>\n" +
                             "                        <td>day</td>\n" +
                             "                        <td>time1</td>\n" +
                             "                        <td>time2</td>\n" +
-                            "                        <td>£<span>000</span></td>\n" +
-                            "                        <td>£<span>000</span></td>\n" +
-                            "                        <td>£<span>000</span></td>\n" +
-                            "                        <td>\n" +
-                            "                            <div><div class='confirm_but'><a href='orderInfo.html'> Book</a></div>\n" +
-                            "                                <a href='#'>Details</a></div>\n" +
-                            "                        </td>\n" +
+                            "                        <td>£<span>eco</span><div class='confirm_but'> <button onclick='supereClik(#{flightId})' >Book and Details</button> </div></td>\n" +
+                            "                        <td>£<span>busin</span> <div class='confirm_but'><button onclick='superbClik(#{flightId})' >Book and Details</button> </div></td>\n" +
+                            "                        <td>£<span>first</span><div  class='confirm_but'><button onclick='superfClik(#{flightId})' >Book and Details</button> </div></td>\n" +
                             "                    </tr>";
 
                         tr = tr.replace(/BritishAirway/g,list[i].company);
@@ -186,6 +180,7 @@
                         tr = tr.replace(/busin/g,list[i].businessPrice);
                         tr = tr.replace(/first/g,list[i].firstPrice);
 
+                        tr = tr.replace(/#{flightId}/g,list[i].flightId);
                         $("#flight-body").append(tr);
                     }
                 }else { alert("Load failed");}
@@ -193,8 +188,27 @@
 
         });
     }
+
+    function supereClik(flightId){
+        $.ajax({
+            url:"/tickets/"+flightId+"/get_a_ticket",
+            type:"POST",
+            dataType:"JSON",
+            success : function(json){
+                if(json.state==200){
+                    //refresh page
+                    location.href="eco1.html";
+                }else { alert("Set Failed");}
+            },
+            error:function (xhr){
+                //弹出窗口
+                alert("oops! An unknown error"+" "+xhr.message)
+            }
+        });
+    }
 </script>
-<script src="../js/test.js"></script>
+
+
 </body>
 
 </html>

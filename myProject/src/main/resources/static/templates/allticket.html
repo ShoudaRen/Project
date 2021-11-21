@@ -14,7 +14,6 @@
 		<!-- 字体图标 -->
 		<link rel="stylesheet" href="../fontAwesome/css/all.css">
 	    <link rel="stylesheet" href="../CSS/base.css">
-		<link rel="stylesheet" href="../CSS/standardhead.css">
 		<link rel="stylesheet" href="../CSS/footer.css">
 		<link rel="stylesheet" href="../CSS/head.css">
         <link rel="icon" href="../static/ICON.png" type="image/x-icon">
@@ -49,6 +48,20 @@
                 line-height: 27px;
                 border-radius: 12%;
             }
+       #flight-body td{
+		   text-align: center;
+	   }
+			.confirm_but{
+				margin-left: 26px;
+			  padding-left: 10px;
+
+			}
+			.confirm_but button{
+				cursor: pointer;
+			}
+			.orders-table{
+				margin-left: -30px;
+			}
 
 		</style>
 	</head>
@@ -97,24 +110,24 @@
 									<th width="3%">Arrival Time</th>
 									<th width="2%">From</th>
 									<th width="2%">To</th>
-									<th width="2%">Economy</th>
-                                    <th width="2%">Business</th>
-									<th width="5%">First</th>
+									<th width="1%">Economy</th>
+                                    <th width="1%">Business</th>
+									<th width="1%">First</th>
 								</tr>
 							</thead>
 							<tbody id="flight-body">
-<!--								<tr>-->
-<!--									<td>BritishAirway</td>-->
-<!--									<td>GP2312</td>-->
-<!--									<td>day</td>-->
-<!--									<td>time1</td>-->
-<!--									<td>time2</td>-->
-<!--									<td>London</td>-->
-<!--									<td>Paris</td>-->
-<!--                                    <td>£<span>eco</span><div class='confirm_but'> <button onclick='economyClik(#{flightId})' >Book</button> </div></td>-->
-<!--                                    <td>£<span>busin</span> <div class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>-->
-<!--									<td>£<span>first</span><div  class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>-->
-<!--						       </tr>-->
+								<tr>
+									<td>BritishAirway</td>
+									<td>GP2312</td>
+									<td>day</td>
+									<td>time1</td>
+									<td>time2</td>
+									<td>London</td>
+									<td>Paris</td>
+                                    <td>£<span>eco</span><div class='confirm_but'> <button onclick='economyClik(#{flightId})' >Book</button> </div></td>
+                                    <td>£<span>busin</span> <div class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>
+									<td>£<span>first</span><div  class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>
+						       </tr>
 
 							</tbody>
 						</table>
@@ -194,7 +207,7 @@
 
 				});
 			}
-
+      // order page
 			function supereClik(flightId){
 				$.ajax({
 					url:"/tickets/"+flightId+"/get_a_ticket",
@@ -216,7 +229,7 @@
 
 		</script>
 
-	<script src="../js/test.js"></script>
+	<script src="../js/User.js"></script>
 
 	<script src="../js/UsershowState.js"></script>
 	</body>
