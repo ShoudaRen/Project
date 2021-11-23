@@ -91,7 +91,7 @@
 		<div class="SpecialOffer"><a id="qw" href="SpecialOffers.html">Special Offers</a>
 		</div>
 		<div><a href="userdata.html">Manage</a></div>
-		<div><a href="OrderConfirmForAll.html">All flights</a></div>
+		<div><a href="allticket.html">All flights</a></div>
 	</div>
 		<!--头部结束-->
 		<!--导航结束-->
@@ -216,7 +216,7 @@
 					success : function(json){
 						if(json.state==200){
 							//refresh page
-							location.href="eco1.html";
+							location.href="BookingServiceEco.html";
 						}else { alert("Set Failed");}
 					},
 					error:function (xhr){

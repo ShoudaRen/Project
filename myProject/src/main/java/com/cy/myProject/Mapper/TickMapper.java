@@ -18,4 +18,8 @@ public interface TickMapper {
        List<Flight> findAllTicket ();
 
        Flight bookAFlightbyflightId(Integer flightId);
+
+
+
+
 }

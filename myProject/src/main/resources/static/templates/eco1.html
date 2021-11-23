@@ -13,7 +13,7 @@
     <script src="../bootstrap3/js/holder.js"></script>
     <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script src="../js/jquery-1.9.1.min.js"></script>
-    <!--    <script src="../js/UsershowState.js" ></script>-->
+    <script src="../js/UsershowState.js" ></script>
 
     <!-- modified 11/11/2021 -->
     <link rel="stylesheet" href="../fontAwesome/css/all.css">
@@ -24,9 +24,6 @@
 
     <style>
 
-
-
-
         #se {
             font-weight: bolder;
             font-size: larger;
@@ -34,24 +31,15 @@
             margin-top: 40px;
 
         }
-
         .myService {
             float: left;
-            margin: 10px 10px;
+            margin: 15px 15px;
             position: relative;
         }
-
         #servicePart{
-            height: 100px;
+            height: 300px;
             width: 100%;
         }
-
-        #phone{
-            width: 300px;
-            position: absolute;
-
-        }
-
         .superBottom{
             top: 150%;
         }
@@ -62,15 +50,32 @@
             height: 30px;
             line-height: 30px;
         }
+        #mySeat{
+            width: 70px;
+        }
+        .col-md-4{
+            width: 200px;
+        }
 
-        thead th
+        input
         {
-            text-align: center;
+            color: black;
+            outline: none;
+            border: none;
         }
-        tbody td{
-            text-align: center;
+        input:hover{
+            color: black;
+            cursor: text;
         }
 
+        #allPrice{
+            width: 160px;
+            height: 30px;
+            float: right;
+        }
+        #allPrice input{
+            width: 50px;
+        }
     </style>
 </head>
 
@@ -104,28 +109,36 @@
     <div class="col-md-offset-1 col-md-10">
         <div class="col-md-4">
             <div id="comfirmOrder" class="col-md-12 order-bar-active">
-                1.Comfirm Order
+                1.booking service
+                <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div id="Confirm" class="col-md-12 order-bar-active">
+                2.Confirm Order
                 <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="col-md-12 order-bar-undo">
-                2.Pay Online
+                3.Pay Online
                 <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="col-md-12 order-bar-undo">
-                3.Pay Success
+                4.Pay Success
             </div>
         </div>
+
         <div class="col-md-12">
-            <form id="form-create-order" role="form">
+
                 <div class="form-group">
+                   <form id="passengerForm">
                     <label >
                         <p>Choose Passenger <button id="addPassenger">add Passenger</button></p>
                     </label>
-                    <select name="aid" id="address-list" class="form-control">
+                    <select name="passengerId" id="passengers-list" class="form-control">
                         <option>八戒&nbsp;&nbsp;&nbsp;家&nbsp;&nbsp;&nbsp;北京市房山区高老庄3排6号&nbsp;&nbsp;&nbsp;1380***1234
                         </option>
                         <option>
@@ -134,12 +147,14 @@
                         <option>八戒&nbsp;&nbsp;&nbsp;宿舍&nbsp;&nbsp;&nbsp;北京市海淀区永丰镇30号&nbsp;&nbsp;&nbsp;1380***1234
                         </option>
                     </select>
+                   </form>
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <p class="panel-title">Ticket Details：</p>
                     </div>
                     <div class="panel-body">
+                        <form id="form-create-order" role="form">
                         <table class="cart-table" width="100%">
                             <thead>
                             <tr>
@@ -156,126 +171,58 @@
                             </tr>
                             </thead>
                             <tbody id="cart-list">
-                            <tr>
-                                <td>British Airways</td>
-                                <td>GP2312</td>
-                                <td>11/11/2021</td>
-                                <td>11;25AM</td>
-                                <td>12:50pm</td>
-                                <td>London</td>
-                                <td>Shanghai</td>
-                                <td>Normal</td>
-                                <td>£<span>5298</span></td>
-                                <td>100</td>
-                            </tr>
-
+<!--                            <tr>-->
+<!--                                <td>British Airways</td>-->
+<!--                                <td>GP2312</td>-->
+<!--                                <td>11/11/2021</td>-->
+<!--                                <td>11;25AM</td>-->
+<!--                                <td>12:50pm</td>-->
+<!--                                <td>London</td>-->
+<!--                                <td>Shanghai</td>-->
+<!--                                <td>Normal</td>-->
+<!--                                <td>£<span>5298</span></td>-->
+<!--                                <td>100</td>-->
+<!--                            </tr>-->
                             </tbody>
-
                         </table>
-                        <p id="se">Service：</p>
-
-                        <form>
+                        </form>
+                        <p id="se">My Service：</p>
+                        <form id="myServiceBooking">
                             <div id="servicePart">
-                                <div class="myService"><label>choose a seat</label>
-                                    <select name="mySeat" id="mySeat">
-                                        <option>1A</option>
-                                        <option>1B</option>
-                                        <option>1C</option>
-                                        <option>1D</option>
-                                        <option>1E</option>
-                                        <option>1F</option>
-                                        <option>2A</option>
-                                        <option>2B</option>
-                                        <option>2C</option>
-                                        <option>2D</option>
-                                        <option>2E</option>
-                                        <option>2F</option>
-                                        <option>3A</option>
-                                        <option>3B</option>
-                                        <option>3C</option>
-                                        <option>3D</option>
-                                        <option>3E</option>
-                                        <option>3F</option>
-                                        <option>4A</option>
-                                        <option>4B</option>
-                                        <option>4C</option>
-                                        <option>4D</option>
-                                        <option>4E</option>
-                                        <option>4F</option>
-                                    </select>
+                                <div class="myService"><label>My Seat:</label>
+                                  <input name="mySeat" id="mySeat" value="seat" readonly="readonly">
                                 </div>
-
-                                <div class="myService"><label>Meal Request</label>
-                                    <select name="meals" id="meals">
-                                        <option>None</option>
-                                        <option>Chicken 5GBP</option>
-                                        <option>Muslim 0GBP</option>
-                                        <option>Lamb Chops 10GBP</option>
-                                        <option>Fish and Chips 7GBP</option>
-                                        <option>Steak 12GBP</option>
-                                        <option>Parkin 6GBP</option>
-                                    </select>
+                                <div class="myService"><label>Meals:</label>
+                                    <input name="meals" id="meals" value="Meals" readonly="readonly">
                                 </div>
-
-                                <div class="myService"><label>Airport Pickup</label>
-                                    <select name="pickup" id="pickup">
-                                        <option>None</option>
-                                        <option>Mercedes 50GBP</option>
-                                        <option>Porsche 60GBP</option>
-                                        <option>Maserati 70GBP</option>
-                                        <option>Volkswagen 80GBP</option>
-                                    </select>
+                                <div class="myService"><label>Airport Pickup:</label>
+                                    <input name="pickup" id="pickup" value="pickup" readonly="readonly">
                                 </div>
-
-                                <div class="myService"><label>Transit Lounge</label>
-                                    <select name="transitLounge" id="transitLounge">
-                                        <option>None</option>
-                                        <option>Normal 49GBP</option>
-                                        <option>Vip 100GBP</option>
-
-                                    </select>
+                                <div class="myService"><label>Transit Lounge:</label>
+                                    <input name="transitLounge" id="transitLounge" value="transitLounge" readonly="readonly">
                                 </div>
-
-                                <div class="myService"><label>Special Services</label>
-                                    <p id="phone">Please contact us to book more (Tel:88888888)</p>
-                                    <select name="specialServices" id="specialServices">
-                                        <option>Infant Bassinet</option>
-                                        <option>Wheelchair Boarding</option>
-                                        <option>Ground Boarding</option>
-                                        <option>Visual Impairment</option>
-                                        <option>Hearing Impairment</option>
-                                        <option>Pets</option>
-
-                                    </select>
+                                <div class="myService"><label>Special Services:</label>
+                                    <input name="specialServices" id="specialServices" value="specialServices" readonly="readonly">
                                 </div>
-
-                                <div class="myService"><label>Transit Hotel</label>
-                                    <select name="transitHotel" id="transitHotel">
-                                        <option>Offical Hotel 0GBP</option>
-                                        <option>Sheraton 100GBP</option>
-                                        <option>Hilton 200GBP</option>
-                                        <option>Express Hotel 50GBP</option>
-
-
-                                    </select>
+                                <div class="myService"><label>Transit Hotel:</label>
+                                    <input name="transitHotel" id="transitHotel" value="transitHotel" readonly="readonly">
+                                </div>
+                                <div class="myService"><label>Extra Luggage:</label>
+                                    <input name="extraLuggage" id="extraLuggage" value="extraLuggage" readonly="readonly">
                                 </div>
                             </div>
+                            <div id="allPrice">
+                                <span>All Price: </span> <input readonly="readonly" name="totalPrice" id="totalPrice" value="3333"><span>GBP</span>
+                            </div>
                         </form>
-                        <div class="total-bar">
-                            &nbsp;
-                            <span class="pull-right">
-									All Price £
-									<span id="all-price">5298</span> GBP
-								</span>
-                        </div>
                     </div>
                 </div>
                 <div class="pay-bar">
-                    <a href="#">Return</a>
-                    <span class="pull-right"><input id="btn-create-order" type="button" value="PAY ONLINE"
+                    <a href="index.html">Return</a>
+                    <span class="pull-right"><input id="btn-create-order" type="button" value="CHECK AND PAY"
                                                     class="btn btn-primary btn-lg link-pay" /></span>
                 </div>
-            </form>
+
         </div>
     </div>
 </div>
@@ -306,10 +253,11 @@
 </div>
 
 
-
+<!--SHOW TICKET CHOOSED-->
 <script type="text/javascript" >
     $(document).ready(function () {
         showbook();
+        showPassengerList();
     });
     function  showbook(){
         $.ajax({
@@ -319,8 +267,6 @@
             success : function(json){
                 if(json.state==200){
                     let list = json.data;
-                    console.log(list);
-                    // for (let i = 0; i <list.length; i++) {
                         let tr = '    <tr>\n' +
                             '                                <td>BritishAirways</td>\n' +
                             '                                <td>GP2312</td>\n' +
@@ -344,19 +290,79 @@
                         tr = tr.replace(/Normal/g,list.entertainment);
                         tr = tr.replace(/5298/g,list.ecoPrice);
                         tr = tr.replace(/numbert/g,list.adultNum);
-                        console.log(tr);
                         $("#cart-list").append(tr);
-                    // }
-                    console.log("shouda");
+
                 }else { alert("Load failed");}
             }
 
         });
     }
+    function  showPassengerList(){
+        //clear the inofrmation of select
+        $("#passengers-list").empty();
+        $.ajax({
+            url:"/passengers/",
+            type:"POST",
+            dataType:"JSON",
+            success : function(json){
+                if(json.state==200){
+                    let list = json.data;
 
+                    for (let i = 0; i < list.length; i++) {
+                        //value='#{passengerId}' which is used to deliver information to other page
+                        let opt ="<option value='#{passengerId}'>#{First}&nbsp;&nbsp;&nbsp;#{second}&nbsp;&nbsp;&nbsp;#{Passport}&nbsp;&nbsp;&nbsp;#{PassportExpire}&nbsp;&nbsp;&nbsp;" +
+                            "#{phone}&nbsp;&nbsp;&nbsp;#{email}</option>";
+
+                        opt=opt.replace(/#{passengerId}/d,list[i].passengerId);
+                        opt=opt.replace(/#{First}/d,list[i].firstname);
+                        opt=opt.replace(/#{second}/d,list[i].lastname);
+                        opt= opt.replace(/#{Passport}/d,list[i].passport);
+                        opt=opt.replace(/#{PassportExpire}/d,list[i].passportExpire);
+                        opt=opt.replace(/#{phone}/d,list[i].mobilePhone);
+                        opt=opt.replace(/#{email}/d,list[i].email);
+
+                        $("#passengers-list").append(opt);
+                    }
+                }else { alert("load Failed");}
+            }
+        });
+    }
 
 </script>
+<!--show user's service-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url:"/tickets/show_service",
+            type:"get",
+            data:$("#myServiceBooking").serialize(),
+            dataType:"JSON",
+            success : function(json){
+                if(json.state==200){
+                    $("#mySeat").val(json.data.mySeat);
+                    $("#meals").val(json.data.meals);
+                    $("#pickup").val(json.data.pickup);
+                    $("#transitLounge").val(json.data.transitLounge);
+                    $("#specialServices").val(json.data.specialServices);
+                    $("#transitHotel").val(json.data.transitHotel);
+                    $("#extraLuggage").val(json.data.extraLuggage);
+                }else { alert("data does not exist");}
+            }
+        });
+    });
+</script>
 
+
+
+
+
+
+
+
+
+
+
+<!--show user's information-->
 <script src="../js/User.js"></script>
 </body>
 

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!--edge浏览器H5兼容设置-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--360浏览器H5兼容设置-->
+  <meta name="renderer" content="webkit" />
+  <title>Book Ticket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--导入核心文件-->
+  <script src="../bootstrap3/js/holder.js"></script>
+  <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <script src="../js/jquery-1.9.1.min.js"></script>
+  <script src="../js/UsershowState.js" ></script>
+
+  <!-- modified 11/11/2021 -->
+  <link rel="stylesheet" href="../fontAwesome/css/all.css">
+  <link rel="stylesheet" href="../CSS/base.css">
+  <link rel="stylesheet" href="../CSS/head.css">
+  <link rel="stylesheet" href="../CSS/footer.css">
+  <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+
+  <style>
+
+
+
+    .myService {
+      float: left;
+      margin: 15px 15px;
+      position: relative;
+    }
+
+    #servicePart{
+      height: 100px;
+      width: 100%;
+    }
+
+    #phone{
+      width: 400px;
+      position: absolute;
+
+    }
+
+    .superBottom{
+      top: 150%;
+    }
+    #comfirmOrder{
+      background-color: #0c52a4;
+      color: honeydew;
+      border: none;
+    }
+
+    .col-md-12{
+      border: none;
+      height: 30px;
+      line-height: 30px;
+    }
+
+    #mySeat{
+      width: 70px;
+    }
+
+    .col-md-4{
+      width: 230px;
+    }
+    .plbox{
+      float: left;
+    }
+    .panel-details{
+      width: 100%;
+      height:350px;
+    }
+    .plbox{
+      margin: 20px 30px;
+    }
+  </style>
+
+</head>
+
+<body>
+<!--头部-->
+<!--头部-->
+<div class="top">
+  <div class="mid w">
+    <div class="logo"><a href="index.html"><img src="../static/logo.png" alt="logo"></a></div>
+    <div class="user">
+      <div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
+      <div></div>
+      <form id="LogSignup">
+        <div class="service"> <i class="fa fa-user"> </i>
+          <a onclick="checkname()"> <input id="userShow" type="button" name="userShow" value="Log In" readonly="readonly"></a> </div>
+        <div>|</div>
+        <div class="service"><a onclick="checksignout()"><input id="userOutgg" type="button" name="userOut" value="SIGN UP" readonly="readonly"></a> </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="secondmid w">
+  <div><a href="javascript:;">Help and Contacts</a></div>
+  <div class="SpecialOffer"><a id="qw" href="SpecialOffers.html">Special Offers</a>
+  </div>
+  <div><a href="userdata.html">Manage</a></div>
+  <div><a href="allticket.html">All flights</a></div>
+</div>
+<!--导航结束-->
+<div class="container">
+  <div class="col-md-offset-1 col-md-10">
+    <div class="col-md-4">
+      <div id="comfirmOrder" class="col-md-12 order-bar-active">
+        1.Booking Service
+        <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id="Confirm" class="col-md-12 order-bar-active">
+        2.Confirm Order
+        <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 order-bar-undo">
+        3.Pay Online
+        <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 order-bar-undo">
+        4.Pay Success
+      </div>
+    </div>
+
+    <div class="col-md-12">
+
+      <div class="form-group">
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <p class="panel-title">Services Details：</p>
+        </div>
+        <div class="panel-body">
+          <form id="myServiceBooking">
+            <div id="servicePart">
+              <div class="myService"><label>choose a seat</label>
+                <select name="mySeat" id="mySeat" >
+                  <option >1A</option>
+                  <option >1B</option>
+                  <option >1C</option>
+                  <option >1D</option>
+                  <option >1E</option>
+                  <option >1F</option>
+                  <option >2A</option>
+                  <option >2B</option>
+                  <option >2C</option>
+                  <option >2D</option>
+                  <option >2E</option>
+                  <option >2F</option>
+                  <option>3A</option>
+                  <option>3B</option>
+                  <option>3C</option>
+                  <option>3D</option>
+                  <option>3E</option>
+                  <option>3F</option>
+                  <option>4A</option>
+                  <option>4B</option>
+                  <option>4C</option>
+                  <option>4D</option>
+                  <option>4E</option>
+                  <option>4F</option>
+                </select>
+              </div>
+
+              <div class="myService"><label>Meal Request</label>
+                <select name="meals" id="meals">
+                  <option>None</option>
+                  <option>Chicken</option>
+                  <option>Muslim</option>
+                  <option>Lamb Chops</option>
+                  <option>Fish and Chips</option>
+                  <option>Steak</option>
+                  <option>Parkin</option>
+                </select>
+              </div>
+
+              <div class="myService"><label>Airport Pickup</label>
+                <select name="pickup" id="pickup">
+                  <option>None</option>
+                  <option>Mercedes</option>
+                  <option>Porsche</option>
+                  <option>Maserati</option>
+                  <option>Volkswagen</option>
+                </select>
+              </div>
+
+              <div class="myService"><label>Transit Lounge</label>
+                <select name="transitLounge" id="transitLounge">
+                  <option>None</option>
+                  <option>Normal</option>
+                  <option>Vip</option>
+                </select>
+              </div>
+
+              <div class="myService"><label>Special Services</label>
+                <p id="phone">Please contact us to book more (Tel:88888888)</p>
+                <select name="specialServices" id="specialServices">
+                  <option>None</option>
+                  <option>Infant Bassinet</option>
+                  <option>Wheelchair Boarding</option>
+                  <option>Ground Boarding</option>
+                  <option>Visual Impairment</option>
+                  <option>Hearing Impairment</option>
+                  <option>Pets</option>
+                </select>
+              </div>
+
+              <div class="myService"><label>Transit Hotel</label>
+                <select name="transitHotel" id="transitHotel">
+                  <option>None</option>
+                  <option>Offical Hotel</option>
+                  <option>Sheraton</option>
+                  <option>Hilton</option>
+                  <option>Express Hotel</option>
+                </select>
+              </div>
+
+              <div class="myService"><label>Extra Luggage</label>
+                <select name="extraLuggage" id="extraLuggage">
+                  <option>None</option>
+                  <option>10KG</option>
+                  <option>20KG</option>
+                  <option>40KG</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+     <div class="panel-details">
+             <div>Price List </div>
+       <div class="plbox">
+         <span>Meals:</span>
+         <p>Chicken 5GBP</p>
+         <p>Fish and Chips 7GBP</p>
+         <p>Lamb Chops 10GBP</p>
+         <p>Muslim 0GBP</p>
+         <p>Parkin 6GBP</p>
+         <p>Steak 12GBP</p>
+       </div>
+       <div class="plbox">
+         <span>Airport Pickup :</span>
+         <p>Mercedes 50GB</p>
+         <p>Porsche 60GBP</p>
+         <p>Maserati 70GBP</p>
+         <p>Olkswagen 80GBP</p>
+         </div>
+       <div class="plbox">
+         <span>Transit Lounge :</span>
+         <p>Normal 49GBP</p>
+         <p>Vip 100GBP</p>
+         </div>
+       <div class="plbox">
+         <span>Transit Hotel :</span>
+         <p>Offical Hotel 0GBP</p>
+         <p>Sheraton 100GBP</p>
+         <p>Hilton 200GBP</p>
+        </div>
+       <div class="plbox">
+         <span>Extra Luggage :</span>
+         <p>10KG 30GBP</p>
+         <p>20KG 50GBP</p>
+         <p>40KG 70GBP</p>
+         </div>
+
+
+
+     </div>
+      </div>
+      <div class="pay-bar">
+        <a href="index.html">Return</a>
+        <span class="pull-right"><input id="btn-create-order" type="button" value="Confirm Order"
+                                        class="btn btn-primary btn-lg link-pay" /></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--  footer-->
+<div class="superBottom">
+  <div class="bottomMiddle w">
+    <div class="bottomF">
+      <div><a href="javascript:;">Help and contacts</a></div>
+      <div class="mark">|</div>
+      <div><a href="javascript:;">About Us</a></div>
+      <div class="mark">|</div>
+      <div><a href="javascript:;">Manage</a></div>
+      <div class="mark">|</div>
+      <div><a href="javascript:;">Special Offers</a></div>
+      <div class="mark">|</div>
+      <div><a href="javascript:;">Privacy policy</a></div>
+      <div class="mark">|</div>
+      <div><a href="javascript:;">Website security</a></div>
+    </div>
+    <!-- <div class="bottomS"></div> -->
+    <div class="copyright">© Super Airways - all rights reserved</div>
+    <div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
+
+  </div>
+
+
+</div>
+
+
+
+<!--booking service-->
+<script type="text/javascript">
+  $("#btn-create-order").click(function () {
+    $.ajax({
+      url:"/tickets/booking",
+      type:"POST",
+      data:$("#myServiceBooking").serialize(),
+      dataType:"JSON",
+      success : function(json){
+        if(json.state==200){
+          location.href="eco1.html";
+        }else { alert("save Failed");}
+      },
+      error:function (xhr){
+        alert("oops! An unknown error"+" "+xhr.message)
+      }
+    });
+  });
+</script>
+<!--show user's information-->
+<script src="../js/User.js"></script>
+</body>
+
+</html>

@@ -22,7 +22,7 @@ public class UserMapperTests {
     @Test
    public void insert(){
        User user = new User();
-       user.setUsername("test4");
+       user.setUsername("zhipeng");
        user.setPassword("123");
        Integer rows = userMapper.insert(user);
        System.out.println(rows);

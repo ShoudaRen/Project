@@ -41,6 +41,10 @@ public class BaseController {
             result.setState(4006);
             result.setMessage("illegal Access");
         }
+        else if(e instanceof BookingNotFoundException) {
+            result.setState(4007);
+            result.setMessage("no booking exist");
+        }
         else if(e instanceof InsertException) {
             result.setState(5000);
             result.setMessage("oops! insert exception");
