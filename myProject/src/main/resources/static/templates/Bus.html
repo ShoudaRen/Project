@@ -76,10 +76,6 @@
         #allPrice input{
             width: 50px;
         }
-
-        #form-create-order th,  #form-create-order td{
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -164,29 +160,29 @@
                             <tr>
                                 <th width="10%">Airline</th>
                                 <th width="8%">Flight Number</th>
-                                <th width="10%">Day</th>
+                                <th width="11%">Day</th>
                                 <th width="14%">Departure Time</th>
                                 <th width="12%">Arrival Time</th>
-                                <th width="8%">From</th>
+                                <th width="7%">From</th>
                                 <th width="8%">To</th>
-                                <th width="13%">Entertainment</th>
+                                <th width="14%">Entertainment</th>
                                 <th width="8%">Price</th>
                                 <th width="20%">Number of tickets</th>
                             </tr>
                             </thead>
                             <tbody id="cart-list">
-                            <tr>
-                                <td>British Airways</td>
-                                <td>GP2312</td>
-                                <td>11/11/2021</td>
-                                <td>11;25AM</td>
-                                <td>12:50pm</td>
-                                <td>London</td>
-                                <td>Shanghai</td>
-                                <td>Normal</td>
-                                <td>£<span>5298</span></td>
-                                <td>100</td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td>British Airways</td>-->
+<!--                                <td>GP2312</td>-->
+<!--                                <td>11/11/2021</td>-->
+<!--                                <td>11;25AM</td>-->
+<!--                                <td>12:50pm</td>-->
+<!--                                <td>London</td>-->
+<!--                                <td>Shanghai</td>-->
+<!--                                <td>Normal</td>-->
+<!--                                <td>£<span>5298</span></td>-->
+<!--                                <td>100</td>-->
+<!--                            </tr>-->
                             </tbody>
                         </table>
                         </form>
@@ -316,7 +312,7 @@
                         tr = tr.replace(/London/g,list.fromLocation);
                         tr = tr.replace(/Paris/g,list.toLocation);
                         tr = tr.replace(/Normal/g,list.entertainment);
-                        tr = tr.replace(/5298/g,list.ecoPrice);
+                        tr = tr.replace(/5298/g,list.businessPrice);
                         tr = tr.replace(/numbert/g,list.adultNum);
                         $("#cart-list").append(tr);
 

@@ -15,5 +15,7 @@ public interface MybookingMapper {
 
     void  updateAllPriceToDataBase(Integer reference, Integer totalPrice);
 
-    void updatePaymentStatus(Integer reference);
+    void upatePassengerIdToDatebase(Integer reference, Integer passengerId);
+
+    void updatePaymentStatus(Integer reference, Integer payStatus);
 }

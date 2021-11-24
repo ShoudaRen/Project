@@ -20,8 +20,11 @@ public interface MyBookingService {
 
 
      void updateTotalPriceByRef(Integer reference,Integer totalPrice);
+
      Integer getAllpriceByRef(Integer reference);
 
+     void updatePassengerId(Integer  reference,Integer  passengerId);
 
+     void updatePaymentStatus(Integer reference);
 }
 

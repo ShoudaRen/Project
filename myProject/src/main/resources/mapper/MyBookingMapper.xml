@@ -94,4 +94,13 @@
     </update>
 
 
+    <update id="upatePassengerIdToDatebase">
+        update t_myallbook set passengerId= #{passengerId} where reference=#{reference}
+    </update>
+
+    <update id="updatePaymentStatus">
+        update t_myallbook set payStatus= #{payStatus} where reference=#{reference}
+    </update>
+
+
 </mapper>

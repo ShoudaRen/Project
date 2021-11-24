@@ -107,6 +107,7 @@ public class TicketController extends BaseController{
        booking.setPickupPirce(carPrice);
        booking.setHotelPrice(hotelPrice);
         Integer ref =booking.getReference();
+        temRef=ref;
        myBookingService.updatepaidsercice(ref,mealPrice,carPrice,
                 hotelPrice,loungePrice,luggagePrice);
       // obtain total price of flight+service
@@ -118,9 +119,79 @@ public class TicketController extends BaseController{
         return new  JsonResult<Void>(ok);
     }
 
-    @RequestMapping("show_service")
-    public JsonResult<MyBooking> showService(){
-        return new JsonResult<MyBooking>(ok,tembooking);
+    @RequestMapping("booking_business")
+    public JsonResult<Void> insertBookingBusiness(MyBooking myBooking,HttpSession session,String mySeat,String meals,
+                                          String pickup,String transitHotel,String transitLounge,String specialServices
+            ,Integer payStatus,String extraLuggage){
+        Integer uid = getUidFromSession(session);
+        String username= getUsernameFromSession(session);
+        MyBooking booking=  myBookingService.insertService(myBooking, uid,TemFlightId,username
+                ,Tembusineprice, mySeat, meals,pickup,transitHotel,transitLounge,specialServices,payStatus,extraLuggage);
+        // set all service price
+        String hotel=booking.getTransitHotel();
+        String lounge=booking.getTransitLounge();
+        String luggage=booking.getExtraLuggage();
+        String meal=booking.getMeals();
+        String car=booking.getPickup();
+        Integer hotelPrice = hotelService.getPirceByname(hotel);
+        Integer loungePrice=loungeService.getpricebyName(lounge);
+        Integer luggagePrice=luggageService.getLuggagePriceByName(luggage);
+        Integer mealPrice=mealService.getMealPriceByName(meal);
+        Integer carPrice=pickUpService.getCarPriceByName(car);
+        booking.setMealPrice(mealPrice);
+        booking.setLoungePrice(loungePrice);
+        booking.setLuggagePrice(luggagePrice);
+        booking.setPickupPirce(carPrice);
+        booking.setHotelPrice(hotelPrice);
+        Integer ref =booking.getReference();
+        temRef=ref;
+        myBookingService.updatepaidsercice(ref,mealPrice,carPrice,
+                hotelPrice,loungePrice,luggagePrice);
+        // obtain total price of flight+service
+        Integer totalPrice=myBookingService.getAllpriceByRef(ref);
+        booking.setTotalPrice(totalPrice);
+        myBookingService.updateTotalPriceByRef(ref,totalPrice);
+        // used for show method
+        tembooking = booking;
+        return new  JsonResult<Void>(ok);
+    }
+
+
+    @RequestMapping("booking_first")
+    public JsonResult<Void> insertBookingfirst(MyBooking myBooking,HttpSession session,String mySeat,String meals,
+                                                  String pickup,String transitHotel,String transitLounge,String specialServices
+            ,Integer payStatus,String extraLuggage){
+        Integer uid = getUidFromSession(session);
+        String username= getUsernameFromSession(session);
+        MyBooking booking=  myBookingService.insertService(myBooking, uid,TemFlightId,username
+                ,Temfirstprice, mySeat, meals,pickup,transitHotel,transitLounge,specialServices,payStatus,extraLuggage);
+        // set all service price
+        String hotel=booking.getTransitHotel();
+        String lounge=booking.getTransitLounge();
+        String luggage=booking.getExtraLuggage();
+        String meal=booking.getMeals();
+        String car=booking.getPickup();
+        Integer hotelPrice = hotelService.getPirceByname(hotel);
+        Integer loungePrice=loungeService.getpricebyName(lounge);
+        Integer luggagePrice=luggageService.getLuggagePriceByName(luggage);
+        Integer mealPrice=mealService.getMealPriceByName(meal);
+        Integer carPrice=pickUpService.getCarPriceByName(car);
+        booking.setMealPrice(mealPrice);
+        booking.setLoungePrice(loungePrice);
+        booking.setLuggagePrice(luggagePrice);
+        booking.setPickupPirce(carPrice);
+        booking.setHotelPrice(hotelPrice);
+        Integer ref =booking.getReference();
+        temRef=ref;
+        myBookingService.updatepaidsercice(ref,mealPrice,carPrice,
+                hotelPrice,loungePrice,luggagePrice);
+        // obtain total price of flight+service
+        Integer totalPrice=myBookingService.getAllpriceByRef(ref);
+        booking.setTotalPrice(totalPrice);
+        myBookingService.updateTotalPriceByRef(ref,totalPrice);
+        // used for show method
+        tembooking = booking;
+        return new  JsonResult<Void>(ok);
     }
 
 
@@ -129,6 +200,24 @@ public class TicketController extends BaseController{
 
 
 
+    @RequestMapping("show_service")
+    public JsonResult<MyBooking> showService(){
+        return new JsonResult<MyBooking>(ok,tembooking);
+    }
+
+
+    @RequestMapping("update_pid")
+  public JsonResult<Void> updatePassengerIdByRef(Integer passengerId){
+        myBookingService.updatePassengerId(temRef, passengerId);
+        return  new  JsonResult<Void>(ok);
+    }
+
+
+    @RequestMapping("update_pay_status")
+    public JsonResult<Void> updatePayStatusByRef(){
+        myBookingService.updatePaymentStatus(temRef);
+        return  new  JsonResult<Void>(ok);
+    }
 //未使用
     @RequestMapping("find_service")
     public JsonResult<MyBooking> findMyServiceByRef(Integer reference){

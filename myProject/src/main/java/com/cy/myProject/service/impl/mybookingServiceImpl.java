@@ -76,6 +76,15 @@ public class mybookingServiceImpl implements MyBookingService {
         return allPrice;
     }
 
+    @Override
+    public void updatePassengerId(Integer reference, Integer passengerId) {
+        mybookingMapper.upatePassengerIdToDatebase(reference,passengerId);
+    }
+
+    @Override
+    public void updatePaymentStatus(Integer reference) {
+        mybookingMapper.updatePaymentStatus(reference,1);
+    }
 
 
 }

@@ -27,7 +27,6 @@
 #barclay img{
     height: 100%;
 }
-#barclay{}
 #visas{
     margin-right: 30px;
 }
@@ -57,6 +56,7 @@
 }
 .hint{
     font-weight: bolder;
+    float: left ;
 }
 #totalPrice{
     width: 50px;
@@ -65,6 +65,10 @@
     border: none;
     background: transparent;
     font-weight: bolder;
+}
+
+#sumPrice{
+    float: left;
 }
 
 .ex{
@@ -92,8 +96,8 @@
     margin-top: 3px;
 }
 #svp{
-    margin-right: 280px;
-    margin-left: -10px;
+ margin-right: 270px ;
+    padding-right: 15px;
 }
 #payBottom{
     height: 100px;
@@ -107,4 +111,9 @@
 #linklast{
     display: block;
     float: right;
+}
+
+#payvalue{
+    height: 25px;
+    width: 100%;
 }

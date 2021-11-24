@@ -62,4 +62,14 @@ public class MybookingMapperTests {
         mybookingMapper.updateAllPriceToDataBase(100000022,407);
     }
 
+    @Test
+    public void updatePassengerId(){
+        mybookingMapper.upatePassengerIdToDatebase(100000022,10);
+    }
+
+
+    @Test
+    public void updatePayStatus(){
+        mybookingMapper.updatePaymentStatus(100000022,1);
+    }
 }

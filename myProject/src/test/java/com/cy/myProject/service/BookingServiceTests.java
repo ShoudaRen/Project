@@ -30,7 +30,10 @@ public class BookingServiceTests {
         System.out.println(myBookingService.findMybookByRef(100000019));
     }
 
-
+@Test
+    public void testupdatepaymentstatus(){
+        myBookingService.updatePaymentStatus(100000025);
+}
 //    @Test
 //    public void  updateService(){
 //        myBookingService

@@ -116,18 +116,18 @@
 								</tr>
 							</thead>
 							<tbody id="flight-body">
-								<tr>
-									<td>BritishAirway</td>
-									<td>GP2312</td>
-									<td>day</td>
-									<td>time1</td>
-									<td>time2</td>
-									<td>London</td>
-									<td>Paris</td>
-                                    <td>£<span>eco</span><div class='confirm_but'> <button onclick='economyClik(#{flightId})' >Book</button> </div></td>
-                                    <td>£<span>busin</span> <div class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>
-									<td>£<span>first</span><div  class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>
-						       </tr>
+<!--								<tr>-->
+<!--									<td>BritishAirway</td>-->
+<!--									<td>GP2312</td>-->
+<!--									<td>day</td>-->
+<!--									<td>time1</td>-->
+<!--									<td>time2</td>-->
+<!--									<td>London</td>-->
+<!--									<td>Paris</td>-->
+<!--                                    <td>£<span>eco</span><div class='confirm_but'> <button onclick='economyClik(#{flightId})' >Book</button> </div></td>-->
+<!--                                    <td>£<span>busin</span> <div class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>-->
+<!--									<td>£<span>first</span><div  class='confirm_but'><button onclick='economyClik(#{flightId})' >Book</button> </div></td>-->
+<!--						       </tr>-->
 
 							</tbody>
 						</table>
@@ -208,6 +208,7 @@
 				});
 			}
       // order page
+			//eco
 			function supereClik(flightId){
 				$.ajax({
 					url:"/tickets/"+flightId+"/get_a_ticket",
@@ -217,6 +218,42 @@
 						if(json.state==200){
 							//refresh page
 							location.href="BookingServiceEco.html";
+						}else { alert("Set Failed");}
+					},
+					error:function (xhr){
+						//弹出窗口
+						alert("oops! An unknown error"+" "+xhr.message)
+					}
+				});
+			}
+			//bus
+			function superbClik(flightId){
+				$.ajax({
+					url:"/tickets/"+flightId+"/get_a_ticket",
+					type:"POST",
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							//refresh page
+							location.href="BookingServiceBus.html";
+						}else { alert("Set Failed");}
+					},
+					error:function (xhr){
+						//弹出窗口
+						alert("oops! An unknown error"+" "+xhr.message)
+					}
+				});
+			}
+			//first
+			function superfClik(flightId){
+				$.ajax({
+					url:"/tickets/"+flightId+"/get_a_ticket",
+					type:"POST",
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							//refresh page
+							location.href="BookingServiceFirst.html";
 						}else { alert("Set Failed");}
 					},
 					error:function (xhr){

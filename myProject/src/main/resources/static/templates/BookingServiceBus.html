@@ -310,20 +310,18 @@
 
 </div>
 
-
-
 <!--booking service-->
 <script type="text/javascript">
   $("#btn-create-order").click(function () {
     console.log($("#myServiceBooking").serialize());
     $.ajax({
-      url:"/tickets/booking",
+      url:"/tickets/booking_business",
       type:"POST",
       data:$("#myServiceBooking").serialize(),
       dataType:"JSON",
       success : function(json){
         if(json.state==200){
-          location.href="eco1.html";
+          location.href="Bus.html";
         }else { alert("save Failed");}
       },
       error:function (xhr){

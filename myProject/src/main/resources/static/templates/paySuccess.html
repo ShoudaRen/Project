@@ -14,7 +14,26 @@
 		<link rel="stylesheet" href="../CSS/pay.css">
         <link rel="icon" href="../static/ICON.png" type="image/x-icon">
 
+   <style>
+	   #success{
+		   font-size: 50px;
+		   margin-left: 170px;
+		   margin-top: 100px;
+	   }
+      #payBottom button{
+		  background-color: #0c52a4;
+		  width: 180px;
+		  height: 50px;
+		  color: #c4e3f3;
+		  border-radius: 5%;
+		  font-size: 20px;
+		  cursor: pointer;
+		  float: left;
+		  margin: 10px 10px;
 
+	  }
+
+   </style>
 	</head>
 
 	<body>
@@ -30,35 +49,12 @@
 			</div>
 
 			<div id="mainPay">
-				<div id="miniTitle">Enter your Payment Details</div>
-				<div class="Paydetails" id="payvalue">
-					<span class="hint">You are paying GBP</span>
-					<form id="sumPrice">
-					<input name="totalPrice" id="totalPrice" value="100" readonly="readonly">
-			        </form>
-					<span class="hint">With</span>
-					<div class="pp" id="svp"><img id="vvp"  src="../static/visapay.png"></div>
-					<div class="pp" id="smp"><img id="mmp"  src="../static/masterpay.jpg"></div>
-				</div>
-				<div class="Paydetails">
-					<span> Card Number</span><input type="text" oninput = "value=value.replace(/[^\d]/g,'')" checked="checked" id="carNumber" name="carNumber" >
-				</div>
-				<div class="Paydetails">
-					<span> Card Holder Name</span><input   type="text"  id="holderName" name="holderName">
-				</div>
-				<div class="Paydetails">
-					<span> Card Expiry Date</span><input  class="ex" required="required" type="text" oninput = "value=value.replace(/[^\d]/g,'')"  id="expireFirst" name="expireFirst" ><span>/</span>
-					<input   class="ex"  type="text" oninput = "value=value.replace(/[^\d]/g,'')"  id="expireSecond" name="expireSecond" >
-				</div>
-				<div id="ll" class="Paydetails">
-					<span> CVC</span><input  required="required"  type="text" oninput = "value=value.replace(/[^\d]/g,'')"  id="CVC" name="CVC"><a id="linkCvC" href="javascript:;">What is CVC?</a>
-				</div>
-
+                  <div id="success">Pay Success!</div>
 			</div>
 
 			<div id="payBottom">
-				<a href="eco1.html"><button type="button" id="fbt" >Previous</button></a>
-				<a id="linklast"><button type="button" id="sbt">Continue</button></a>
+				<a href="index.html"><button type="button" id="home" >Home</button></a>
+				<a id="#"><button type="button" id="book">See my booking</button></a>
 			</div>
 		</div>
 	</div>
@@ -96,7 +92,7 @@
 					dataType:"JSON",
 					success : function(json){
 						if(json.state==200){
-							location.href="paySuccess.html";
+							location.href="index.html";
 						}else { alert("Change Failed");}
 					},
 					error:function (xhr){
