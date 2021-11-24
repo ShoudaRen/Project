@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Random;
-import java.util.UUID;
-
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -36,6 +33,11 @@ public class MybookingMapperTests {
       myBooking.setSpecialServices("None");
       myBooking.setPayStatus(0);
       myBooking.setExtraLuggage("10KG 30GBP");
+      myBooking.setHotelPrice(100);
+      myBooking.setLuggagePrice(100);
+      myBooking.setPickupPirce(100);
+      myBooking.setLoungePrice(200);
+      myBooking.setMealPrice(100);
      Integer rows= mybookingMapper.insertBookingDetail(myBooking);
       System.out.println(rows);
 
@@ -43,6 +45,21 @@ public class MybookingMapperTests {
    @Test
     public void findservicebyRef(){
        System.out.println( mybookingMapper.findServiceByRef(100000019)); ;
+    }
+
+    @Test
+    public void  updateService(){
+      mybookingMapper.updateServicePrice(100000017, 100,10, 12, 23, 34);
+    }
+
+    @Test
+    public void sumAllPrice(){
+        System.out.println(mybookingMapper.getAllPriceByReference(100000022));
+    }
+
+    @Test
+    public void upadateAllPrice(){
+        mybookingMapper.updateAllPriceToDataBase(100000022,407);
     }
 
 }

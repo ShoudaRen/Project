@@ -64,7 +64,7 @@
     <update id="updatePasswordByUid">
         UPDATE  t_user SET password = #{password},
                            modified_user = #{modifiedUser},
-                           modified_time = #{modifiedTime},
+                           modified_time = #{modifiedTime}
                            where uid = #{uid}
 
     </update>

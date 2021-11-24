@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit" />
+		<title>Pay</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/jquery-1.9.1.min.js"></script>
+
+		<link rel="stylesheet" href="../fontAwesome/css/all.css">
+	    <link rel="stylesheet" href="../CSS/base.css">
+		<link rel="stylesheet" href="../CSS/pay.css">
+        <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+
+
+	</head>
+
+	<body>
+	<div class="top">
+		<div class="mid w">
+			<div class="logo"><a href="index.html"><img src="../static/logo.png" alt="logo"></a></div>
+		</div>
+		<div id="payingbox">
+			<div id="logo">
+				<div id="barclay" ><img src="../static/baclay.jpg"></div>
+				<div id="visas" class="visaAndMaster"><img  src="../static/visaV.png"></div>
+				<div id="masters" class="visaAndMaster"><img  src="../static/masterse.jpg"></div>
+			</div>
+			<form>
+			<div id="mainPay">
+				<div id="miniTitle">Enter your Payment Details</div>
+				<div class="Paydetails">
+					<span class="hint">You are paying GBP</span>
+					<input name="totalPrice" id="totalPrice" value="100" readonly="readonly">
+					<span class="hint">With</span>
+					<div class="pp" id="svp"><img id="vvp"  src="../static/visapay.png"></div>
+					<div class="pp" id="smp"><img id="mmp"  src="../static/masterpay.jpg"></div>
+				</div>
+				<div class="Paydetails">
+					<span> Card Number</span><input required="required" type="number" checked="checked" id="carNumber" name="carNumber">
+				</div>
+				<div class="Paydetails">
+					<span> Card Holder Name</span><input required="required"  type="text"  id="holderName" name="holderName">
+				</div>
+				<div class="Paydetails">
+					<span> Card Expiry Date</span><input  class="ex" required="required" type="number"  id="expireFirst" name="expireFirst" ><span>/</span><input   class="ex" required="required" type="number"  id="expireSecond" name="expireSecond" >
+				</div>
+				<div id="ll" class="Paydetails">
+					<span> CVC</span><input  required="required"  type="number"  id="CVC" name="CVC"><a id="linkCvC" href="javascript:;">What is CVC?</a>
+				</div>
+
+			</div>
+			</form>
+			<div id="payBottom">
+				<a href="eco1.html"><button id="fbt" >Previous</button></a>
+				<a id="linklast" href="javascript:;"><button id="sbt">Continue</button></a>
+			</div>
+		</div>
+	</div>
+
+
+	</body>
+
+</html>

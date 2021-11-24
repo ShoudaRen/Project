@@ -14,5 +14,14 @@ public interface MyBookingService {
                            Integer payStatus,String extraLuggage);
 
      MyBooking findMybookByRef(Integer reference);
+
+     void updatepaidsercice(Integer reference, Integer mealPrice,Integer pickupPirce,
+                            Integer hotelPrice,Integer loungePrice,Integer luggagePrice);
+
+
+     void updateTotalPriceByRef(Integer reference,Integer totalPrice);
+     Integer getAllpriceByRef(Integer reference);
+
+
 }
 

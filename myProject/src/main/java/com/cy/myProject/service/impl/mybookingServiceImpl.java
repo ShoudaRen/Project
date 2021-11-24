@@ -60,5 +60,22 @@ public class mybookingServiceImpl implements MyBookingService {
         return myBooking;
     }
 
+    @Override
+    public void updatepaidsercice(Integer reference, Integer mealPrice, Integer pickupPirce, Integer hotelPrice, Integer loungePrice, Integer luggagePrice) {
+        mybookingMapper.updateServicePrice(reference,mealPrice,pickupPirce,hotelPrice,loungePrice,luggagePrice);
+    }
+
+    @Override
+    public void updateTotalPriceByRef(Integer reference, Integer totalPrice) {
+        mybookingMapper.updateAllPriceToDataBase(reference,totalPrice);
+    }
+
+    @Override
+    public Integer getAllpriceByRef(Integer reference) {
+        Integer allPrice= mybookingMapper.getAllPriceByReference(reference);
+        return allPrice;
+    }
+
+
 
 }

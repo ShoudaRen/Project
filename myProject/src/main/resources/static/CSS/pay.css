@@ -1,0 +1,110 @@
+
+
+#payingbox{
+    width: 1000px;
+    height: 500px;
+    margin: 100px auto;
+}
+#barclay,.visaAndMaster{
+
+    width: 200px;
+    height: 70px;
+    margin: 10px 10px;
+    overflow: hidden;
+}
+#logo{
+    width: 100%;
+    height: 80px;
+    border-bottom: 5px black solid;
+}
+
+.visaAndMaster{
+    margin-top: 20px;
+    width: 100px ;
+    height: 49px;
+}
+
+#barclay img{
+    height: 100%;
+}
+#barclay{}
+#visas{
+    margin-right: 30px;
+}
+.visaAndMaster img{
+    width: 100%;
+}
+#barclay{
+    float: left;
+}
+.visaAndMaster{
+    float: right;
+}
+
+/*main*/
+
+#mainPay{
+
+    height: 300px;
+    width: 600px;
+    margin: 30px auto;
+
+
+}
+#miniTitle{
+    font-size: large;
+    font-weight: bolder;
+}
+.hint{
+    font-weight: bolder;
+}
+#totalPrice{
+    width: 50px;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-weight: bolder;
+}
+
+.ex{
+    width: 30px;
+}
+#CVC{
+    width: 35px;
+}
+.pp{
+    height: 20px;
+    width: 50px;
+    overflow: hidden;
+    float: right;
+
+
+}
+#vvp{
+    width: 100%;
+}
+#mmp{
+    height: 100%;
+}
+#smp{
+    height: 18px;
+    margin-top: 3px;
+}
+#svp{
+    margin-right: 280px;
+    margin-left: -10px;
+}
+#payBottom{
+    height: 100px;
+    width: 100%;
+}
+#linkCvC{
+    margin-left: 10px;
+    color: #2d6ca2;
+}
+
+#linklast{
+    display: block;
+    float: right;
+}

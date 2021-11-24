@@ -3,7 +3,6 @@ package com.cy.myProject.service;
 
 
 import com.cy.myProject.entity.MyBooking;
-import com.cy.myProject.entity.Passenger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,12 @@ public class BookingServiceTests {
     public void  findMybookByRef(){
         System.out.println(myBookingService.findMybookByRef(100000019));
     }
+
+
+//    @Test
+//    public void  updateService(){
+//        myBookingService
+//    }
 
 }
 

@@ -3,8 +3,7 @@ package com.cy.myProject.controller;
 
 import com.cy.myProject.entity.Flight;
 import com.cy.myProject.entity.MyBooking;
-import com.cy.myProject.service.ITicketService;
-import com.cy.myProject.service.MyBookingService;
+import com.cy.myProject.service.*;
 import com.cy.myProject.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +22,17 @@ public class TicketController extends BaseController{
     private MyBookingService myBookingService;
     @Autowired
     private ITicketService iTicketService;
+    @Autowired
+    private HotelService hotelService;
+    @Autowired
+    private LoungeService loungeService;
+    @Autowired
+    private MealService mealService;
+    @Autowired
+    private LuggageService luggageService;
+    @Autowired
+    private  pickUpService pickUpService;
+
     private  List<Flight>  dataStore = new ArrayList<>();
     private  Flight TheflightIneed= new Flight();
     private  int TemFlightId;
@@ -62,6 +72,7 @@ public class TicketController extends BaseController{
         Temecoprice=data.getEcoPrice();
         Tembusineprice=data.getBusinessPrice();
         Temfirstprice=data.getFirstPrice();
+
      return  new JsonResult<>(ok,data);
     }
 
@@ -79,7 +90,31 @@ public class TicketController extends BaseController{
         String username= getUsernameFromSession(session);
       MyBooking booking=  myBookingService.insertService(myBooking, uid,TemFlightId,username
                 ,Temecoprice, mySeat, meals,pickup,transitHotel,transitLounge,specialServices,payStatus,extraLuggage);
-   tembooking = booking;
+    // set all service price
+        String hotel=booking.getTransitHotel();
+        String lounge=booking.getTransitLounge();
+        String luggage=booking.getExtraLuggage();
+        String meal=booking.getMeals();
+        String car=booking.getPickup();
+       Integer hotelPrice = hotelService.getPirceByname(hotel);
+       Integer loungePrice=loungeService.getpricebyName(lounge);
+       Integer luggagePrice=luggageService.getLuggagePriceByName(luggage);
+       Integer mealPrice=mealService.getMealPriceByName(meal);
+       Integer carPrice=pickUpService.getCarPriceByName(car);
+       booking.setMealPrice(mealPrice);
+       booking.setLoungePrice(loungePrice);
+       booking.setLuggagePrice(luggagePrice);
+       booking.setPickupPirce(carPrice);
+       booking.setHotelPrice(hotelPrice);
+        Integer ref =booking.getReference();
+       myBookingService.updatepaidsercice(ref,mealPrice,carPrice,
+                hotelPrice,loungePrice,luggagePrice);
+      // obtain total price of flight+service
+        Integer totalPrice=myBookingService.getAllpriceByRef(ref);
+        booking.setTotalPrice(totalPrice);
+        myBookingService.updateTotalPriceByRef(ref,totalPrice);
+        // used for show method
+        tembooking = booking;
         return new  JsonResult<Void>(ok);
     }
 
@@ -87,6 +122,12 @@ public class TicketController extends BaseController{
     public JsonResult<MyBooking> showService(){
         return new JsonResult<MyBooking>(ok,tembooking);
     }
+
+
+
+
+
+
 
 //未使用
     @RequestMapping("find_service")

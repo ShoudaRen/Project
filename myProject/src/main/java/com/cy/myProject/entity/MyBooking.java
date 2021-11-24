@@ -20,6 +20,11 @@ public class MyBooking  extends BaseEntity{
     private Integer payStatus;
     private String extraLuggage;
     private Integer isDelete;
+    private Integer mealPrice;
+    private Integer pickupPirce;
+    private Integer hotelPrice;
+    private Integer loungePrice;
+    private Integer luggagePrice;
 
     public Integer getReference() {
         return reference;
@@ -149,18 +154,58 @@ public class MyBooking  extends BaseEntity{
         this.isDelete = isDelete;
     }
 
+    public Integer getMealPrice() {
+        return mealPrice;
+    }
+
+    public void setMealPrice(Integer mealPrice) {
+        this.mealPrice = mealPrice;
+    }
+
+    public Integer getPickupPirce() {
+        return pickupPirce;
+    }
+
+    public void setPickupPirce(Integer pickupPirce) {
+        this.pickupPirce = pickupPirce;
+    }
+
+    public Integer getHotelPrice() {
+        return hotelPrice;
+    }
+
+    public void setHotelPrice(Integer hotelPrice) {
+        this.hotelPrice = hotelPrice;
+    }
+
+    public Integer getLoungePrice() {
+        return loungePrice;
+    }
+
+    public void setLoungePrice(Integer oungePrice) {
+        this.loungePrice = oungePrice;
+    }
+
+    public Integer getLuggagePrice() {
+        return luggagePrice;
+    }
+
+    public void setLuggagePrice(Integer luggagePrice) {
+        this.luggagePrice = luggagePrice;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof MyBooking)) return false;
         if (!super.equals(o)) return false;
         MyBooking myBooking = (MyBooking) o;
-        return Objects.equals(getReference(), myBooking.getReference()) && Objects.equals(getUid(), myBooking.getUid()) && Objects.equals(getFlightId(), myBooking.getFlightId()) && Objects.equals(getPassengerId(), myBooking.getPassengerId()) && Objects.equals(getMySeat(), myBooking.getMySeat()) && Objects.equals(getClassPrice(), myBooking.getClassPrice()) && Objects.equals(getMeals(), myBooking.getMeals()) && Objects.equals(getPickup(), myBooking.getPickup()) && Objects.equals(getTransitHotel(), myBooking.getTransitHotel()) && Objects.equals(getTransitLounge(), myBooking.getTransitLounge()) && Objects.equals(getSpecialServices(), myBooking.getSpecialServices()) && Objects.equals(getPreSeat(), myBooking.getPreSeat()) && Objects.equals(getTotalPrice(), myBooking.getTotalPrice()) && Objects.equals(getPayStatus(), myBooking.getPayStatus()) && Objects.equals(getExtraLuggage(), myBooking.getExtraLuggage()) && Objects.equals(getIsDelete(), myBooking.getIsDelete());
+        return Objects.equals(getReference(), myBooking.getReference()) && Objects.equals(getUid(), myBooking.getUid()) && Objects.equals(getFlightId(), myBooking.getFlightId()) && Objects.equals(getPassengerId(), myBooking.getPassengerId()) && Objects.equals(getMySeat(), myBooking.getMySeat()) && Objects.equals(getClassPrice(), myBooking.getClassPrice()) && Objects.equals(getMeals(), myBooking.getMeals()) && Objects.equals(getPickup(), myBooking.getPickup()) && Objects.equals(getTransitHotel(), myBooking.getTransitHotel()) && Objects.equals(getTransitLounge(), myBooking.getTransitLounge()) && Objects.equals(getSpecialServices(), myBooking.getSpecialServices()) && Objects.equals(getPreSeat(), myBooking.getPreSeat()) && Objects.equals(getTotalPrice(), myBooking.getTotalPrice()) && Objects.equals(getPayStatus(), myBooking.getPayStatus()) && Objects.equals(getExtraLuggage(), myBooking.getExtraLuggage()) && Objects.equals(getIsDelete(), myBooking.getIsDelete()) && Objects.equals(getMealPrice(), myBooking.getMealPrice()) && Objects.equals(getPickupPirce(), myBooking.getPickupPirce()) && Objects.equals(getHotelPrice(), myBooking.getHotelPrice()) && Objects.equals(getLoungePrice(), myBooking.getLoungePrice()) && Objects.equals(getLuggagePrice(), myBooking.getLuggagePrice());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getReference(), getUid(), getFlightId(), getPassengerId(), getMySeat(), getClassPrice(), getMeals(), getPickup(), getTransitHotel(), getTransitLounge(), getSpecialServices(), getPreSeat(), getTotalPrice(), getPayStatus(), getExtraLuggage(), getIsDelete());
+        return Objects.hash(super.hashCode(), getReference(), getUid(), getFlightId(), getPassengerId(), getMySeat(), getClassPrice(), getMeals(), getPickup(), getTransitHotel(), getTransitLounge(), getSpecialServices(), getPreSeat(), getTotalPrice(), getPayStatus(), getExtraLuggage(), getIsDelete(), getMealPrice(), getPickupPirce(), getHotelPrice(), getLoungePrice(), getLuggagePrice());
     }
 
     @Override
@@ -182,6 +227,11 @@ public class MyBooking  extends BaseEntity{
                 ", payStatus=" + payStatus +
                 ", extraLuggage='" + extraLuggage + '\'' +
                 ", isDelete=" + isDelete +
+                ", mealPrice=" + mealPrice +
+                ", pickupPirce=" + pickupPirce +
+                ", hotelPrice=" + hotelPrice +
+                ", oungePrice=" + loungePrice +
+                ", luggagePrice=" + luggagePrice +
                 '}';
     }
 }

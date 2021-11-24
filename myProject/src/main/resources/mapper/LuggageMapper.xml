@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.myProject.Mapper.luggageMapper">
+
+    <resultMap id="luggageEntityMap" type="com.cy.myProject.entity.Luggage">
+
+        <id column="luggageId" property="luggageId"></id>
+        <result column="name" property="name"></result>
+        <result column="price" property="price"></result>
+
+    </resultMap>
+    <select id="getLuaByName" resultMap="luggageEntityMap">
+        select * from t_luggage where name=#{name}
+    </select>
+
+</mapper>

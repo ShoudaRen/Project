@@ -8,6 +8,12 @@ public interface MybookingMapper {
 
     MyBooking findServiceByRef(Integer reference);
 
+    void  updateServicePrice(Integer reference, Integer mealPrice,Integer pickupPirce,
+                             Integer hotelPrice,Integer loungePrice,Integer luggagePrice );
+
+    Integer getAllPriceByReference(Integer reference);
+
+    void  updateAllPriceToDataBase(Integer reference, Integer totalPrice);
 
     void updatePaymentStatus(Integer reference);
 }

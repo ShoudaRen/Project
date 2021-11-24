@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.myProject.Mapper.MealMapper">
+
+    <resultMap id="MealEntityMap" type="com.cy.myProject.entity.Meals">
+
+        <id column="mealId" property="mealId"></id>
+        <result column="name" property="name"></result>
+        <result column="price" property="price"></result>
+
+    </resultMap>
+
+    <select id="getMealbyName" resultMap="MealEntityMap">
+        select * from t_meal where name=#{name}
+    </select>
+
+</mapper>

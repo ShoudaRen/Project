@@ -36,8 +36,12 @@
             created_user,
             created_time,
             modified_user,
-            modified_time
-
+            modified_time,
+            mealPrice,
+            pickupPirce,
+            hotelPrice,
+            loungePrice,
+            luggagePrice
         )VALUES(
                   #{reference},
                   #{uid},
@@ -58,12 +62,36 @@
                    #{createdUser},
                    #{createdTime},
                    #{modifiedUser},
-                   #{modifiedTime}
+                   #{modifiedTime},
+                   #{mealPrice},
+                   #{pickupPirce},
+                   #{hotelPrice},
+                   #{loungePrice},
+                   #{ luggagePrice}
                    )
     </insert>
 
     <select id="findServiceByRef" resultMap="MybookingMap">
         select * from t_myallbook where  reference=#{reference}
     </select>
+
+    <update id="updateServicePrice">
+        update t_myallbook set  mealPrice =#{mealPrice},
+                               pickupPirce=#{pickupPirce},
+                               hotelPrice=#{hotelPrice},
+                                loungePrice=#{loungePrice},
+                                luggagePrice= #{luggagePrice}
+        where reference=#{reference}
+    </update>
+
+    <select id="getAllPriceByReference" resultType="java.lang.Integer" >
+ SELECT sum(classPrice+mealPrice+pickupPirce+hotelPrice+luggagePrice+loungePrice)
+ from t_myallbook where reference=#{reference}
+    </select>
+
+    <update id="updateAllPriceToDataBase">
+        update t_myallbook set totalPrice= #{totalPrice} where reference=#{reference}
+    </update>
+
 
 </mapper>
