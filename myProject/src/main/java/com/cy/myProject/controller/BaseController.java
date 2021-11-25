@@ -45,6 +45,10 @@ public class BaseController {
             result.setState(4007);
             result.setMessage("no booking exist");
         }
+        else if(e instanceof ticketNotFoundException) {
+            result.setState(4007);
+            result.setMessage("tickets sold out!");
+        }
         else if(e instanceof InsertException) {
             result.setState(5000);
             result.setMessage("oops! insert exception");

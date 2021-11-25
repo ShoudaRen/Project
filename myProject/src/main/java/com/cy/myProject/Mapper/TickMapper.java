@@ -10,14 +10,18 @@ public interface TickMapper {
 
        List<Flight> findTick (String fromLocation, String toLocation, Date flightDay);
 
-//       void updateFlightNum(Integer flightId, Integer AdultNum,
-//                                  Integer childrenNum,
-//                                  Integer infantsNum,
-//                                  Integer disableNum);
-
        List<Flight> findAllTicket ();
 
+       //findflightByFlightLd
        Flight bookAFlightbyflightId(Integer flightId);
+
+       void updateFlightNumByflghtId(Integer flightId, Integer AdultNum);
+
+
+
+
+
+
 
 
 

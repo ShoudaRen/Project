@@ -41,13 +41,8 @@
     </select>
 
 
-<!--    <update id="updateFlightNum">-->
-<!--        UPDATE t_flight SET-->
-<!--                           AdultNum =#{AdultNum},-->
-<!--                           childrenNum=#{childrenNum},-->
-<!--                           infantsNum= #{infantsNum},-->
-<!--                           disableNum = #{disableNum}-->
-<!--        where flightId = #{flightId}-->
+    <update id="updateFlightNumByflghtId">
+        UPDATE t_flight SET AdultNum =#{AdultNum} where flightId = #{flightId}
+    </update>
 
-<!--    </update>-->
 </mapper>

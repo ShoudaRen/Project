@@ -39,5 +39,22 @@ public class TicketServiceImpl implements ITicketService {
         return flight;
     }
 
+    @Override
+    public void updateFlightNumByflghtId(Integer FlightId) {
+     Flight data= tickMapper.bookAFlightbyflightId( FlightId);
+     if (data.getAdultNum()==0){
+         throw new ticketNotFoundException("All tickets sold out!");
+     }
+        Integer ticket =data.getAdultNum()-1;
+        tickMapper.updateFlightNumByflghtId(FlightId,ticket);
+    }
+
+    @Override
+    public void noticket(Integer FlightId) {
+        Flight flight=tickMapper.bookAFlightbyflightId(FlightId);
+        if (flight.getAdultNum()==0){
+            throw new ticketNotFoundException("tickets sold out");
+        }
+    }
 
 }

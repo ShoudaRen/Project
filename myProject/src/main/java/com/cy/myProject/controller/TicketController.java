@@ -66,6 +66,7 @@ public class TicketController extends BaseController{
 
     @RequestMapping("{flightId}/get_a_ticket")
     public  JsonResult<Flight> getTicketByFlightId(@PathVariable("flightId")Integer flightId){
+        iTicketService.noticket(TemFlightId);
      Flight data=  iTicketService.getTicketByFlightId(flightId);
         TheflightIneed=data;
         TemFlightId=data.getFlightId();
@@ -86,6 +87,7 @@ public class TicketController extends BaseController{
     public JsonResult<Void> insertBooking(MyBooking myBooking,HttpSession session,String mySeat,String meals,
                                           String pickup,String transitHotel,String transitLounge,String specialServices
     ,Integer payStatus,String extraLuggage){
+
         Integer uid = getUidFromSession(session);
         String username= getUsernameFromSession(session);
       MyBooking booking=  myBookingService.insertService(myBooking, uid,TemFlightId,username
@@ -197,9 +199,6 @@ public class TicketController extends BaseController{
 
 
 
-
-
-
     @RequestMapping("show_service")
     public JsonResult<MyBooking> showService(){
         return new JsonResult<MyBooking>(ok,tembooking);
@@ -215,6 +214,7 @@ public class TicketController extends BaseController{
 
     @RequestMapping("update_pay_status")
     public JsonResult<Void> updatePayStatusByRef(){
+        iTicketService.updateFlightNumByflghtId(TemFlightId);
         myBookingService.updatePaymentStatus(temRef);
         return  new  JsonResult<Void>(ok);
     }

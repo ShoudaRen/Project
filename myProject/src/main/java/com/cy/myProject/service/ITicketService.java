@@ -14,5 +14,10 @@ public interface ITicketService {
     List<Flight> getPartticket(Date flightDay, String fromLocation, String toLocation );
 
     Flight getTicketByFlightId(Integer FlightId);
+
+
+    void updateFlightNumByflghtId(Integer FlightId);
+
+    void noticket(Integer FlightId);
 }
 

@@ -50,4 +50,9 @@ public class TicketMapperTests {
         Flight flight =  tickMapper.bookAFlightbyflightId(3);
         System.out.println(flight);
     }
+
+    @Test
+    public void updateFlightNumByflghtId(){
+        tickMapper.updateFlightNumByflghtId(3,249);
+    }
 }
