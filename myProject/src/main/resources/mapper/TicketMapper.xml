@@ -16,14 +16,6 @@
 
     </resultMap>
 
-<!--    <insert id="" useGeneratedKeys="" keyProperty="">-->
-
-<!--        INSERT INTO t_passenger (-->
-
-<!--        )VALUES(-->
-
-<!--                   )-->
-<!--    </insert>-->
 
     <select id="findTick" resultMap="TicketEntityMap" >
         select * from t_flight where flightDay=#{flightDay}
@@ -45,4 +37,7 @@
         UPDATE t_flight SET AdultNum =#{AdultNum} where flightId = #{flightId}
     </update>
 
+    <select id="findOnsale" resultMap="TicketEntityMap">
+        SELECT * FROM t_flight where Onsale = 1
+    </select>
 </mapper>

@@ -3,8 +3,8 @@
  width: 100%;
  height: 200px;
  background-color: #0E1B2E;
- position: absolute;
- top: 80%;
+ position: relative;
+ margin-top: 600px;
 }
 .bottomF div{
 float: left;

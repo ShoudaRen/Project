@@ -19,5 +19,8 @@ public interface ITicketService {
     void updateFlightNumByflghtId(Integer FlightId);
 
     void noticket(Integer FlightId);
+
+    List<Flight> getOnSale();
+
 }
 

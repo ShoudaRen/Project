@@ -57,4 +57,10 @@ public class TicketServiceImpl implements ITicketService {
         }
     }
 
+    @Override
+    public List<Flight> getOnSale() {
+        List<Flight> ticket=tickMapper.findOnsale();
+        return ticket;
+    }
+
 }

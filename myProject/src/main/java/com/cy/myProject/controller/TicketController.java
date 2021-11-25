@@ -47,7 +47,11 @@ public class TicketController extends BaseController{
         List<Flight> data =iTicketService.getAllticket();
         return new JsonResult<>(ok,data);
     }
-
+    @RequestMapping("find_On_Sale")
+    public  JsonResult<List<Flight>> findTicketsOnSale(){
+        List<Flight> data =iTicketService.getOnSale();
+        return new JsonResult<>(ok,data);
+    }
 
     @RequestMapping("search_ticket")
     public  JsonResult<List<Flight>> getPartTicket(Date flightDay,

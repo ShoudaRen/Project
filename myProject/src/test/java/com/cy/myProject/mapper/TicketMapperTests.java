@@ -55,4 +55,11 @@ public class TicketMapperTests {
     public void updateFlightNumByflghtId(){
         tickMapper.updateFlightNumByflghtId(3,249);
     }
+
+
+    @Test
+    public void findSale(){
+        List<Flight> b= tickMapper.findOnsale();
+        System.out.println(b);
+    }
 }
