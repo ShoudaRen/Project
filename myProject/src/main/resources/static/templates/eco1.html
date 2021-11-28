@@ -3,13 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <!--edge浏览器H5兼容设置-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--360浏览器H5兼容设置-->
     <meta name="renderer" content="webkit" />
     <title>Book Ticket</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--导入核心文件-->
     <script src="../bootstrap3/js/holder.js"></script>
     <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script src="../js/jquery-1.9.1.min.js"></script>
@@ -80,12 +77,18 @@
         #form-create-order th,  #form-create-order td{
             text-align: center;
         }
+
+        #addPassenger{
+            background-color: #a94442;
+            color: whitesmoke;
+            border-radius: 10%;
+            margin-left: 610px;
+        }
     </style>
 </head>
 
 <body>
-<!--头部-->
-<!--头部-->
+
 <div class="top">
     <div class="mid w">
         <div class="logo"><a href="index.html"><img src="../static/logo.png" alt="logo"></a></div>
@@ -108,7 +111,6 @@
     <div><a href="userdata.html">Manage</a></div>
     <div><a href="allticket.html">All flights</a></div>
 </div>
-<!--导航结束-->
 <div class="container">
     <div class="col-md-offset-1 col-md-10">
         <div class="col-md-4">
@@ -143,12 +145,12 @@
                         <p>Choose Passenger <button id="addPassenger">add Passenger</button></p>
                     </label>
                     <select name="passengerId" id="passengers-list" class="form-control">
-                        <option>八戒&nbsp;&nbsp;&nbsp;家&nbsp;&nbsp;&nbsp;北京市房山区高老庄3排6号&nbsp;&nbsp;&nbsp;1380***1234
+                        <option>
                         </option>
                         <option>
-                            八戒&nbsp;&nbsp;&nbsp;公司&nbsp;&nbsp;&nbsp;北京市海淀区中关村中路1号1001室&nbsp;&nbsp;&nbsp;1380***1234
+
                         </option>
-                        <option>八戒&nbsp;&nbsp;&nbsp;宿舍&nbsp;&nbsp;&nbsp;北京市海淀区永丰镇30号&nbsp;&nbsp;&nbsp;1380***1234
+                        <option>
                         </option>
                     </select>
                    </form>
@@ -256,14 +258,12 @@
 
 </div>
 
-
 <!--SHOW TICKET CHOOSED-->
 <script type="text/javascript" >
     $(document).ready(function () {
         showbook();
         showPassengerList();
     });
-
 
 // update passengid to myservice database
         $("#btn-pay-order").click(function () {
@@ -283,9 +283,6 @@
             }
         });
     });
-
-
-
 
     function  showbook(){
         $.ajax({
@@ -379,9 +376,16 @@
             }
         });
     });
+
+
 </script>
 
-
+<!--add passenger-->
+<script type="text/javascript">
+    $("#addPassenger").click(function () {
+     window.open("addPassenagerpart.html");
+    });
+</script>
 
 
 
