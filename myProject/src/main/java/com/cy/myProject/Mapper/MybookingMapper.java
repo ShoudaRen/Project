@@ -2,6 +2,8 @@ package com.cy.myProject.Mapper;
 
 import com.cy.myProject.entity.MyBooking;
 
+import java.util.List;
+
 public interface MybookingMapper {
 
     Integer insertBookingDetail(MyBooking myBooking);
@@ -18,4 +20,15 @@ public interface MybookingMapper {
     void upatePassengerIdToDatebase(Integer reference, Integer passengerId);
 
     void updatePaymentStatus(Integer reference, Integer payStatus);
+
+    List<MyBooking> FindallMyBookingByUid(Integer uid);
+
+    void updateClassType(Integer reference, String classType);
+
+    Integer deleteByRef(Integer reference);
+
+    void updateServiceByRef(Integer reference, String meals, String pickup, String transitHotel, String transitLounge, String specialServices, String extraLuggage);
+
+    //isdelte replace service price
+    void ChangeServicePrice(Integer reference, Integer isDelete);
 }

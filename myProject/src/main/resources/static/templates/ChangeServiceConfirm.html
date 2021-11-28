@@ -72,9 +72,11 @@
             width: 160px;
             height: 30px;
             float: right;
+            margin-bottom: 30px;
         }
         #allPrice input{
             width: 50px;
+            background: transparent;
         }
 
         #form-create-order th,  #form-create-order td{
@@ -138,64 +140,15 @@
         <div class="col-md-12">
 
                 <div class="form-group">
-                   <form id="passengerForm">
-                    <label >
-                        <p>Choose Passenger <button id="addPassenger">add Passenger</button></p>
-                    </label>
-                    <select name="passengerId" id="passengers-list" class="form-control">
-                        <option>八戒&nbsp;&nbsp;&nbsp;家&nbsp;&nbsp;&nbsp;北京市房山区高老庄3排6号&nbsp;&nbsp;&nbsp;1380***1234
-                        </option>
-                        <option>
-                            八戒&nbsp;&nbsp;&nbsp;公司&nbsp;&nbsp;&nbsp;北京市海淀区中关村中路1号1001室&nbsp;&nbsp;&nbsp;1380***1234
-                        </option>
-                        <option>八戒&nbsp;&nbsp;&nbsp;宿舍&nbsp;&nbsp;&nbsp;北京市海淀区永丰镇30号&nbsp;&nbsp;&nbsp;1380***1234
-                        </option>
-                    </select>
-                   </form>
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <p class="panel-title">Ticket Details：</p>
                     </div>
                     <div class="panel-body">
-                        <form id="form-create-order" role="form">
-                        <table class="cart-table" width="100%">
-                            <thead>
-                            <tr>
-                                <th width="10%">Airline</th>
-                                <th width="8%">Flight Number</th>
-                                <th width="10%">Day</th>
-                                <th width="14%">Departure Time</th>
-                                <th width="12%">Arrival Time</th>
-                                <th width="8%">From</th>
-                                <th width="8%">To</th>
-                                <th width="13%">Entertainment</th>
-                                <th width="8%">Price</th>
-                                <th width="20%">Number of tickets</th>
-                            </tr>
-                            </thead>
-                            <tbody id="cart-list">
-                            <tr>
-                                <td>British Airways</td>
-                                <td>GP2312</td>
-                                <td>11/11/2021</td>
-                                <td>11;25AM</td>
-                                <td>12:50pm</td>
-                                <td>London</td>
-                                <td>Shanghai</td>
-                                <td>Normal</td>
-                                <td>£<span>5298</span></td>
-                                <td>100</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        </form>
                         <p id="se">My Service：</p>
                         <form id="myServiceBooking">
                             <div id="servicePart">
-                                <div class="myService"><label>My Seat:</label>
-                                  <input name="mySeat" id="mySeat" value="seat" readonly="readonly">
-                                </div>
                                 <div class="myService"><label>Meals:</label>
                                     <input name="meals" id="meals" value="Meals" readonly="readonly">
                                 </div>
@@ -216,7 +169,7 @@
                                 </div>
                             </div>
                             <div id="allPrice">
-                                <span>All Price: </span> <input readonly="readonly" name="totalPrice" id="totalPrice" value="3333"><span>GBP</span>
+                                <span>Price Difference: </span> <input readonly="readonly" name="totalPrice" id="totalPrice" value="3333"><span>GBP</span>
                             </div>
                         </form>
                     </div>
@@ -257,124 +210,26 @@
 </div>
 
 
-<!--SHOW TICKET CHOOSED-->
-<script type="text/javascript" >
-    $(document).ready(function () {
-        showbook();
-        showPassengerList();
-    });
 
-
-// update passengid to myservice database
-        $("#btn-pay-order").click(function () {
-            let passengerId=$("#passengers-list").val();
-        $.ajax({
-            url:"/tickets/update_pid",
-            type:"get",
-            data:"passengerId="+passengerId,
-            dataType:"JSON",
-            success : function(json){
-                if(json.state==200){
-                    location.href="payPage.html";
-                }else { alert("Change Failed");}
-            },
-            error:function (xhr){
-                alert("oops! An unknown error"+" "+xhr.message)
-            }
-        });
-    });
-
-
-
-
-    function  showbook(){
-        $.ajax({
-            url:"/tickets/ticketInform",
-            type:"get",
-            dataType:"JSON",
-            success : function(json){
-                if(json.state==200){
-                    let list = json.data;
-                        let tr = '    <tr>\n' +
-                            '                                <td>BritishAirways</td>\n' +
-                            '                                <td>GP2312</td>\n' +
-                            '                                <td>day</td>\n' +
-                            '                                <td>time1</td>\n' +
-                            '                                <td>time2</td>\n' +
-                            '                                <td>London</td>\n' +
-                            '                                <td>Paris</td>\n' +
-                            '                                <td>Normal</td>\n' +
-                            '                                <td>£<span>5298</span></td>\n' +
-                            '                                <td>numbert</td>\n' +
-                            '                            </tr>';
-
-                        tr = tr.replace(/BritishAirway/g,list.company);
-                        tr = tr.replace(/GP2312/g,list.flightName);
-                        tr = tr.replace(/day/g,list.flightDay);
-                        tr = tr.replace(/time1/g,list.takeOffTime);
-                        tr = tr.replace(/time2/g,list.fallingOffTime);
-                        tr = tr.replace(/London/g,list.fromLocation);
-                        tr = tr.replace(/Paris/g,list.toLocation);
-                        tr = tr.replace(/Normal/g,list.entertainment);
-                        tr = tr.replace(/5298/g,list.ecoPrice);
-                        tr = tr.replace(/numbert/g,list.adultNum);
-                        $("#cart-list").append(tr);
-
-                }else { alert("Load failed");}
-            }
-
-        });
-    }
-    function  showPassengerList(){
-        //clear the inofrmation of select
-        $("#passengers-list").empty();
-        $.ajax({
-            url:"/passengers/",
-            type:"POST",
-            dataType:"JSON",
-            success : function(json){
-                if(json.state==200){
-                    let list = json.data;
-
-                    for (let i = 0; i < list.length; i++) {
-                        //value='#{passengerId}' which is used to deliver information to other page
-                        let opt ="<option value='#{passengerId}'>#{First}&nbsp;&nbsp;&nbsp;#{second}&nbsp;&nbsp;&nbsp;#{Passport}&nbsp;&nbsp;&nbsp;#{PassportExpire}&nbsp;&nbsp;&nbsp;" +
-                            "#{phone}&nbsp;&nbsp;&nbsp;#{email}</option>";
-
-                        opt=opt.replace(/#{passengerId}/d,list[i].passengerId);
-                        opt=opt.replace(/#{First}/d,list[i].firstname);
-                        opt=opt.replace(/#{second}/d,list[i].lastname);
-                        opt= opt.replace(/#{Passport}/d,list[i].passport);
-                        opt=opt.replace(/#{PassportExpire}/d,list[i].passportExpire);
-                        opt=opt.replace(/#{phone}/d,list[i].mobilePhone);
-                        opt=opt.replace(/#{email}/d,list[i].email);
-
-                        $("#passengers-list").append(opt);
-                    }
-                }else { alert("load Failed");}
-            }
-        });
-    }
-
-</script>
 <!--show user's service-->
 <script type="text/javascript">
     $(document).ready(function(){
         $.ajax({
-            url:"/tickets/show_service",
+            url:"/allMyBooking/getService",
             type:"get",
             data:$("#myServiceBooking").serialize(),
             dataType:"JSON",
             success : function(json){
                 if(json.state==200){
-                    $("#mySeat").val(json.data.mySeat);
                     $("#meals").val(json.data.meals);
                     $("#pickup").val(json.data.pickup);
                     $("#transitLounge").val(json.data.transitLounge);
                     $("#specialServices").val(json.data.specialServices);
                     $("#transitHotel").val(json.data.transitHotel);
                     $("#extraLuggage").val(json.data.extraLuggage);
-                    $("#totalPrice").val(json.data.totalPrice);
+                    $("#totalPrice").val(json.data.totalPrice-json.data.classPrice);
+
+
                 }else { alert("data does not exist");}
             }
         });
@@ -382,7 +237,28 @@
 </script>
 
 
+<script type="text/javascript">
+    $("#btn-pay-order").click(function () {
+        $.ajax({
+            url:"/allMyBooking/getService",
+            type:"POST",
+            dataType:"JSON",
+            success : function(json){
+                if(json.state==200){
+                   if (json.data.isDelete>0){
+                       location.href="payPage2.html";
+                   }else {
+                      location.href="refundPay.html";
+                   }
+                }else { alert("pay Failed");}
+            },
+            error:function (xhr){
+                alert("oops! An unknown error for pay"+" "+xhr.message)
+            }
+        });
+    });
 
+</script>
 
 
 

@@ -152,6 +152,7 @@
         showTicketList();
     });
     function showTicketList(){
+        $("#flight-body").empty();
         $.ajax({
             url:"/tickets/search_ticketPage",
             type:"POST",

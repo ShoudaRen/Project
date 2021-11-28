@@ -47,7 +47,7 @@ public class TicketMapperTests {
 
     @Test
     public void findTicketbYfLID(){
-        Flight flight =  tickMapper.bookAFlightbyflightId(3);
+        Flight flight =  tickMapper.bookAFlightbyflightId(2);
         System.out.println(flight);
     }
 

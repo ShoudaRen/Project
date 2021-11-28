@@ -67,10 +67,11 @@ public class TicketController extends BaseController{
         return new JsonResult<>(ok,dataStore);
     }
 
-
+//???
     @RequestMapping("{flightId}/get_a_ticket")
     public  JsonResult<Flight> getTicketByFlightId(@PathVariable("flightId")Integer flightId){
-        iTicketService.noticket(TemFlightId);
+        System.out.println("问题？");
+        iTicketService.noticket(flightId);
      Flight data=  iTicketService.getTicketByFlightId(flightId);
         TheflightIneed=data;
         TemFlightId=data.getFlightId();
@@ -91,7 +92,6 @@ public class TicketController extends BaseController{
     public JsonResult<Void> insertBooking(MyBooking myBooking,HttpSession session,String mySeat,String meals,
                                           String pickup,String transitHotel,String transitLounge,String specialServices
     ,Integer payStatus,String extraLuggage){
-
         Integer uid = getUidFromSession(session);
         String username= getUsernameFromSession(session);
       MyBooking booking=  myBookingService.insertService(myBooking, uid,TemFlightId,username
@@ -122,6 +122,7 @@ public class TicketController extends BaseController{
         myBookingService.updateTotalPriceByRef(ref,totalPrice);
         // used for show method
         tembooking = booking;
+        myBookingService.updateClassType( temRef,"Economy");
         return new  JsonResult<Void>(ok);
     }
 
@@ -159,6 +160,7 @@ public class TicketController extends BaseController{
         myBookingService.updateTotalPriceByRef(ref,totalPrice);
         // used for show method
         tembooking = booking;
+        myBookingService.updateClassType( temRef,"Business");
         return new  JsonResult<Void>(ok);
     }
 
@@ -197,11 +199,9 @@ public class TicketController extends BaseController{
         myBookingService.updateTotalPriceByRef(ref,totalPrice);
         // used for show method
         tembooking = booking;
+        myBookingService.updateClassType( temRef,"First");
         return new  JsonResult<Void>(ok);
     }
-
-
-
 
     @RequestMapping("show_service")
     public JsonResult<MyBooking> showService(){
@@ -222,11 +222,7 @@ public class TicketController extends BaseController{
         myBookingService.updatePaymentStatus(temRef);
         return  new  JsonResult<Void>(ok);
     }
-//未使用
-    @RequestMapping("find_service")
-    public JsonResult<MyBooking> findMyServiceByRef(Integer reference){
-       MyBooking data=  myBookingService.findMybookByRef(reference);
-        return new JsonResult<MyBooking>(ok,data);
-    }
+
+
 }
 

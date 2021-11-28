@@ -21,5 +21,7 @@ public interface IPassengerService {
   void setDefaultPassenger(Integer passengerId, Integer uid, String username);
 
   void delete(Integer passengerId,Integer uid, String username);
+
+  Passenger findPassengerBypid(Integer passengerId);
 }
 

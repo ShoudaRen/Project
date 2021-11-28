@@ -6,7 +6,6 @@ $(document).ready(function(){
         dataType:"JSON",
         success : function(json){
             if(json.state==200){
-                console.log(json.data);
                 $("#userShow").val(json.data.username);
                 $("#userOutgg").val(json.data.signstatus);
             }else { alert("data does not exist");}

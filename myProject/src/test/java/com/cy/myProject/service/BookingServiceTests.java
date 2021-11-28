@@ -27,7 +27,7 @@ public class BookingServiceTests {
     }
 @Test
     public void  findMybookByRef(){
-        System.out.println(myBookingService.findMybookByRef(100000019));
+        System.out.println(myBookingService.findMybookByRef(100000054));
     }
 
 @Test
@@ -38,7 +38,10 @@ public class BookingServiceTests {
 //    public void  updateService(){
 //        myBookingService
 //    }
-
+  @Test
+    public void deleteByRef(){
+myBookingService.deleteByRef(100000056);
+  }
 }
 
 

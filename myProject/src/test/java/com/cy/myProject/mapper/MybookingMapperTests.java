@@ -44,7 +44,7 @@ public class MybookingMapperTests {
   }
    @Test
     public void findservicebyRef(){
-       System.out.println( mybookingMapper.findServiceByRef(100000019)); ;
+       System.out.println( mybookingMapper.findServiceByRef(100000054)); ;
     }
 
     @Test
@@ -72,4 +72,37 @@ public class MybookingMapperTests {
     public void updatePayStatus(){
         mybookingMapper.updatePaymentStatus(100000022,1);
     }
+
+    @Test
+    public void findallBooking(){
+        System.out.println(mybookingMapper.FindallMyBookingByUid(4));
+    }
+
+    @Test
+    public void updateClassType(){
+       mybookingMapper.updateClassType(100000055, "Economy");
+    }
+
+    @Test
+    public void deleteByRef(){
+  mybookingMapper.deleteByRef(100000054);
+    }
+
+    @Test
+    public void upseinfo(){
+      MyBooking test =new MyBooking();
+      test.setReference(100000057);
+
+      mybookingMapper.updateServiceByRef(100000057, "None","None","None","None","None","None");
+    }
+
+    @Test
+    public void upseserprice(){
+        MyBooking test =new MyBooking();
+        test.setReference(100000057);
+        mybookingMapper.ChangeServicePrice(100000057,100);
+    }
 }
+
+
+

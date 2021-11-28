@@ -96,4 +96,10 @@ public class PassengerServiceImpl implements IPassengerService {
             throw new updateException("update exception");
         }
     }
+
+    @Override
+    public Passenger findPassengerBypid(Integer passengerId) {
+        Passenger data = passengerMapper.findPassengerExistByPid(passengerId);
+        return data;
+    }
 }

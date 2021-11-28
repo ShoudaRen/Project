@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--360浏览器H5兼容设置-->
     <meta name="renderer" content="webkit" />
-    <title>Book Ticket</title>
+    <title>My Reference Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--导入核心文件-->
     <script src="../bootstrap3/js/holder.js"></script>
@@ -43,18 +43,9 @@
         .superBottom{
             top: 150%;
         }
-        #Confirm{
-            background-color: #0c52a4;
-            color: honeydew;
-            border: none;
-            height: 30px;
-            line-height: 30px;
-        }
+
         #mySeat{
             width: 70px;
-        }
-        .col-md-4{
-            width: 200px;
         }
 
         input
@@ -68,11 +59,6 @@
             cursor: text;
         }
 
-        #allPrice{
-            width: 160px;
-            height: 30px;
-            float: right;
-        }
         #allPrice input{
             width: 50px;
         }
@@ -80,6 +66,45 @@
         #form-create-order th,  #form-create-order td{
             text-align: center;
         }
+
+        .changeckService{
+            float: right;
+            margin: 0px 10px;
+        }
+        .changeckService button{
+            cursor: pointer;
+            background: #0c52a4;
+            color: whitesmoke;
+        }
+
+        .info{
+            width: 100%;
+            height: 90px;
+            margin-top: 10px;
+            border-bottom: #0c52a4 5px solid;
+        }
+        .titlemini{
+            width: 100%;
+            height: 40px;
+            margin-top: 10px;
+            color: #a94442;
+            font-weight: bolder;
+            font-size: 25px;
+        }
+
+        #ClassType{
+            height: 40px;
+            font-weight: bolder;
+            font-size: 20px;
+
+        }
+
+
+        .cart-table{
+            margin-left: -15px;
+        }
+
+
     </style>
 </head>
 
@@ -111,53 +136,22 @@
 <!--导航结束-->
 <div class="container">
     <div class="col-md-offset-1 col-md-10">
-        <div class="col-md-4">
-            <div id="comfirmOrder" class="col-md-12 order-bar-active">
-                1.booking service
-                <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div id="Confirm" class="col-md-12 order-bar-active">
-                2.Confirm Order
-                <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-12 order-bar-undo">
-                3.Pay Online
-                <span class="pull-right"><span class="fa fa-chevron-right"></span></span>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-12 order-bar-undo">
-                4.Pay Success
-            </div>
-        </div>
 
         <div class="col-md-12">
-
-                <div class="form-group">
-                   <form id="passengerForm">
-                    <label >
-                        <p>Choose Passenger <button id="addPassenger">add Passenger</button></p>
-                    </label>
-                    <select name="passengerId" id="passengers-list" class="form-control">
-                        <option>八戒&nbsp;&nbsp;&nbsp;家&nbsp;&nbsp;&nbsp;北京市房山区高老庄3排6号&nbsp;&nbsp;&nbsp;1380***1234
-                        </option>
-                        <option>
-                            八戒&nbsp;&nbsp;&nbsp;公司&nbsp;&nbsp;&nbsp;北京市海淀区中关村中路1号1001室&nbsp;&nbsp;&nbsp;1380***1234
-                        </option>
-                        <option>八戒&nbsp;&nbsp;&nbsp;宿舍&nbsp;&nbsp;&nbsp;北京市海淀区永丰镇30号&nbsp;&nbsp;&nbsp;1380***1234
-                        </option>
-                    </select>
-                   </form>
-                </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <p class="panel-title">Ticket Details：</p>
                     </div>
                     <div class="panel-body">
+
+                        <div class="info" id="thePassenger">
+                            <span class="titlemini">Passenger: </span>
+                            <p>#{First}&nbsp;&nbsp;&nbsp;#{second}&nbsp;&nbsp;&nbsp;#{Passport}</p>
+                        </div>
+                  <div class="titlemini">My Flight:</div>
+                        <div  id="ClassType">
+                            <span>#{economy} class</span>
+                        </div>
                         <form id="form-create-order" role="form">
                         <table class="cart-table" width="100%">
                             <thead>
@@ -170,8 +164,7 @@
                                 <th width="8%">From</th>
                                 <th width="8%">To</th>
                                 <th width="13%">Entertainment</th>
-                                <th width="8%">Price</th>
-                                <th width="20%">Number of tickets</th>
+                                <th width="8%">Transit City</th>
                             </tr>
                             </thead>
                             <tbody id="cart-list">
@@ -184,13 +177,12 @@
                                 <td>London</td>
                                 <td>Shanghai</td>
                                 <td>Normal</td>
-                                <td>£<span>5298</span></td>
-                                <td>100</td>
+                                <td>TC</td>
                             </tr>
                             </tbody>
                         </table>
                         </form>
-                        <p id="se">My Service：</p>
+                        <p id="se"  class="titlemini">My Service：</p>
                         <form id="myServiceBooking">
                             <div id="servicePart">
                                 <div class="myService"><label>My Seat:</label>
@@ -215,16 +207,17 @@
                                     <input name="extraLuggage" id="extraLuggage" value="extraLuggage" readonly="readonly">
                                 </div>
                             </div>
-                            <div id="allPrice">
-                                <span>All Price: </span> <input readonly="readonly" name="totalPrice" id="totalPrice" value="3333"><span>GBP</span>
-                            </div>
                         </form>
+
+                        <div id="changePart">
+                            <div id="changeService" class="changeckService"><button id="cms">CHANGE MY SERVICE</button></div>
+                            <a href="ChangeService.html"><div  id="cancelDelete"  class="changeckService"><button >CANCEL MY BOOKING</button></div></a>
+
+                        </div>
                     </div>
                 </div>
                 <div class="pay-bar">
-                    <a href="index.html">Return</a>
-                    <span class="pull-right"><input id="btn-pay-order" type="button" value="CHECK AND PAY"
-                                                    class="btn btn-primary btn-lg link-pay" /></span>
+                    <a href="myBook.html">Return</a>
                 </div>
 
         </div>
@@ -257,55 +250,54 @@
 </div>
 
 
-<!--SHOW TICKET CHOOSED-->
+<!--SHOW passenger and flight-->
 <script type="text/javascript" >
     $(document).ready(function () {
-        showbook();
+        showService();
+        showFlight();
         showPassengerList();
+        showClass();
+
     });
+       function showClass(){
+           $.ajax({
+               url:"/allMyBooking/getService",
+               type:"get",
+               dataType:"JSON",
+               success : function(json){
+                   if(json.state==200){
+                       $("#ClassType").empty();
+                       let list=json.data;
+                       let myclass= '<span>#{economy} class</span>';
+                       myclass=myclass.replace(/#{economy}/d,list.classType);
+                       $("#ClassType").append(myclass);
 
+                   }else { alert("Load failed");}
+               }
 
-// update passengid to myservice database
-        $("#btn-pay-order").click(function () {
-            let passengerId=$("#passengers-list").val();
+           });
+
+     }
+
+    function   showFlight(){
+        $("#cart-list").empty();
         $.ajax({
-            url:"/tickets/update_pid",
-            type:"get",
-            data:"passengerId="+passengerId,
-            dataType:"JSON",
-            success : function(json){
-                if(json.state==200){
-                    location.href="payPage.html";
-                }else { alert("Change Failed");}
-            },
-            error:function (xhr){
-                alert("oops! An unknown error"+" "+xhr.message)
-            }
-        });
-    });
-
-
-
-
-    function  showbook(){
-        $.ajax({
-            url:"/tickets/ticketInform",
+            url:"/allMyBooking/getFlight",
             type:"get",
             dataType:"JSON",
             success : function(json){
                 if(json.state==200){
                     let list = json.data;
-                        let tr = '    <tr>\n' +
+                        let tr ='<tr>\n' +
                             '                                <td>BritishAirways</td>\n' +
                             '                                <td>GP2312</td>\n' +
                             '                                <td>day</td>\n' +
                             '                                <td>time1</td>\n' +
                             '                                <td>time2</td>\n' +
                             '                                <td>London</td>\n' +
-                            '                                <td>Paris</td>\n' +
+                            '                                <td>Shanghai</td>\n' +
                             '                                <td>Normal</td>\n' +
-                            '                                <td>£<span>5298</span></td>\n' +
-                            '                                <td>numbert</td>\n' +
+                            '                                <td>TC</td>\n' +
                             '                            </tr>';
 
                         tr = tr.replace(/BritishAirway/g,list.company);
@@ -314,10 +306,9 @@
                         tr = tr.replace(/time1/g,list.takeOffTime);
                         tr = tr.replace(/time2/g,list.fallingOffTime);
                         tr = tr.replace(/London/g,list.fromLocation);
-                        tr = tr.replace(/Paris/g,list.toLocation);
+                        tr = tr.replace(/Shanghai/g,list.toLocation);
                         tr = tr.replace(/Normal/g,list.entertainment);
-                        tr = tr.replace(/5298/g,list.ecoPrice);
-                        tr = tr.replace(/numbert/g,list.adultNum);
+                        tr = tr.replace(/TC/g,list.StayCity);
                         $("#cart-list").append(tr);
 
                 }else { alert("Load failed");}
@@ -326,42 +317,53 @@
         });
     }
     function  showPassengerList(){
-        //clear the inofrmation of select
-        $("#passengers-list").empty();
+        $("#thePassenger").empty();
         $.ajax({
-            url:"/passengers/",
+            url:"/allMyBooking/getPassenger",
             type:"POST",
             dataType:"JSON",
             success : function(json){
                 if(json.state==200){
                     let list = json.data;
+                        let opt ='  <span class="titlemini">Passenger: </span>\n' +
+                            '    <p>First Name: #{First}&nbsp;&nbsp;&nbsp;Second Name: #{second}&nbsp;&nbsp;&nbsp;Passport: #{Passport}</p>';
+                        opt=opt.replace(/#{First}/d,list.firstname);
+                        opt=opt.replace(/#{second}/d,list.lastname);
+                        opt= opt.replace(/#{Passport}/d,list.passport);
+                        $("#thePassenger").append(opt);
 
-                    for (let i = 0; i < list.length; i++) {
-                        //value='#{passengerId}' which is used to deliver information to other page
-                        let opt ="<option value='#{passengerId}'>#{First}&nbsp;&nbsp;&nbsp;#{second}&nbsp;&nbsp;&nbsp;#{Passport}&nbsp;&nbsp;&nbsp;#{PassportExpire}&nbsp;&nbsp;&nbsp;" +
-                            "#{phone}&nbsp;&nbsp;&nbsp;#{email}</option>";
-
-                        opt=opt.replace(/#{passengerId}/d,list[i].passengerId);
-                        opt=opt.replace(/#{First}/d,list[i].firstname);
-                        opt=opt.replace(/#{second}/d,list[i].lastname);
-                        opt= opt.replace(/#{Passport}/d,list[i].passport);
-                        opt=opt.replace(/#{PassportExpire}/d,list[i].passportExpire);
-                        opt=opt.replace(/#{phone}/d,list[i].mobilePhone);
-                        opt=opt.replace(/#{email}/d,list[i].email);
-
-                        $("#passengers-list").append(opt);
-                    }
                 }else { alert("load Failed");}
             }
         });
     }
+  function  showService(){
+      $.ajax({
+          url:"/allMyBooking/getService",
+          type:"get",
+          data:$("#myServiceBooking").serialize(),
+          dataType:"JSON",
+          success : function(json){
 
+              if (json.state == 200) {
+                  $("#mySeat").val(json.data.mySeat);
+                  $("#meals").val(json.data.meals);
+                  $("#pickup").val(json.data.pickup);
+                  $("#transitLounge").val(json.data.transitLounge);
+                  $("#specialServices").val(json.data.specialServices);
+                  $("#transitHotel").val(json.data.transitHotel);
+                  $("#extraLuggage").val(json.data.extraLuggage);
+              } else {
+                  alert("data does not exist");
+              }
+          }
+      });
+  }
 </script>
 <!--show user's service-->
 <script type="text/javascript">
     $(document).ready(function(){
         $.ajax({
-            url:"/tickets/show_service",
+            url:"/allMyBooking/getService",
             type:"get",
             data:$("#myServiceBooking").serialize(),
             dataType:"JSON",
@@ -374,10 +376,36 @@
                     $("#specialServices").val(json.data.specialServices);
                     $("#transitHotel").val(json.data.transitHotel);
                     $("#extraLuggage").val(json.data.extraLuggage);
-                    $("#totalPrice").val(json.data.totalPrice);
                 }else { alert("data does not exist");}
             }
         });
+    });
+</script>
+<!--delete-->
+<script type="text/javascript">
+
+    $("#cancelDelete").click(function () {
+        let result =confirm("Do you want to delete?");
+        if (result){
+            $.ajax({
+                url:"/allMyBooking/delete",
+                type:"POST",
+                dataType:"JSON",
+                success : function(json){
+                    if(json.state==200){
+                    }else { alert("delete Failed");}
+                },
+                error:function (xhr){
+                    alert("oops! An unknown error for delete"+" "+xhr.message)
+                }
+            });
+            location.href="myBook.html";
+        }
+    });
+
+
+    $("#cms").click(function () {
+        location.href="ChangeService.html";
     });
 </script>
 

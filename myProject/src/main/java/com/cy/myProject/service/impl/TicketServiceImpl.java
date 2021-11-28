@@ -25,8 +25,16 @@ public class TicketServiceImpl implements ITicketService {
 
     @Override
     public List<Flight> getPartticket(Date flightDay, String fromLocation, String toLocation) {
-        List<Flight> ticket=tickMapper.findTick(fromLocation,toLocation,flightDay);
-        return ticket;
+        List<Flight> tickets=tickMapper.findTick(fromLocation,toLocation,flightDay);
+
+//        for (int i = 0; i <tickets.size() ; i++) {
+//
+//        }
+        if (tickets.size()==0){
+
+            throw new ticketNotFoundException("No ticket found");
+        }
+        return tickets;
     }
 
     @Override

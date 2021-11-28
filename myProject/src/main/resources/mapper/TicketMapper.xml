@@ -23,7 +23,7 @@
                                         and toLocation=#{toLocation}
     </select>
 
-    <select id="findAllTicket"  resultMap="TicketEntityMap"  >
+    <select id="findAllTicket"  resultMap="TicketEntityMap" >
         SELECT * FROM t_flight
     </select>
 

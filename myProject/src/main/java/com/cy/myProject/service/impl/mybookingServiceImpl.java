@@ -86,5 +86,35 @@ public class mybookingServiceImpl implements MyBookingService {
         mybookingMapper.updatePaymentStatus(reference,1);
     }
 
+    @Override
+    public List<MyBooking> findAllBookingByUid(Integer uid) {
+        List<MyBooking> data=  mybookingMapper.FindallMyBookingByUid(uid);
+        return data;
+    }
+
+    @Override
+    public void updateClassType(Integer reference,String classType) {
+        mybookingMapper.updateClassType(reference, classType);
+    }
+
+    @Override
+    public void deleteByRef(Integer reference) {
+        MyBooking myBooking= mybookingMapper.findServiceByRef(reference);
+        if (myBooking==null){
+            throw new BookingNotFoundException("no tickets exist");
+        }
+        mybookingMapper.deleteByRef(reference);
+    }
+
+    @Override
+    public void updateServiceByRef(Integer reference, String meals, String pickup, String transitHotel, String transitLounge, String specialServices, String extraLuggage) {
+        mybookingMapper.updateServiceByRef(reference,meals,pickup,transitHotel, transitLounge,specialServices,extraLuggage);
+    }
+
+    @Override
+    public void updateServicePrice(Integer reference, Integer isDelete) {
+        mybookingMapper.ChangeServicePrice( reference,isDelete);
+    }
+
 
 }

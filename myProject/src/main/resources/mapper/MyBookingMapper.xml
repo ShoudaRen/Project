@@ -41,7 +41,8 @@
             pickupPirce,
             hotelPrice,
             loungePrice,
-            luggagePrice
+            luggagePrice,
+            classType,
         )VALUES(
                   #{reference},
                   #{uid},
@@ -67,12 +68,13 @@
                    #{pickupPirce},
                    #{hotelPrice},
                    #{loungePrice},
-                   #{ luggagePrice}
+                   #{luggagePrice},
+                   #{classType},
                    )
     </insert>
 
     <select id="findServiceByRef" resultMap="MybookingMap">
-        select * from t_myallbook where  reference=#{reference}
+        select * from t_myallbook where reference=#{reference}
     </select>
 
     <update id="updateServicePrice">
@@ -102,5 +104,31 @@
         update t_myallbook set payStatus= #{payStatus} where reference=#{reference}
     </update>
 
+    <select id="FindallMyBookingByUid"  resultMap="MybookingMap">
+        select * from t_myallbook where  uid= #{uid} and payStatus=1
+    </select>
 
+    <update id="updateClassType">
+        update t_myallbook set classType= #{classType} where reference=#{reference}
+
+    </update>
+
+
+    <delete id="deleteByRef">
+        delete from t_myallbook where reference=#{reference}
+    </delete>
+
+    <update id="updateServiceByRef">
+        update t_myallbook set   meals= #{meals},
+                                 pickup= #{pickup},
+                                 transitHotel= #{transitHotel},
+                                 transitLounge= #{transitLounge},
+                                 specialServices= #{specialServices},
+                                 extraLuggage= #{extraLuggage}
+        where reference=#{reference}
+    </update>
+
+    <update id="ChangeServicePrice">
+        update t_myallbook set isDelete= #{isDelete} where reference=#{reference}
+    </update>
 </mapper>
