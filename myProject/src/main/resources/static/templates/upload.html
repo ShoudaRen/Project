@@ -2,20 +2,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<!--edge浏览器H5兼容设置-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!--360浏览器H5兼容设置-->
 		<meta name="renderer" content="webkit" />
 		<title>upload image</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--导入核心文件-->
 		<script src="../bootstrap3/js/holder.js"></script>
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
 		<script src="../bootstrap3/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/UsershowState.js" ></script>
-		<!-- 字体图标 -->
 			<!-- modified 11/11/2021 -->
 			<link rel="stylesheet" href="../fontAwesome/css/all.css">
 			<link rel="stylesheet" href="../CSS/base.css">
@@ -36,7 +32,6 @@
 	</head>
 
 	<body>
-		<!--头部-->
 		<div class="top">
 			<div class="mid w">
 				<div class="logo"><a href="index.html"><img src="../static/logo.png" alt="logo"></a></div>
@@ -60,23 +55,22 @@
 			<div><a href="allticket.html">All flights</a></div>
 		</div>
 	
-		<!--头部结束-->
-		<!--导航结束-->
+
 		<div class="container">
 			<div class="col-md-2">
-				<!--左侧导航开始-->
+
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<!--主选项：我的订单-->
+
 							<p class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="./orders.html">My Booking</a>
+								<a  href="myBook.html">My Booking</a>
 							</p>
 						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<!--主选项：资料修改-->
+
 							<p class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Profile Modification</a>
 							</p>
@@ -92,7 +86,6 @@
 						</div>
 					</div>
 				</div>
-				<!--左侧导航结束-->
 			</div>
 			<div class="col-md-10	">
 				<div class="panel panel-default">
@@ -103,7 +96,6 @@
 						<li><a href="passenager.html">Passenger Management</a></li>
 					</ul>
 					<div class="panel-body">
-						<!--上传头像表单开始-->
 						<form id="form-change-avatar" class="form-horizontal" role="form">
 							<div class="form-group">
 								<label class="col-md-2 control-label">Choose Image:</label>
@@ -155,7 +147,6 @@
 		<script type="text/javascript">
 			$(document).ready(function () {
 				let avatar = $.cookie("avatar");
-				//给这个#img-avatar input 里的src重新设定值为avatar
 				$("#img-avatar").attr("src",avatar);
 			})
 			$("#up").click(function () {
@@ -164,7 +155,7 @@
 					type:"POST",
 					data: new FormData($("#form-change-avatar")[0]),
 					processData:false, //处理数据的形式，false =关闭处理数据
-					contentType:false,//表示提交数据的形式，关闭默认提交数据的形式
+					contentType:false,
 					dataType:"JSON",
 					success : function(json){
 						if(json.state==200){
@@ -200,7 +191,6 @@
 				});
 			});
 		</script>
-
 <!--		user log out-->
 		<script type="text/javascript">
 			$("#userOut").click(function () {

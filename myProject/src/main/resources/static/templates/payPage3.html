@@ -57,7 +57,7 @@
 			</div>
 
 			<div id="payBottom">
-				<a href="seMyDetailsInBooking.html"><button type="button" id="fbt" >Previous</button></a>
+				<a href=seMyDetailsInBooking2.html"><button type="button" id="fbt" >Previous</button></a>
 				<a id="linklast"><button type="button" id="sbt">Continue</button></a>
 			</div>
 		</div>
@@ -90,7 +90,21 @@
 			if ( carNumber==""||holderName==""||expireFirst==""||expireSecond==""||CVC==""){
 				alert("card information can not be empty");
 			}else {
-				location.href="paySuccess.html";
+
+				$.ajax({
+					url:"/allMyBooking/unpaid_payStatus",
+					type:"post",
+					dataType:"JSON",
+					success : function(json){
+						if(json.state==200){
+							location.href="paySuccess.html";
+						}else { alert("data does not exist");}
+					}
+				});
+
+
+
+
 			}
 
 		});

@@ -42,7 +42,7 @@
             hotelPrice,
             loungePrice,
             luggagePrice,
-            classType,
+            classType
         )VALUES(
                   #{reference},
                   #{uid},
@@ -69,7 +69,7 @@
                    #{hotelPrice},
                    #{loungePrice},
                    #{luggagePrice},
-                   #{classType},
+                   #{classType}
                    )
     </insert>
 
@@ -131,4 +131,8 @@
     <update id="ChangeServicePrice">
         update t_myallbook set isDelete= #{isDelete} where reference=#{reference}
     </update>
+
+    <select id="selectUnPaidOrder"  resultMap="MybookingMap">
+        SELECT * FROM t_myallbook WHERE payStatus is null and uid= #{uid}
+    </select>
 </mapper>

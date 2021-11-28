@@ -37,4 +37,7 @@ public interface MyBookingService {
 
      void updateServiceByRef(Integer reference, String meals, String pickup, String transitHotel, String transitLounge, String specialServices, String extraLuggage);
       void updateServicePrice(Integer reference, Integer isDelete );
+
+     List<MyBooking>  selectUnPaidOrder(Integer uid);
+
 }

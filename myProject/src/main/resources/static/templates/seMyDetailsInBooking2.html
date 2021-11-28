@@ -104,7 +104,20 @@
             margin-left: -15px;
         }
 
+        #allPrice{
+            color: #a94442;
+            margin-left: 500px;
+            margin-bottom: 30px;
+            font-weight: bolder;
+            line-height: 30px;
 
+        }
+
+        #allPrice input{
+            color: #a94442;
+            text-align: center;
+            line-height: 30px;
+        }
     </style>
 </head>
 
@@ -207,17 +220,20 @@
                                     <input name="extraLuggage" id="extraLuggage" value="extraLuggage" readonly="readonly">
                                 </div>
                             </div>
+                            <div id="allPrice">
+                                <span>All Price: </span> <input readonly="readonly" name="totalPrice" id="totalPrice" value="3333"><span>GBP</span>
+                            </div>
                         </form>
 
                         <div id="changePart">
-                            <div id="changeService" class="changeckService"><button id="cms">CHANGE MY SERVICE</button></div>
-                            <a href="ChangeService.html"><div  id="cancelDelete"  class="changeckService"><button >CANCEL MY BOOKING</button></div></a>
+                            <div id="changeService" class="changeckService"><button id="Payse">Pay Online</button></div>
+
 
                         </div>
                     </div>
                 </div>
                 <div class="pay-bar">
-                    <a href="myBook.html">Return</a>
+                    <a href="Unpaid.html">Return</a>
                 </div>
 
         </div>
@@ -353,6 +369,7 @@
                   $("#specialServices").val(json.data.specialServices);
                   $("#transitHotel").val(json.data.transitHotel);
                   $("#extraLuggage").val(json.data.extraLuggage);
+                  $("#totalPrice").val(json.data.totalPrice);
               } else {
                   alert("data does not exist");
               }
@@ -385,29 +402,14 @@
 <!--delete-->
 <script type="text/javascript">
 
-    $("#cancelDelete").click(function () {
-        let result =confirm("Do you want to delete?");
+    $("#Payse").click(function () {
+        let result =confirm("Do you want to pay?");
         if (result){
-            $.ajax({
-                url:"/allMyBooking/delete",
-                type:"POST",
-                dataType:"JSON",
-                success : function(json){
-                    if(json.state==200){
-                    }else { alert("delete Failed");}
-                },
-                error:function (xhr){
-                    alert("oops! An unknown error for delete"+" "+xhr.message)
-                }
-            });
-            location.href="myBook.html";
+
+            location.href="payPage3.html";
         }
     });
 
-
-    $("#cms").click(function () {
-        location.href="ChangeService.html";
-    });
 </script>
 
 

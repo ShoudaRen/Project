@@ -31,4 +31,6 @@ public interface MybookingMapper {
 
     //isdelte replace service price
     void ChangeServicePrice(Integer reference, Integer isDelete);
+
+    List<MyBooking> selectUnPaidOrder(Integer uid);
 }

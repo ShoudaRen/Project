@@ -120,4 +120,16 @@ public class MyBookingController extends BaseController {
         return new JsonResult<>(ok);
     }
 
+
+    @RequestMapping("unpaid_Order")
+    public JsonResult<List<MyBooking>> findUnpaidOrderByUid(HttpSession session) {
+        Integer uid = getUidFromSession(session);
+        List<MyBooking> data = myBookingService.selectUnPaidOrder(uid);
+        return new JsonResult<>(ok, data);
+    }
+    @RequestMapping("unpaid_payStatus")
+    public JsonResult<Void> payStatus(){
+        myBookingService.updatePaymentStatus(temMyBooking.getReference());
+        return new JsonResult<>(ok);
+    }
 }

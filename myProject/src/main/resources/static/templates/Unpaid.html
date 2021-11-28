@@ -3,10 +3,13 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<!--edge浏览器H5兼容设置-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--360浏览器H5兼容设置-->
 		<meta name="renderer" content="webkit" />
 		<title>Booking System</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--导入核心文件-->
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 
@@ -85,13 +88,13 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<p class="panel-title">
-								<a class="intro" href="#collapseOne">My Booking</a>
+								<a  class="intro" href="myBook.html">My Booking</a>
 							</p>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<div><a href="myBook.html"><b>My Order</b></a></div>
-								<div><a href="Unpaid.html">Unpaid order</a></div>
+								<div><a href="myBook.html">My Order</a></div>
+								<div><a href="orders.html"><b>Unpaid order</b></a></div>
 							</div>
 						</div>
 					</div>
@@ -107,7 +110,7 @@
 			<!--左侧导航结束-->
 			<div class="col-md-10">
 				<div class="panel-heading">
-					All my booking
+					Unpaid Orders
 				</div>
 				<div  id="allRef"  class="panel panel-default">
 					<div class="panel-body cd">
@@ -116,7 +119,7 @@
 							<p class="panel-title">
 								Order time: 2018-12-1 17:50:30&nbsp;&nbsp;&nbsp;Airline ticket price: 345 GBP&nbsp;&nbsp;&nbsp; Service Price: 24 GBP
 							</p>
-							<button id="detailButton" onclick='Clik(TheflightId,ThepassengerId)'>More Details</button>
+							<button id="detailButton" onclick='Clik(TheflightId,ThepassengerId)'>Pay Online</button>
 						</div>
 					</div>
 
@@ -159,20 +162,21 @@
 			function showRefList(){
 				$("#allRef").empty();
 				$.ajax({
-					url:"/allMyBooking/",
+					url:"/allMyBooking/unpaid_Order",
 					type:"POST",
 					dataType:"JSON",
 					success : function(json){
 						if(json.state==200){
 							let list = json.data;
+							console.log(list);
 							for (let i = 0; i < list.length; i++) {
 								let tr ='\t<div  class="panel-body  cd">\n' +
 										'\t\t\t\t\t\t<div class="single">\n' +
 										'\t\t\t\t\t\t\t<span class="re">Reference: rrgt</span>\n' +
 										'\t\t\t\t\t\t\t<p class="panel-title">\n' +
-										'\t\t\t\t\t\t\t\tOrder time: #{created_time}&nbsp;&nbsp;&nbsp;  Airline ticket price: #{classPrice} GBP&nbsp;&nbsp;&nbsp; Service Price: #{SP} GBP\n' +
+										'\t\t\t\t\t\t\t\tOrder time: #{created_time} &nbsp;&nbsp;&nbsp;  Airline ticket price: #{classPrice} GBP&nbsp;&nbsp;&nbsp; Service Price: #{SP}GBP\n' +
 										'\t\t\t\t\t\t\t</p>\n' +
-										'\t\t\t\t\t\t\t<button id="detailButton" onclick=\'Clik(TheflightId,ThepassengerId,rrgt)\'>More Details</button>\n' +
+										'\t\t\t\t\t\t\t<button id="detailButton" onclick=\'Clik(TheflightId,ThepassengerId,rrgt)\'>Pay Online</button>\n' +
 										'\t\t\t\t\t\t</div>\n' +
 										'\t\t\t\t\t</div>';
 
@@ -202,7 +206,7 @@
 						}else { alert("get Failed");}
 					},
 					error:function (xhr){
-						//弹出窗口
+
 						alert("Tickets sold out!"+" "+xhr.message)
 					}
 				});
@@ -234,7 +238,7 @@
 						alert("Tickets sold out!"+" "+xhr.message)
 					}
 				});
-				window.open("seMyDetailsInBooking.html");
+				window.open("seMyDetailsInBooking2.html");
 
 			}
 

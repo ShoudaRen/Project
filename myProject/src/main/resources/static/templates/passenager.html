@@ -3,20 +3,16 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<!--edge浏览器H5兼容设置-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!--360浏览器H5兼容设置-->
 		<meta name="renderer" content="webkit" />
 		<title>Passenger Management</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--导入核心文件-->
 		<script src="../bootstrap3/js/holder.js"></script>
 		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.min.js"></script>
 		<script src="../bootstrap3/js/bootstrap.js"></script>
 		<script src="../js/UsershowState.js" ></script>
 		<!-- <script src="../js/UsershowState.js" ></script> -->
-		<!-- 字体图标 -->
 		<link rel="stylesheet" href="../fontAwesome/css/all.css">
 	    <link rel="stylesheet" href="../CSS/base.css">
 		<link rel="stylesheet" href="../CSS/head.css">
@@ -62,19 +58,16 @@
 		<!-- <head> -->
 		<div class="container">
 			<div class="col-md-2">
-				<!--左侧导航开始-->
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<!--主选项：我的订单-->
 							<p class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">My Booking</a>
+								<a href="myBook.html">My Booking</a>
 							</p>
 						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<!--主选项：资料修改-->
 							<p class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Profile Modification</a>
 							</p>
@@ -89,7 +82,6 @@
 						</div>
 					</div>
 				</div>
-				<!--左侧导航结束-->
 			</div>
 			<div class="col-md-10">
 				<div class="panel panel-default">
@@ -100,7 +92,6 @@
 						<li class="active"><a href="#">Passenger Management</a></li>
 					</ul>
 					<div class="panel-body">
-						<!--地址显示-->
 						<table class="table table-striped">
 							<caption>Passengers</caption>
 							<thead>
@@ -120,9 +111,7 @@
 				</div>
 			</div>
 		</div>
-	
 
-<!-- foot -->
 		<div class="superBottom">
 			<div class="bottomMiddle w">
 				<div class="bottomF">
@@ -138,7 +127,6 @@
 					<div class="mark">|</div>
 					<div><a href="javascript:;">Website security</a></div>
 				</div>
-				<!-- <div class="bottomS"></div> -->
 				<div class="copyright">© Super Airways - all rights reserved</div>
 				<div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
 			   
@@ -189,10 +177,8 @@
        //set default
 	  function setDefault(passengerId){
 		  $.ajax({
-			  // url前面可以省略端口号
 			  url:"/passengers/"+passengerId+"/set_default" ,
 			  type:"POST",
-			  //数据通过restful风格提交 因此不需要数据
 			  dataType:"JSON",
 			  success : function(json){
 				  if(json.state==200){
@@ -202,7 +188,6 @@
 				  }else { alert("Set Failed");}
 			  },
 			  error:function (xhr){
-				  //弹出窗口
 				  alert("oops! An unknown error"+" "+xhr.message)
 			  }
 		  });
@@ -210,10 +195,8 @@
 	  //delete
 		function deletePassenger(passengerId){
 			$.ajax({
-				// url前面可以省略端口号
 				url:"/passengers/"+passengerId+"/delete" ,
 				type:"POST",
-				//数据通过restful风格提交 因此不需要数据
 				dataType:"JSON",
 				success : function(json){
 					if(json.state==200){
@@ -223,7 +206,6 @@
 					}else { alert("Delete Failed");}
 				},
 				error:function (xhr){
-					//弹出窗口
 					alert("oops! An unknown error"+" "+xhr.message)
 				}
 			});

@@ -21,9 +21,6 @@ public class BookingServiceTests {
     public void testmybookingInsert() {
         MyBooking myBooking = new MyBooking();
 
-//        myBookingService.insertPassenger(myBooking,4,3,11,"shouda"
-//        ,100,"SS","Chicken 5GBP","Mercedes 50GBP","Offical Hotel 0GBP",
-//                "Normal 49GBP","None",0,"None");
     }
 @Test
     public void  findMybookByRef(){
@@ -42,6 +39,10 @@ public class BookingServiceTests {
     public void deleteByRef(){
 myBookingService.deleteByRef(100000056);
   }
+  @Test
+  public void selectUnPaidOrde(){
+      System.out.println(myBookingService.selectUnPaidOrder(4));
+    }
 }
 
 

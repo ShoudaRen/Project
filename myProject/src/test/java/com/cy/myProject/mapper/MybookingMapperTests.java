@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -101,6 +103,12 @@ public class MybookingMapperTests {
         MyBooking test =new MyBooking();
         test.setReference(100000057);
         mybookingMapper.ChangeServicePrice(100000057,100);
+    }
+
+    @Test
+    public void selectUnPaidOrde(){
+        List<MyBooking> a= mybookingMapper.selectUnPaidOrder(4);
+        System.out.println(a);
     }
 }
 

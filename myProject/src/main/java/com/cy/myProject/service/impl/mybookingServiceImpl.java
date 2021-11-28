@@ -116,5 +116,11 @@ public class mybookingServiceImpl implements MyBookingService {
         mybookingMapper.ChangeServicePrice( reference,isDelete);
     }
 
+    @Override
+    public List<MyBooking> selectUnPaidOrder(Integer uid) {
+        List<MyBooking> data =mybookingMapper.selectUnPaidOrder(uid);
+        return data;
+    }
+
 
 }
