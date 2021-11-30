@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit" />
+    <title>Meals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../bootstrap3/js/holder.js"></script>
+    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/UsershowState.js" ></script>
+
+    <!-- modified 11/11/2021 -->
+    <link rel="stylesheet" href="../fontAwesome/css/all.css">
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/head.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="icon" href="../static/ICON.png" type="image/x-icon">
+
+    <style>
+        .interPart{
+            width: 1200px;
+            height: 2000px;
+        }
+  .inter{
+      width: 1200px;
+      height: 2000px;
+      margin-left: 30px ;
+
+  }
+        .foodFrame{
+             width: 500px ;
+             height: 600px;
+             background-color: #0c52a4;
+            border-radius: 8%;
+             margin: 30px 30px;
+             float: left;
+
+        }
+
+        .title{
+            width: 400px;
+            height: 50px;
+            font-size: 40px;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 2%;
+            color: #f5e79e;
+        }
+
+        .image{
+            width: 470px ;
+            height:280px;
+            margin: 0 auto;
+            margin-top: 10px;
+
+        }
+        .image img{
+            width: 100%;
+            height:280px;
+        }
+        .text{
+            width: 470px ;
+            height:240px;
+            margin: 0 auto;
+            font-size: 20px;
+            margin-top: 10px;
+            border-radius: 8%;
+            color: #f5e79e;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .superBottom{
+            margin-top: 200px;
+        }
+        #button{
+            float: right;
+            color: #a94442;
+            margin-right: 100px;
+        }
+        #button button{
+            color: black;
+            background-color: #a94442;
+            color: whitesmoke;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="top">
+    <div class="mid w">
+        <div class="logo"><a href="index.html"><img src="../static/logo.png" alt="logo"></a></div>
+        <div class="user">
+            <div id="tel"><i class="fa fa-phone"></i> TEL:88888888</div>
+            <div></div>
+            <form id="LogSignup">
+                <div class="service"> <i class="fa fa-user"> </i>
+                    <a onclick="checkname()"> <input id="userShow" type="button" name="userShow" value="Log In" readonly="readonly"></a> </div>
+                <div>|</div>
+                <div class="service"><a onclick="checksignout()"><input id="userOutgg" type="button" name="userOut" value="SIGN UP" readonly="readonly"></a> </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="secondmid w">
+    <div><a href="help.html">Help and Contacts</a></div>
+    <div class="SpecialOffer"><a id="qw" href="Onsalesticket.html">On Sales</a>
+    </div>
+    <div><a href="userdata.html">Manage</a></div>
+    <div><a href="allticket.html">All flights</a></div>
+</div>
+
+<div class="w interPart">
+    <div class="inter">
+    <div class="foodFrame">
+        <div class="title">Chicken</div>
+        <div class="image"><img src="../static/chicken.jpg"></div>
+        <div class="text">Goobne chicken contains less trans fat, carbohydrates, sodium and calories since it does not use a single drop of oil during its cooking process.Once the chicken is roasted inside the oven, it will have crunchy outer layer with juicy meat inside, which gives the real taste of chicken itself. </div>
+    </div>
+    <div class="foodFrame">
+        <div class="title">Fish and Chips</div>
+        <div class="image"><img src="../static/Fish_and_chips.jpg"></div>
+        <div class="text">Fish and chips is a popular hot dish consisting of fried fish in crispy batter, served with chips (French fries or wedges). The dish originated in England, where these two components had been introduced from separate immigrant cultures. </div>
+    </div>
+    <div class="foodFrame">
+        <div class="title">Lamb Chops</div>
+        <div class="image"><img src="../static/Lamb.jpeg"></div>
+        <div class="text">Lamb chops marinated in garlic, rosemary, thyme, and olive oil then pan-seared on the stovetop to create a wonderfully flavorful crust.</div>
+
+    </div>
+    <div class="foodFrame">
+        <div class="title">Muslim</div>
+        <div class="image"><img src="../static/Halal & vegetarian food.jpg"></div>
+        <div class="text">Halal & vegetarian food</div>
+
+    </div>
+    <div class="foodFrame">
+        <div class="title">Parkin</div>
+        <div class="image"><img src="../static/Yorkshire-Parkin.jpg"></div>
+        <div class="text">Parkin is a traditional ginger cake from Northern England flavoured with syrupy molasses, oatmeal and warm spices. A lovely teatime treat!</div>
+
+    </div>
+    <div class="foodFrame">
+        <div class="title">Steak</div>
+        <div class="image"><img src="../static/stesk.jpg"></div>
+        <div class="text">Steak are sourced directly from farmers and fishermen from around the world, we pride ourselves on working with the finest producers that care about their products the same way that we do. </div>
+    </div>
+    </div>
+    <div id="button"><span>Like it? let book a flight!</span><a href="index.html"><button>Home</button></a></div>
+
+</div>
+
+<!--  footer-->
+<div class="superBottom">
+    <div class="bottomMiddle w">
+        <div class="bottomF">
+            <div><a href="javascript:;">Help and contacts</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">About Us</a></div>
+            <div class="mark">|</div>
+            <div><a href="userdata.html">Manage</a></div>
+            <div class="mark">|</div>
+            <div><a href="Onsalesticket.html">Special Offers</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Privacy policy</a></div>
+            <div class="mark">|</div>
+            <div><a href="javascript:;">Website security</a></div>
+        </div>
+        <!-- <div class="bottomS"></div> -->
+        <div class="copyright">© Super Airways - all rights reserved</div>
+        <div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
+
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

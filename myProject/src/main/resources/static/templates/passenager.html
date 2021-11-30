@@ -112,28 +112,27 @@
 			</div>
 		</div>
 
-		<div class="superBottom">
-			<div class="bottomMiddle w">
-				<div class="bottomF">
-					<div><a href="javascript:;">Help and contacts</a></div>
-					<div class="mark">|</div>
-					<div><a href="javascript:;">About Us</a></div>
-					<div class="mark">|</div>
-					<div><a href="javascript:;">Manage</a></div>
-					<div class="mark">|</div>
-					<div><a href="javascript:;">Special Offers</a></div>
-					<div class="mark">|</div>
-					<div><a href="javascript:;">Privacy policy</a></div>
-					<div class="mark">|</div>
-					<div><a href="javascript:;">Website security</a></div>
-				</div>
-				<div class="copyright">© Super Airways - all rights reserved</div>
-				<div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
-			   
+	<div class="superBottom">
+		<div class="bottomMiddle w">
+			<div class="bottomF">
+				<div><a href="javascript:;">Help and contacts</a></div>
+				<div class="mark">|</div>
+				<div><a href="javascript:;">About Us</a></div>
+				<div class="mark">|</div>
+				<div><a href="userdata.html">Manage</a></div>
+				<div class="mark">|</div>
+				<div><a href="Onsalesticket.html">Special Offers</a></div>
+				<div class="mark">|</div>
+				<div><a href="javascript:;">Privacy policy</a></div>
+				<div class="mark">|</div>
+				<div><a href="javascript:;">Website security</a></div>
 			</div>
-	
-	
+			<!-- <div class="bottomS"></div> -->
+			<div class="copyright">© Super Airways - all rights reserved</div>
+			<div class="bottomImg"><img src="../static/logo.png" alt="logo"></div>
+
 		</div>
+	</div>
 
 	<script type="text/javascript" >
 		$(document).ready(function () {
@@ -147,14 +146,12 @@
 				success : function(json){
 					if(json.state==200){
 						let list = json.data;
-						console.log(list);
 						for (let i = 0; i < list.length; i++) {
 							let tr = "<tr>\n" +
 									"\t\t\t\t\t\t\t\t\t<td>shouda</td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td>ren</td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td>Ev345</td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td>11/23/2021</td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td><a class='btn btn-xs btn-info'><span class='fa fa-edit'></span> Modify</a></td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td><a onclick='deletePassenger(#{passengerId}) ' class='btn btn-xs add-del btn-info'><span class='fa fa-trash-o'></span> Delete</a></td>\n" +
 									"\t\t\t\t\t\t\t\t\t<td><a onclick='setDefault(#{passengerId})' class='btn btn-xs add-def btn-default'>Set Default</a></td>\n" +
 									"\t\t\t\t\t\t\t\t</tr>";
@@ -162,8 +159,8 @@
 							tr = tr.replace(/ren/g,list[i].lastname);
 							tr = tr.replace("Ev345",list[i].passport);
 							tr = tr.replace("11/23/2021",list[i].passportExpire);
-							//把pid存进tr里
-							tr = tr.replace("#{passengerId}",list[i].passengerId);
+							tr = tr.replace(/#{passengerId}/g,list[i].passengerId);
+							console.log(tr);
 							$("#passenger-list").append(tr);
 						}
 						// the first one is default
@@ -176,6 +173,7 @@
 
        //set default
 	  function setDefault(passengerId){
+			console.log("123");
 		  $.ajax({
 			  url:"/passengers/"+passengerId+"/set_default" ,
 			  type:"POST",
