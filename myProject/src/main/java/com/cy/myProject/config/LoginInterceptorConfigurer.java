@@ -34,7 +34,6 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/templates/allticket.html");
         patterns.add("/templates/PartTicket.html");
         patterns.add("/templates/Onsalesticket.html");
-
         //url 放行
         patterns.add("/users/reg");
         patterns.add("/users/login");
@@ -42,7 +41,7 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/tickets/**");
         //往注册里添加拦截器
         registry.addInterceptor(interceptor)
-                .addPathPatterns("/**")//表示要拦截的url是什么
+                .addPathPatterns("/**")
                 .excludePathPatterns(patterns);
         // “/**”代表所有的请求都会拦截
 
