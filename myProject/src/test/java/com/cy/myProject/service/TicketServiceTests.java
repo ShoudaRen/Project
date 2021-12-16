@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Date;
 
-@SpringBootTest // 表示标注当前的类是一个测试类，不会随同项目一款打包
-@RunWith(SpringRunner.class)//表示启动这个单元测试类（没有这个注解无法运行）需要传递一个参数必须是SpringRunner
+@SpringBootTest // Indicates that the current class of the annotation is a test class and will not be packaged with the project
+@RunWith(SpringRunner.class)//To start the unit test class (which cannot run without this annotation), pass a parameter that must be SpringRunner
 
 public class TicketServiceTests {
     @Autowired
@@ -33,7 +33,19 @@ public class TicketServiceTests {
     public void  searchticket(){
         iTicketService.getPartticket(new Date(1),"","");
     }
-   }
+
+    @Test
+    public void  searchticketByEcoPRice(){
+        System.out.println(iTicketService.getAllticketByecoPrice());
+        ;
+    }
+
+    @Test
+    public void  searchticketByTime(){
+        System.out.println(iTicketService.getAllticketByTime());
+    }
+
+}
 
 
 

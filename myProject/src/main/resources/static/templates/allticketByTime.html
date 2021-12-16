@@ -108,8 +108,6 @@
 		<a href="allticketByTime.html"><button class="sort but">Sort By Duration Time</button></a>
 		<a href="allticketByPrice.html"><button  class="sort">Sort By Price</button></a>
 		<a href="allticket.html"><button  class="sort">restore</button></a>
-
-
 	</div>
 
 		<div class="w">
@@ -181,7 +179,7 @@
 			});
 			function showTicketList(){
 				$.ajax({
-					url:"/tickets/",
+					url:"/tickets/Sort_By_Time",
 					type:"POST",
 					dataType:"JSON",
 					success : function(json){

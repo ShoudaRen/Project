@@ -5,8 +5,7 @@ import com.cy.myProject.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
-//数据库对应的信息
-// 接口设定完成之后要在在映射文件中配置
+
 public interface UserMapper {
     /**
      * insert user data

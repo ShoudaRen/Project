@@ -22,5 +22,8 @@ public interface ITicketService {
 
     List<Flight> getOnSale();
 
+    List<Flight> getAllticketByecoPrice();
+    List<Flight> getAllticketByTime();
+
 }
 

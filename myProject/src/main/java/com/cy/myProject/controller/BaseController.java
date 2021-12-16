@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpSession;
 import java.sql.BatchUpdateException;
 
-//表示控制层类的基类
+// Represents the base class of the control layer class
 public class BaseController {
-    //操作成功的状态码
+    // Indicates the status code of the successful operation
     public static final int ok=200;
-    // 请求处理方法： 这个方法的返回值就是需要传递到前端的数据
-    // 凡是ServiceException.class抛出的异常都会被拦截到@ExceptionHandler
-    //业务层抛异常是给控制层用的，控制层不是在抛异常，而是吧错误信息相应给前端，好去做业务的判断
-    @ExceptionHandler({ServiceException.class,FileUploadException.class})//用于统一处理抛出的异常
+    // Request handling method: The return value of this method is the data that needs to be passed to the front end
+    // Any exception thrown by ServiceException.class is intercepted to @ExceptionHandler
+    //The business layer throws exceptions for the control layer. The control layer does not throw exceptions, but sends error information to the front end for business judgment
+    @ExceptionHandler({ServiceException.class,FileUploadException.class})// It is used to uniformly handle thrown exceptions
     public JsonResult<Void> handleException(Throwable e) {
         JsonResult<Void> result = new JsonResult<Void>(e);
         if (e instanceof UsernameDuplicatedException) {
@@ -80,11 +80,9 @@ public class BaseController {
      * @param session session object
      * @return the user's uid
      */
-//   从哪个session获取UID
     public final Integer getUidFromSession(HttpSession session){
           return  Integer.valueOf(session.getAttribute("uid").toString());
     }
-
     /**
      * get user's name
      * @param session  object
@@ -96,5 +94,4 @@ public class BaseController {
       }
 
 
-      //reference 查看订单
 }

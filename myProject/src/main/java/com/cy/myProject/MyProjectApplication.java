@@ -12,9 +12,9 @@ import org.springframework.util.unit.DataUnit;
 import javax.servlet.MultipartConfigElement;
 import java.util.Date;
 
-@Configuration //表示配置类
+@Configuration //Load all configuration classes
 @SpringBootApplication
-//在项目启动时加载所有接口文件
+//Load all interface files at project startup
 @MapperScan("com.cy.myProject.Mapper")
 public class MyProjectApplication {
 	public static void main(String[] args) {
@@ -22,12 +22,12 @@ public class MyProjectApplication {
 	}
    @Bean
 	public MultipartConfigElement getMultipartConfigElement(){
-		//创建一个配置的工厂类
+	   // Create a configured factory class
 	   MultipartConfigFactory factory = new MultipartConfigFactory();
-	   //设置需要创建对象的相关信息
+	   // Set the information about the object to be created
 	   factory.setMaxFileSize(DataSize.of(10, DataUnit.MEGABYTES));
 	   factory.setMaxRequestSize(DataSize.of(15, DataUnit.MEGABYTES));
-	   //通过工厂类来创建MultipartConfigElement 对象
+	   // Use the factory class to create the MultipartConfigElement object
 	   return factory.createMultipartConfig();
 
 	}

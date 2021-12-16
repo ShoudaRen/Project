@@ -20,9 +20,9 @@ public interface passengerMapper {
     Integer countByUid(Integer uid);
 
     /**
-     * 根据用户的id查询用户的收货地址数据
+     *
      * @param uid  uid
-     * @return  收获地址
+     * @return
      */
     List<Passenger>findpassengerByUid(Integer uid);
 
@@ -42,6 +42,6 @@ public interface passengerMapper {
                                           @Param("modifiedTime")Date modifiedTime);
 
      Integer deleteByPid(Integer passengerId);
-     //查询最后一个收货地址的顺序
+     //
      Passenger findlastModified(Integer uid);
 }

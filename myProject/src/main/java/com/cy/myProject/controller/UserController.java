@@ -1,11 +1,11 @@
 package com.cy.myProject.controller;
 /**
- * 1：
- * 方法参数名要和表单的name保持一致
- * 表单对象的同名字段会自动注入映射对象中，因此注重表单里名字的写法很重要！！,
- * 在连接给定的参数列表中，前端只要保证给的参数的名字和对象中属性的名字一致，系统就会自动地注入到对象中
- * 2：
- * 方法参数满足服务器所需的参数，别的不需要
+ * 1:
+ * The method parameter name must be the same as the form's name
+ * Fields with the same name in the form object are automatically injected into the mapping object, so it's important to pay attention to how the form names are written!! .
+ * In connection with a given parameter list, as long as the front end ensures that the name of the parameter given is the same as the name of the property in the object, the system will automatically inject it into the object
+ * 2:
+ * The method parameters meet the requirements of the server, nothing else
  */
 
 import com.cy.myProject.config.LoginInterceptorConfigurer;
@@ -44,12 +44,9 @@ public class UserController extends BaseController{
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("reg")//    这个方法可以接收什么样的请求？ users（上面那个引号） 下的reg请求可以被拦截
+    @RequestMapping("reg")//
     //example:http://localhost:8080/users/reg?username=Tom123&password=123456
-//    @ResponseBody //表示此方法的响应结果以Json格式进行数据的响应给到前端
-
-    //接收前端的数据
-    //Void 无数据类型   //后端接受前端请求的方法
+//    @ResponseBody // Indicates that the result of the method's response is sent to the front end in Json format
     public JsonResult<Void> reg(User user){
         userService.reg(user);
         return new JsonResult<Void>(ok);
@@ -58,24 +55,14 @@ public class UserController extends BaseController{
     @RequestMapping("login")//路径
     public JsonResult<User> login(String username, String password , HttpSession session){
         User data=userService.login(username,password);
-//        向session对象中完成数据的绑定（session全局的）
+//        Complete binding of data to session objects (session global)
 session.setAttribute("uid", data.getUid());
 session.setAttribute("username", data.getUsername());
-//加上reference
-//获取seesion中绑定的数据
         System.out.println(getUidFromSession(session));
         System.out.println(getUsernameFromSession(session));
-        //如果 userService.login(username,password);有异常会被
-        // baseController里的@ExceptionHandler(ServiceException.class)捕获
-        // 进而在handleException（）里进行处理， 没有异常直接返回JsonResult<User>(ok)给前端
-        /**
-         *  把data放进去传给前端 因为需要返回用户数据所以，需要data 类型为user
-         */
-        return new JsonResult<User>(ok,data);// JsonResult<User>的构造器
-           //下一步
-           //        在前端进行测试u
+
+        return new JsonResult<User>(ok,data);
       // example: http://localhost:8080/users/login?username=test4add&password=123
-//        前端返回所有test4add的信息
         //{"state":200,"data":{"createdUser":"test4add",
         // "createdTime":"2021-11-09T08:59:55.000+00:00",
         // "modifiedUser":"test4add","uid":10,"username":"test4add",
@@ -83,16 +70,12 @@ session.setAttribute("username", data.getUsername());
         // "salt":"64148DBB-1A4C-4243-930E-5DA40644EA6B","isDelete":0}}
     }
     @RequestMapping("change_password")//路径
-    /**String oldPassword, String newPassword, 参数名要和web form input 里的name保持一致
-     * HttpSession 需要这个来传递user信息来更新前端数据
-     */
     public JsonResult<Void> changePassword (String oldPassword,
                                             String newPassword,HttpSession session){
         Integer uid = getUidFromSession(session);
         String username=getUsernameFromSession(session);
         userService.changePassword(uid,username,
                 oldPassword,newPassword);
-        //因为不需要返回任何东西 所以 直接写ok
            return new  JsonResult<>(ok);
     }
 
@@ -117,7 +100,7 @@ session.setAttribute("username", data.getUsername());
      *
      * @param avatar
      * @param session
-     * @param file   MultipartFile自动把文件转化成数据包，可以接受任何类型的文件
+     * @param file
      * @return
      */
     //  the max size of an image
@@ -134,7 +117,6 @@ session.setAttribute("username", data.getUsername());
     @RequestMapping("change_avatar")
     public JsonResult<String> changeAvatar ( HttpSession session,
                                             @RequestParam("file") MultipartFile file){
-
         if (file.isEmpty()){
             throw new FileEmptyException("the file is empty");
         }
@@ -142,26 +124,26 @@ session.setAttribute("username", data.getUsername());
             throw new FileSizeException("File size is out 10MB");
         }
         String contentType = file.getContentType();
-        //如果集合包含了某个元素则返回true
+        // Returns true if the collection contains an element
         if (!AVATAR_TYPE.contains(contentType)){
             throw new FileTypeException("the type does not be supported");
         }
-        //在项目中获得文件储存的路径。。。然后把用户上传的图片放进去
+        // Get the file storage path in the project... And then put in the pictures that the user uploaded
        String parent= session.getServletContext().getRealPath("upload");
-//   File 对象 指向这个路径，File是否存在
+// The File object points to this path and whether File exists
         File dir =new File(parent);
         if (!dir.exists()){
-            dir.mkdir(); //创建当前目录
+            dir.mkdir(); // Create the current directory
         }
-            //获取到这个文件名称，UUID工具来生成一过热新的字符串作为文件名
+        // To get the file name, the UUID tool generates a new string as the file name
             String OriginalFilename =file.getOriginalFilename();
             System.out.println(OriginalFilename);
             int index = OriginalFilename.lastIndexOf(".");
             String suffix = OriginalFilename.substring(index);
             String filename=UUID.randomUUID().toString().toUpperCase()+suffix;
-        //创建一个空文件
+        // Create an empty file
         File dest = new File(dir,filename);
-        //将参数file中的数据写入这个空文件中
+        // Write the data from the parameter file to the empty file
         try {
             file.transferTo(dest);
         } catch (FileStateException e) {
@@ -178,15 +160,12 @@ session.setAttribute("username", data.getUsername());
     }
 
 
-
     @RequestMapping("session_clear")
-    public void sessionClear ( HttpServletRequest request){
-
+    public void sessionClear ( HttpServletRequest request,HttpSession session){
+        session.removeAttribute("username");
+        session.removeAttribute("uid");
         request.getSession().invalidate();
 
-//        LoginInterceptorConfigurer loginInterceptorConfigurer = new LoginInterceptorConfigurer();
-//        InterceptorRegistry registry = new InterceptorRegistry();
-//        loginInterceptorConfigurer.addInterceptors(registry);
 
     }
 
@@ -197,29 +176,7 @@ session.setAttribute("username", data.getUsername());
 
 
 
-    //没有base需要这样写
-//    public JsonResult<Void> reg(User user) {
-//        //创建响应结果对象
-//        JsonResult<Void> result = new JsonResult<>();
-//
-//        try {
-//            //调用业务层的方法
-//            userService.reg(user);//调用的使UserServiceIml的方法
-//            result.setState(2000);
-//            //前端窗口报错
-//            result.setMessage("Register Succeed");
-//        } catch (UsernameDuplicatedException e) {
-//            result.setState(4000);
-//            //前端窗口报错
-//            result.setMessage("The user name already exists");
-//        } catch (InsertException e) {
-//            //前端窗口报错
-//            result.setState(5000);
-//            result.setMessage("oops! An unknown error");
-//        }
-//        return result;
-//
-//    }
+
 
 
 }

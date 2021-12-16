@@ -47,6 +47,20 @@ public class TicketController extends BaseController{
         List<Flight> data =iTicketService.getAllticket();
         return new JsonResult<>(ok,data);
     }
+
+    @RequestMapping("Sort_By_Eco")
+    public  JsonResult<List<Flight>> getAllTicketByEcoPrice(){
+        List<Flight> data =iTicketService.getAllticketByecoPrice();
+        return new JsonResult<>(ok,data);
+    }
+    @RequestMapping("Sort_By_Time")
+    public  JsonResult<List<Flight>> getAllTicketByDuration(){
+        List<Flight> data =iTicketService.getAllticketByTime();
+        return new JsonResult<>(ok,data);
+    }
+
+
+
     @RequestMapping("find_On_Sale")
     public  JsonResult<List<Flight>> findTicketsOnSale(){
         List<Flight> data =iTicketService.getOnSale();

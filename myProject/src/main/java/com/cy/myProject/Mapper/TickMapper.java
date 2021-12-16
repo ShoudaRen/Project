@@ -17,9 +17,10 @@ public interface TickMapper {
 
        void updateFlightNumByflghtId(Integer flightId, Integer AdultNum);
 
-
        List<Flight> findOnsale();
 
+       List<Flight> findAllTicketSortByPrice ();
+       List<Flight> findAllTicketSortByTime ();
 
 
 

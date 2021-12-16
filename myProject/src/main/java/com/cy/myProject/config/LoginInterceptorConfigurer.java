@@ -10,19 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 处理器拦截器注册 白名单黑名单
+ *
  */
-@Configuration //加载当前的拦截器并进行注册
+@Configuration // Load the current interceptor
 public class LoginInterceptorConfigurer implements WebMvcConfigurer {
-    //创建自定义的拦截器对象
+    // Create a custom interceptor object, from myProject.interceptor.LoginInterceptor ; check uid if exist
     HandlerInterceptor interceptor = new LoginInterceptor();
     /**
-     * 配置拦截器
+     * Configuring interceptors
      * @param registry
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //*配置白名单：
         List<String> patterns = new ArrayList<>();
         patterns.add("/CSS/**");
         patterns.add("/static/**");
@@ -34,16 +33,18 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/templates/allticket.html");
         patterns.add("/templates/PartTicket.html");
         patterns.add("/templates/Onsalesticket.html");
-        //url 放行
+        patterns.add("/templates/allticketByPrice.html");
+        patterns.add("/templates/allticketByTime.html");
+        // url has been submitted
         patterns.add("/users/reg");
         patterns.add("/users/login");
         patterns.add("/tickets/");
         patterns.add("/tickets/**");
-        //往注册里添加拦截器
+       // Add interceptor to register
         registry.addInterceptor(interceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(patterns);
-        // “/**”代表所有的请求都会拦截
+        // "/**" indicates that all requests will be intercepted
 
         WebMvcConfigurer.super.addInterceptors(registry);
     }

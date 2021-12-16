@@ -71,4 +71,16 @@ public class TicketServiceImpl implements ITicketService {
         return ticket;
     }
 
+    @Override
+    public List<Flight> getAllticketByecoPrice() {
+        List<Flight> ticket= tickMapper.findAllTicketSortByPrice();
+        return ticket;
+    }
+
+    @Override
+    public List<Flight> getAllticketByTime() {
+        List<Flight> ticket= tickMapper.findAllTicketSortByTime();
+        return ticket;
+    }
+
 }

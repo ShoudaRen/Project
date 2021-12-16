@@ -14,14 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class allServiceMapperTests {
     @Autowired
     private LoungeMapper loungeMapper;
-//    @Autowired
-//    private LoungeMapper loungeMapper;
-//    @Autowired
-//    private luggageMapper luggageMapper;
-//    @Autowired
-//    private MealMapper mealMapper;
-//    @Autowired
-//    private PickUpMapper pickUpMapper;
+    
 
     @Test
     public void findhotel(){

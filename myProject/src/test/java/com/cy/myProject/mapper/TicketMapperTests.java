@@ -62,4 +62,16 @@ public class TicketMapperTests {
         List<Flight> b= tickMapper.findOnsale();
         System.out.println(b);
     }
+
+    @Test
+    public void findAllticketByprice(){
+        List<Flight> b=  tickMapper.findAllTicketSortByPrice();
+        System.out.println(b);
+    }
+
+    @Test
+    public void findAllticketByDuration(){
+        List<Flight> b=  tickMapper.findAllTicketSortByTime();
+        System.out.println(b);
+    }
 }

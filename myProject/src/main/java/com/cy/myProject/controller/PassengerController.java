@@ -35,7 +35,7 @@ public class PassengerController extends BaseController{
         return new JsonResult<>(ok,data);
     }
 
-    //RestFul风格的请求
+    //RestFul style
     @RequestMapping("{passengerId}/set_default")
     public  JsonResult<Void> setDefault(@PathVariable("passengerId") Integer passengerId,
                                         HttpSession session){

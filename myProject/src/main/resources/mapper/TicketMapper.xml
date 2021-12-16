@@ -40,4 +40,13 @@
     <select id="findOnsale" resultMap="TicketEntityMap">
         SELECT * FROM t_flight where Onsale = 1
     </select>
+
+    <select id="findAllTicketSortByPrice"  resultMap="TicketEntityMap" >
+        SELECT * FROM t_flight
+        order by  EcoPrice ASC
+    </select>
+    <select id="findAllTicketSortByTime"  resultMap="TicketEntityMap" >
+        SELECT * FROM t_flight
+        order by  duration ASC
+    </select>
 </mapper>
